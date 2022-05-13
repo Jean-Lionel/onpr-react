@@ -19,8 +19,9 @@ const Login = () => {
                 password
             });
            // console.log(response.data.access_token, response.data.data);
+
             localStorage.setItem('token', response.data.access_token);
-            localStorage.setItem('user', response.data.data);
+            localStorage.setItem('user', JSON.stringify(response.data.data));
             setIsLoading(false);
            window.location.href = '/admin';
         } catch (error) {
