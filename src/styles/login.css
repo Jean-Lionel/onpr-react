@@ -56,3 +56,53 @@ form button {
   display: flex;
 } 
 
+h1 {
+  text-align: center;
+  color: wheat;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+
+/* .loading {
+  text-align: center;
+  color: beige;
+  margin: 3rem;
+  font-size: 3rem;
+} */
+
+h3 {
+  text-align: center;
+  color: beige;
+  margin: 3rem;
+  font-size: 3rem;
+}
+
+@media only screen and (max-width: 768px) {
+  form {
+    width: 80%;
+    height: 60vh;
+    background-color: aliceblue;
+    justify-content: space-around;
+    display: flex;
+    flex-flow: column;
+    margin: auto;
+    border-radius: 15px;
+    font-size: 2.5rem;
+  }
+
+  h3 {
+    text-align: center;
+    color: beige;
+    margin: 2rem;
+    font-size: 1.5rem;
+  }
+
+  form button {
+    width: 70%;
+    margin-left: 3.4rem;
+    height: 2rem;
+    background-color: aqua;
+    border-radius: 5px;
+  }
+}

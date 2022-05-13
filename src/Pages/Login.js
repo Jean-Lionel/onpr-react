@@ -51,8 +51,8 @@ const Login = () => {
         </div>
 
         {isLoading && (
-            <div>
-                Is Loading...
+            <div className='loding'>
+                <h3>Is Loading...</h3>
             </div>
         )}
         {error && (
