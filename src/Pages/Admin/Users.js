@@ -4,12 +4,7 @@ import Admin from "../Admin";
 const Users = () => {
     return ( 
         <Admin>
-            <p>
-                Je suis un Millionnaire
-            </p>
-            <div>
-                <ListUser/>
-            </div>
+            <ListUser/>
         </Admin>
     );
 }
