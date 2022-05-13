@@ -1,4 +1,5 @@
 import useFetchData from "../../../utility/useFecthData";
+import {Link} from "react-router-dom"
 
 const ArticleList = () => {
     let {data: articles, isLoading, error} = useFetchData("articles");
@@ -8,6 +9,11 @@ const ArticleList = () => {
             <h1>
                 Liste des articles
             </h1>
+            <Link to="/admin-article-add">
+                <p>
+                Ajouter un Article
+                </p>
+            </Link>
             <ul>
             {articlesList && articlesList.map((article, index) =>(
                 <li key={index} className="article-item">
