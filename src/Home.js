@@ -1,15 +1,15 @@
 import {Link} from "react-router-dom"
 
 const Home = () => {
-    return ( <div>
-        <h1>Home</h1>
-        <Link to="/bonjour">
-        <p>Bonjour</p>
-        </Link>
-
-        <Link to="/login">
-            <p>Login</p>
-        </Link>
+    return ( <div className="App">
+        <h1>
+            <Link to="/login">
+                <p>Login</p>
+            </Link>
+        </h1>
+        <div>
+        lorem ipsum dolor sit amet, consectetur adip
+        </div>
     </div> );
 }
  
