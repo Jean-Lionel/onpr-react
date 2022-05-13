@@ -25,6 +25,9 @@ const AdminHeader = () => {
         <Link to="/users"> 
             <p className={`${ activeTab === "users" ? "active" : ""}`}  onClick={() => setActiveTab("users")}>Users</p>
         </Link>
+        <Link to="admin-article">
+            <p className={`${ activeTab === "admin-article" ? "active" : ""}`}  onClick={() => setActiveTab("admin-article")}>Articles</p>
+        </Link>
         <Link to="/about"> 
         <button onClick={() => logout()} className="">Déconnexion</button>
         </Link>

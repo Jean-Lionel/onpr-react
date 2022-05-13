@@ -1,4 +1,5 @@
 import useFetchData from "../../../utility/useFecthData";
+import { toast } from 'react-toastify';
 
 const ListUser = () => {
          let {data: users, isLoading, error} = useFetchData("users");
@@ -7,6 +8,25 @@ const ListUser = () => {
     return ( <div>
         <div>
             <h1>Liste des utilisateurs</h1>
+
+            {isLoading && (
+                <div>
+                    {
+                        toast('🦄 Wow so easy!', {
+                            position: "top-",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            })
+                    }
+                </div>
+            )}
+            {error && (
+                <span className="span-error"> {error}</span>
+            )}
         </div>
 
         <table>
