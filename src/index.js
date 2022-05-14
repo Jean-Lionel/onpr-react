@@ -7,7 +7,7 @@ import Popper from 'popper.js'; */
 
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://127.0.0.1:8000/api';
+axios.defaults.baseURL = 'https://onprapi.herokuapp.com/api/';
 axios.defaults.headers.common['Authorization'] = 'AUTH TOKEN';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
