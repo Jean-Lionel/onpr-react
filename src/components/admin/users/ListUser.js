@@ -32,6 +32,7 @@ const ListUser = () => {
                     <th>Nom et Prénom </th>
                     <th>Email</th>
                     <th>Téléphone</th>
+                    <th>Mobile</th>
                     <th>Role</th>
                     <th>Action</th>
                 </tr>
@@ -44,7 +45,8 @@ const ListUser = () => {
                         <td>{user?.name}</td>
                         <td>{user?.email}</td>
                         <td>{user?.telephone}</td>
-                        <td>{user?.role}</td>
+                        <td>{user?.mobile}</td>
+                        <td>{user?.role?.name}</td>
                        
                         <td>
                             <button className="btn btn-warning btn-sm" type="button">Modifier</button>

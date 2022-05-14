@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
 import { Link } from 'react-router-dom';
+import axios from "axios"
 
 const settings = ['Profile', 'Account', 'Dashboard'];
 const routes = [
@@ -48,11 +49,30 @@ const ResponsiveAppBar = () => {
     setAnchorElUser(null);
   };
 
-  const handleLogoutUserMenu = () => {
+  const handleLogoutUserMenu =  ()  => {
     if( window.confirm("Are you sure you want to logout ?")){
-      localStorage.removeItem("token")
-      localStorage.removeItem("user")
-      window.location = "/login";
+    
+      axios.post("/logout",
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+      }
+      ).then(res => {
+        localStorage.removeItem("token")
+        localStorage.removeItem("user")
+      }).catch(err => {
+        console.log(err);
+      }).finally(() => {
+        localStorage.removeItem("token")
+        localStorage.removeItem("user")
+        window.location = "/";
+      })
+      
+
+      
     }
   }
 
@@ -115,8 +135,6 @@ const ResponsiveAppBar = () => {
                   </MenuItem>
                 </Link>
               ))}
-
-             
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />

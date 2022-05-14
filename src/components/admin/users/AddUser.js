@@ -1,17 +1,24 @@
-import { Box, FormControl, InputLabel, Input, InputAdornment, Button, Alert } from "@mui/material";
+import { Box, FormControl, InputLabel, Input, Button, Alert, Select,MenuItem , TextField} from "@mui/material";
 import { useState } from "react";
 //import usePostData from "../../../utility/usePostData";
 import axios from "axios"
 import { useHistory } from "react-router-dom";
+import useFetchData from "../../../utility/useFecthData";
 
 const AddUser = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+    const [telephone, setTelephone] = useState("");
+    const [mobile, setMobile] = useState("");
+    const [description, setDescription] = useState("");
     const [password, setPassword] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState("")
+    const [error, setError] = useState("");
+    let {data: roles} = useFetchData("roles");
+    const [roleId, setRoleId] = useState("");
+
     const history = useHistory();
-  
+
     const submitData = async (e) => {
         e.preventDefault();
 
@@ -22,10 +29,15 @@ const AddUser = () => {
         setIsLoading(true);
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.post('register/', {
+            const response = await axios.post('users/', {
                 name,
                 email,
-                password
+                password,
+                role_id : roleId,
+                telephone,
+                description,
+                mobile
+
             },{
                 headers: {
                     Authorization: "Bearer " + token
@@ -45,8 +57,10 @@ const AddUser = () => {
        
     }
 
-    return ( <Box>
+    return ( 
+    <Box>
         <div>
+            <h1>Ajouter un utilisateur</h1>
         <FormControl fullWidth sx={{ m: 1 }} variant="standard">
           <InputLabel htmlFor="name">Nom et Prénom *</InputLabel>
           <Input
@@ -66,6 +80,46 @@ const AddUser = () => {
             onChange={(e) => (setEmail(e.target.value))}
           />
         </FormControl>
+
+        <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+          <InputLabel htmlFor="telephone">Téléphone</InputLabel>
+          <Input
+            id="telephone"
+            type="text"
+            required
+            value={telephone}
+            onChange={(e) => (setTelephone(e.target.value))}
+          />
+        </FormControl>
+
+        <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+          <InputLabel htmlFor="mobile">Mobile</InputLabel>
+          <Input
+            id="mobile"
+            type="text"
+            required
+            value={mobile}
+            onChange={(e) => (setMobile(e.target.value))}
+          />
+        </FormControl>
+
+        <FormControl fullWidth>
+            <InputLabel id="role_id">Role</InputLabel>
+            <Select
+              labelId="role_id"
+              id="role_id"
+              value={roleId}
+              label="Age"
+              onChange={(e) => (setRoleId(e.target.value))}
+            >
+              {roles && roles?.data?.map((role, index) =>(
+                <MenuItem key={index} value={role?.id}>{role?.name}</MenuItem>
+              ))
+              }
+             
+            </Select>
+        </FormControl>
+
         <FormControl fullWidth sx={{ m: 1 }} variant="standard">
           <InputLabel htmlFor="password">Mot de passe *</InputLabel>
           <Input
@@ -76,6 +130,20 @@ const AddUser = () => {
             onChange={(e) => (setPassword(e.target.value))}
           />
         </FormControl>
+
+        <FormControl fullWidth sx={{ m:1 }} variant="standard">
+        <TextField
+          id="description"
+          label="Multiline"
+          multiline
+          rows={4}
+          defaultValue="Default Value"
+
+          onChange={(e) => (setDescription(e.target.value))}
+        />
+        </FormControl>
+
+
         {isLoading && ( 
             <div>
                 Is Loading...
