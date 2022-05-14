@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './Archive/index.css';
 import App from './App';
+/* import $ from 'jquery';
+import Popper from 'popper.js'; */
 
 import axios from 'axios';
 
