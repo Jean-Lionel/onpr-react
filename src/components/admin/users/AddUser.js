@@ -1,4 +1,4 @@
-import { Box, FormControl, InputLabel, Input, InputAdornment, Button } from "@mui/material";
+import { Box, FormControl, InputLabel, Input, InputAdornment, Button, Alert } from "@mui/material";
 import { useState } from "react";
 //import usePostData from "../../../utility/usePostData";
 import axios from "axios"
@@ -15,11 +15,12 @@ const AddUser = () => {
     const submitData = async (e) => {
         e.preventDefault();
 
+        if(!name || !email || !password){
+            setError("Completez tout les champs !!");
+            return
+        }
         setIsLoading(true);
-        
-
         try {
-
             const token = localStorage.getItem("token");
             const response = await axios.post('register/', {
                 name,
@@ -47,7 +48,7 @@ const AddUser = () => {
     return ( <Box>
         <div>
         <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-          <InputLabel htmlFor="name">Nom et Prénom</InputLabel>
+          <InputLabel htmlFor="name">Nom et Prénom *</InputLabel>
           <Input
             id="name"
             value={name}
@@ -56,7 +57,7 @@ const AddUser = () => {
           />
         </FormControl>
         <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-          <InputLabel htmlFor="email">Email</InputLabel>
+          <InputLabel htmlFor="email">Email *</InputLabel>
           <Input
             id="email"
             type="email"
@@ -66,7 +67,7 @@ const AddUser = () => {
           />
         </FormControl>
         <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-          <InputLabel htmlFor="password">Mot de passe</InputLabel>
+          <InputLabel htmlFor="password">Mot de passe *</InputLabel>
           <Input
             id="password"
             type="password"
@@ -75,6 +76,14 @@ const AddUser = () => {
             onChange={(e) => (setPassword(e.target.value))}
           />
         </FormControl>
+        {isLoading && ( 
+            <div>
+                Is Loading...
+            </div>
+        )}
+        {error && (
+            <Alert severity="error">{ error }</Alert>
+        )}
         <Button variant="contained" type="submit" onClick={submitData}>Enregistrer</Button>
         </div>
 
