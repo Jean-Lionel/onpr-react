@@ -1,9 +1,15 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import $ from 'jquery';
+import Popper from 'popper.js';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 import {
   BrowserRouter as Router,
   
 } from "react-router-dom";
 import RouteComponent from "./route/RouteComponent";
 import "./styles/App.css"
+
 
 function App() {
   

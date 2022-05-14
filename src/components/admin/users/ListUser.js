@@ -8,29 +8,20 @@ const ListUser = () => {
     return ( <div>
         <div>
             <h1>Liste des utilisateurs</h1>
-
             {isLoading && (
                 <div>
                     {
-                        toast('🦄 Wow so easy!', {
-                            position: "top-",
-                            autoClose: 5000,
-                            hideProgressBar: false,
-                            closeOnClick: true,
-                            pauseOnHover: true,
-                            draggable: true,
-                            progress: undefined,
-                            })
+                        isLoading
                     }
                 </div>
             )}
             {error && (
-                <span className="span-error"> {error}</span>
+                <span className="error-message"> {error}</span>
             )}
         </div>
 
-        <table>
-            <thead>
+        <table className="table table-hover table-sm">
+            <thead className="table-dark">
                 <tr>
                     <th>ID</th>
                     <th>Nom et Prénom </th>
@@ -51,8 +42,8 @@ const ListUser = () => {
                         <td>{user?.role}</td>
                        
                         <td>
-                            <button>Modifier</button>
-                            <button>Supprimer</button>
+                            <button className="btn btn-warning btn-sm" type="button">Modifier</button>
+                            <button className="btn btn-danger btn-sm">Supprimer</button>
                         </td>
                     </tr>
                 ))

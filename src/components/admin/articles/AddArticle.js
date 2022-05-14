@@ -31,22 +31,24 @@ const AddArticle = () => {
         })
         .catch(function (error) {
             console.log(error)
-        }).finally((e) ={
-            
-           
+        }).finally((e) ={ 
         })
-       
-
     }
-
-
     return ( <div>
         <form action="" onSubmit={handleSubmit}>
             <div>
-                <input type="text" placeholder="title" title="Title HHHHH" value={title} onChange={(e) => setTitle(e.target.value)} />
-                <input type="text" placeholder="body"  name="body" value={body} onChange={(e) => setBody(e.target.value)} />
-                <input type="text" placeholder="link"  name="link" value={link} onChange={(e) => setLink(e.target.value)} />
-
+                <div>
+                    <label htmlFor="title"></label>
+                    <input type="text" id="title" placeholder="title" title="Title HHHHH" value={title} onChange={(e) => setTitle(e.target.value)} />
+                </div>
+                <div>
+                    <label htmlFor="body"></label>
+                <textarea   cols="30" rows="10"  name="body"  onChange={(e) => setBody(e.target.value)}>{body}</textarea>
+                </div>
+                <div>
+                    <label htmlFor="file"></label>
+                    <input type="text" placeholder="link"  name="link" value={link} onChange={(e) => setLink(e.target.value)} />
+                </div>
                 <button type="submit" className="btn btn-save">
                     Enregistrer
                 </button>
