@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from "axios";
@@ -55,20 +56,8 @@ export default function SignIn() {
         }
         setIsLoading(true);
         console.log(email, password);
-        try {
-            const response = await axios.post('login/', {
-                email,
-                password
-            });
-            // console.log(response.data.access_token, response.data.data);
-            localStorage.setItem('token', response.data.access_token);
-            localStorage.setItem('user', JSON.stringify(response.data.data));
-            setIsLoading(false);
-            window.location.href = '/admin';
-        } catch (error) {
-            setError(error.response.data.message);
-            setIsLoading(false);
-        }
+       
+        
     }
 
   return (
@@ -126,14 +115,14 @@ export default function SignIn() {
               Sign In
             </Button>
 
-            {error && (
+            { !isLoading && error && (
                 <div>
                     <Alert severity="error">{error}</Alert>
                 </div>
             )}
-           {isLoading && (
+           { !error && isLoading && (
             <div>
-                Is Loading...
+                <CircularProgress color="inherit" />
              </div>
           )}
             <Grid container>
