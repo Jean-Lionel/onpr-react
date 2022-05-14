@@ -1,6 +1,7 @@
 import useFetchData from "../../../utility/useFecthData";
-import { toast } from 'react-toastify';
-import Button from '@mui/material/Button';
+import {Fab, Button,Icon} from '@mui/material';
+import { DeleteTwoTone, EditNotifications } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const ListUser = () => {
          let {data: users, isLoading, error} = useFetchData("users");
@@ -20,7 +21,10 @@ const ListUser = () => {
                 <span className="error-message"> {error}</span>
             )}
         </div>
-        <Button variant="contained">Hello World</Button>
+        <Link to="admin-add-user">
+         <Icon>add_circle</Icon> Ajouter un utilisateur
+        </Link>
+      
         <table className="table table-hover table-sm">
             <thead className="table-dark">
                 <tr>
@@ -44,7 +48,12 @@ const ListUser = () => {
                        
                         <td>
                             <button className="btn btn-warning btn-sm" type="button">Modifier</button>
-                            <button className="btn btn-danger btn-sm">Supprimer</button>
+                            <Fab size="small" color="secondary" aria-label="edit">
+                                <EditNotifications />
+                            </Fab>
+                            <Fab size="small" color="primary">
+                                <DeleteTwoTone />
+                            </Fab>
                         </td>
                     </tr>
                 ))

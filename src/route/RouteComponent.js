@@ -7,6 +7,7 @@ import Admin from "../Pages/Admin";
 import ArticleAdd from "../Pages/Admin/articles/ArticleAdd";
 import Article from "../Pages/Admin/articles/Articles";
 import Users from "../Pages/Admin/Users";
+import UserAdd from "../Pages/Admin/users/UserAdd";
 import Bonjour from "../Pages/Bonjour";
 import Login from "../Pages/Login";
 import ProtectedRoute from "../utility/ProtectedRouter";
@@ -22,6 +23,7 @@ const RouteComponent = () => {
           <ProtectedRoute exact path="/users" component={Users} /> 
           <ProtectedRoute exact path="/admin-article" component={Article} /> 
           <ProtectedRoute exact path="/admin-article-add" component={ArticleAdd} /> 
+          <ProtectedRoute name="add_user" exact path="/admin-add-user" component={UserAdd} /> 
         </Switch>
      );
 }

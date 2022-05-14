@@ -1,13 +1,12 @@
 import useFetchData from "../../../utility/useFecthData";
 import {Link} from "react-router-dom"
-import UploadFile from "../UploadFile";
 
 const ArticleList = () => {
     let {data: articles, isLoading, error} = useFetchData("articles");
          let articlesList = articles?.data?.data
     return ( 
         <div>
-            <UploadFile/>
+        
             <h1>
                 Liste des articles
             </h1>
@@ -27,8 +26,6 @@ const ArticleList = () => {
                         {error}
                     </div>
                 )}
-
-
             <ul>
             {articlesList && articlesList.map((article, index) =>(
                 <li key={index} className="article-item">
