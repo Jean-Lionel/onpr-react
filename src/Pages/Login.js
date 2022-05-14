@@ -60,12 +60,11 @@ export default function SignIn() {
                 email,
                 password
             });
-           // console.log(response.data.access_token, response.data.data);
-
+            // console.log(response.data.access_token, response.data.data);
             localStorage.setItem('token', response.data.access_token);
             localStorage.setItem('user', JSON.stringify(response.data.data));
             setIsLoading(false);
-           window.location.href = '/admin';
+            window.location.href = '/admin';
         } catch (error) {
             setError(error.response.data.message);
             setIsLoading(false);
