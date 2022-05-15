@@ -1,5 +1,5 @@
 import { Box, FormControl, InputLabel, Input, Button, Alert, Select,MenuItem , TextField} from "@mui/material";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 //import usePostData from "../../../utility/usePostData";
 import axios from "axios"
 import { useHistory } from "react-router-dom";
@@ -58,7 +58,14 @@ const AddUser = () => {
     }
 
     return ( 
-    <Box>
+    <Box
+    sx={{
+      width: "80%",
+      margin: "auto",
+     
+    }}
+    
+    >
         <div>
             <h1>Ajouter un utilisateur</h1>
         <FormControl fullWidth sx={{ m: 1 }} variant="standard">

@@ -33,6 +33,7 @@ const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
  // const [activeTab, setActiveTab] = React.useState("home");
+ const connectedUser = JSON.parse(localStorage.getItem("user"));
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -78,6 +79,7 @@ const ResponsiveAppBar = () => {
 
   return (
     <AppBar position="static">
+      
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -96,7 +98,7 @@ const ResponsiveAppBar = () => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            ONPR
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -154,7 +156,7 @@ const ResponsiveAppBar = () => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            ONPR
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {routes.map((route, index) => (
@@ -177,8 +179,16 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <Typography
+               variant = "h5"
+               mr={2}
+              >
+                {connectedUser.user.name}
+              </Typography>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                
               </IconButton>
+            
             </Tooltip>
             <Menu
               sx={{ mt: '45px' }}

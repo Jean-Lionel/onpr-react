@@ -1,11 +1,14 @@
 import useFetchData from "../../../utility/useFecthData";
 import {Link} from "react-router-dom"
+import DateTabeleTest from "../../../test/DateTabeleTest";
 
 const ArticleList = () => {
     let {data: articles, isLoading, error} = useFetchData("articles");
          let articlesList = articles?.data?.data
     return ( 
         <div>
+
+            <DateTabeleTest />
         
             <h1>
                 Liste des articles
@@ -27,6 +30,7 @@ const ArticleList = () => {
                     </div>
                 )}
             <ul>
+
             {articlesList && articlesList.map((article, index) =>(
                 <li key={index} className="article-item">
                     <div>
