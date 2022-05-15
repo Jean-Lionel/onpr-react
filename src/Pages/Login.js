@@ -34,14 +34,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get('email'),
-  //     password: data.get('password'),
-  //   });
-  // };
+ 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -49,16 +42,30 @@ export default function SignIn() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         if(!email || !password) {
-            setError('Please enter email and password');
-            return;
-        }
+          setError('Please enter email and password');
+          return;
+      }
         setIsLoading(true);
+
         console.log(email, password);
-       
-        
+        try {
+            const response = await axios.post('/login/', {
+                email,
+                password
+            });
+           console.log(response.data.access_token, response.data.data);
+            localStorage.setItem('token', response.data.access_token);
+            localStorage.setItem('user', JSON.stringify(response.data.data));
+            setIsLoading(false);
+           window.location.href = '/admin';
+        } catch (error) {
+            setError(error?.response?.data?.message);
+            setIsLoading(false);
+        }
     }
+
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -115,7 +122,7 @@ export default function SignIn() {
               Sign In
             </Button>
 
-            { !isLoading && error && (
+            { error && (
                 <div>
                     <Alert severity="error">{error}</Alert>
                 </div>

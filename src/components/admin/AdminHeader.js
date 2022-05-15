@@ -10,6 +10,7 @@ const AdminHeader = () => {
         localStorage.removeItem("user")
         window.location = "/login";
     }
+   
 
     return ( 
     <div className="header">

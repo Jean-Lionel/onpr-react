@@ -1,11 +1,12 @@
 import AdminFooter from "../components/admin/AdminFooter";
-import AdminHeader from "../components/admin/AdminHeader";
+//import AdminHeader from "../components/admin/AdminHeader";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ResponsiveAppBar from "../components/admin/AppBar";
 
 const Admin = (props) => {
     return ( <div>
-        <AdminHeader/>
+        <ResponsiveAppBar/>
           <ToastContainer/>
           {props.children}
         <AdminFooter/>  
