@@ -1,27 +1,30 @@
 import {useState,useEffect} from 'react'
 import axios from 'axios'
 
-const usePostData = (url, postData) => {
-
-    const [data , setData] = useState(null);
+const usePostDate = (url, data) => {
+    const [response, setResponse] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null)
-    // Get Token in local storage
-    
+
     useEffect(()=> {
+
+    },[url, data])
+
+    const submitData = () => {
         const abortConnection = new AbortController();
         const token = localStorage.getItem('token');
         axios.post(
             url,
-            postData,
+            data,
             {
-            signal : abortConnection.signal,
-            headers :{
-                Authorization : 'Bearer ' +token
+                signal : abortConnection.signal,
+                headers :{
+                    Authorization : 'Bearer ' +token
+                }
             }
-        })
+        )
         .then(response => {
-            setData(response);
+            setResponse(response);
             setError(null);
         })
         .catch(error => {
@@ -30,13 +33,9 @@ const usePostData = (url, postData) => {
         }).finally(() => {
             setIsLoading(false);
         })
+    }
 
-        return () => abortConnection.abort()
-
-    },[url, postData])
-
-    return {data, isLoading, error};
-
+    return {response, isLoading, error, submitData};
 }
  
-export default usePostData;
+export default usePostDate;

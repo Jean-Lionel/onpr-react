@@ -26,6 +26,18 @@ const routes = [
     name : "Articles",
     path : "/admin-article"
   },
+  {
+    name : "Slides",
+    path : "/admin-slides"
+  },
+  {
+    name : "Test",
+    path : "/test-compontent"
+  },
+  {
+    name : "Institution",
+    path : "/institution"
+  },
 
 ];
 
