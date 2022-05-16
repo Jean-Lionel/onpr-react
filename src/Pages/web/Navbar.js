@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react'
+import { Link } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,30 +15,11 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import Icon from '@mui/material/Icon';
 
-import { Link } from 'react-router-dom';
-import axios from "axios"
-
-const settings = ['Profile', 'Account', 'Dashboard'];
-const routes = [
-  {
-    name: "Utilisateurs",
-    path: "/users",
-    icon: "settings"
-  },
-  {
-    name: "Articles",
-    path: "/admin-article",
-    icon: "profile"
-  },
-
-];
-
-const ResponsiveAppBar = () => {
+export const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   // const [activeTab, setActiveTab] = React.useState("home");
   const connectedUser = JSON.parse(localStorage.getItem("user"));
-
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -52,40 +34,12 @@ const ResponsiveAppBar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
-  const handleLogoutUserMenu = () => {
-    if (window.confirm("Are you sure you want to logout ?")) {
-
-      axios.post("/logout",
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('token')
-          }
-        }
-      ).then(res => {
-        localStorage.removeItem("token")
-        localStorage.removeItem("user")
-      }).catch(err => {
-        console.log(err);
-      }).finally(() => {
-        localStorage.removeItem("token")
-        localStorage.removeItem("user")
-        window.location = "/";
-      })
-
-
-
-    }
-  }
-
   return (
     <AppBar position="static">
 
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
             variant="h6"
             noWrap
@@ -133,13 +87,13 @@ const ResponsiveAppBar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {routes.map((route) => (
-                <Link to={route.path} key={route.name} underline="none">
-                  <MenuItem key={route.name} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{route.name}</Typography>
-                  </MenuItem>
-                </Link>
-              ))}
+              <Link to="/users"> 
+            <p className=''>Users</p>
+        </Link>
+        <Link to="admin-article">
+            <p className=''>Articles</p>
+        </Link>
+              
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -162,67 +116,11 @@ const ResponsiveAppBar = () => {
             ONPR
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {routes.map((route, index) => (
-              <Link to={route.path} key={index}>
-                <p>
-                  <Button
-                    sx={{ my: 2, color: 'white', display: 'block' }}
-                    onClick={() =>
-                      handleCloseNavMenu
-                    }
-                  >
-                    {route.name}
-                  </Button>
-                </p>
-
-              </Link> 
-            ))}
+            
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Typography
-                  variant="h5"
-                  mr={2}
-                >
-                  {connectedUser.user.name}
-                </Typography>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-
-              </IconButton>
-
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-
-              <MenuItem onClick={handleLogoutUserMenu}>
-                <Typography textAlign="center">Se Deconnecter</Typography>
-              </MenuItem>
-            </Menu>
-          </Box>
         </Toolbar>
       </Container>
     </AppBar>
-  );
-};
-export default ResponsiveAppBar;
+  )
+}
