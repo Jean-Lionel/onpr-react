@@ -6,6 +6,7 @@ import Home from "../Home";
 import Admin from "../Pages/Admin";
 import ArticleAdd from "../Pages/Admin/articles/ArticleAdd";
 import Article from "../Pages/Admin/articles/Articles";
+import Cotisation from "../Pages/Admin/contisation/Cotisation";
 import Institution from "../Pages/Admin/institution/Institution";
 import Slides from "../Pages/Admin/Slides/Slides";
 import Users from "../Pages/Admin/Users";
@@ -28,6 +29,7 @@ const RouteComponent = () => {
           <ProtectedRoute name="admin-slides" exact path="/admin-slides" component={Slides} /> 
           <ProtectedRoute  exact path="/test-compontent" component={TestComponent} /> 
           <ProtectedRoute  exact path="/institution" component={Institution} /> 
+          <ProtectedRoute  exact path="/cotisations" component={Cotisation} /> 
         </Switch>
      );
 }

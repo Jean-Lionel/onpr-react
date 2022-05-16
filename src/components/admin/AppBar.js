@@ -38,6 +38,10 @@ const routes = [
     name : "Institution",
     path : "/institution"
   },
+  {
+    name : "Cotisations",
+    path : "/cotisations"
+  },
 
 ];
 
