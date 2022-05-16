@@ -9,8 +9,8 @@
 }
 
 .accueil {
-  width: 80%;
-  height:70vh;
+  width: 65%;
+  height:60vh;
   /* background-color: rgb(101, 110, 106); */
   margin: 0 auto;
   display: flex;
@@ -18,7 +18,7 @@
 }
 
 .infos {
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
   width: 60%;
 }
 
