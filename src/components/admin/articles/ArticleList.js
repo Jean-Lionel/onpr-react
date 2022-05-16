@@ -1,4 +1,5 @@
 import useFetchData from "../../../utility/useFecthData";
+<<<<<<< HEAD
 import { Link } from "react-router-dom"
 import DataTable from "../../../Test/DateTabeleTest";
 import '../../../styles/web.css'
@@ -23,6 +24,26 @@ const ArticleList = () => {
         <div>
 
             {/* <DataTable /> */}
+=======
+import {Link} from "react-router-dom"
+import DateTabeleTest from "../../../test/DateTabeleTest";
+import CardArticle from "./CardArticle";
+import { CardMedia,Box, Avatar } from "@mui/material";
+
+const ArticleList = () => {
+    let {data: articles, isLoading, error} = useFetchData("articles");
+         let articlesList = articles?.data?.data
+    return ( 
+        <Box
+
+        sx={{
+            width: "90%",
+            margin: "auto",
+            
+          }}
+        
+        >        
+>>>>>>> 4e6d7dd365365e46ed36e9825b3c39fc777b5593
             <h1>
                 Liste des articles
             </h1>
@@ -31,6 +52,7 @@ const ArticleList = () => {
                     Ajouter un Article
                 </p>
             </Link>
+<<<<<<< HEAD
             {isLoading && (
                 <div>
                     Loading...
@@ -63,6 +85,70 @@ const ArticleList = () => {
 
         </div>
     );
+=======
+                {isLoading && ( 
+                    <div>
+                        Loading...
+                    </div>
+                )}
+
+                {error && ( 
+                    <div className="error-message">
+                        {error}
+                    </div>
+                )}
+            
+        <div>
+            <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                # 
+                            </th>
+                            <th>
+                                Image
+                            </th>
+                            <th>
+                                Titre
+                            </th>
+                            <th>
+                                Date de création
+                            </th>
+                            <th>
+                                Date de modification
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {articlesList && articlesList.map((article, index) =>(
+                        true && <tr key={index}>
+                                    <td>{index + 1}</td>
+                                    <td>
+                    
+                                    <Avatar
+                                    alt={article.title}
+                                    src={article.image_source_url}
+                                    sx={{ width: 200, height: 200 }}
+                                    />
+                                        
+                                    </td>
+                                    <td>{article.title}</td>
+                                    <td>{article.created_at}</td>
+                                    <td>{article.updated_at}</td>
+                            </tr>
+              
+                    ))}
+                        
+                    </tbody>
+                </table>
+        </div>
+                
+          
+          
+            
+        </Box>
+     );
+>>>>>>> 4e6d7dd365365e46ed36e9825b3c39fc777b5593
 }
 
 export default ArticleList;

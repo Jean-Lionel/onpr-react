@@ -29,6 +29,22 @@ const routes = [
     path: "/admin-article",
     icon: "profile"
   },
+  {
+    name : "Slides",
+    path : "/admin-slides"
+  },
+  {
+    name : "Test",
+    path : "/test-compontent"
+  },
+  {
+    name : "Institution",
+    path : "/institution"
+  },
+  {
+    name : "Cotisations",
+    path : "/cotisations"
+  },
 
 ];
 
