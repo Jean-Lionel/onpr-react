@@ -66,6 +66,7 @@ const useFetchDataWithPagination = (url) => {
     
         return (
             <ReactPaginate
+            
             previousLabel={"Précedent"}
             nextLabel={"Suivant"}
             pageCount={pageCount}
@@ -73,6 +74,7 @@ const useFetchDataWithPagination = (url) => {
             containerClassName={"paginationBttns"}
             previousClassName=""
             activeClassName={"paginationActive"}
+            
            />
         );
     }

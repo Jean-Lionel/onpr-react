@@ -39,7 +39,7 @@ const InstitionList = () => {
                             <TableCell>{institution.address}</TableCell>
                             <TableCell>{institution.city}</TableCell>
                             <TableCell>{institution.country}</TableCell>
-                            <TableCell>{institution.phone}</TableCell>
+                            <TableCell>{institution.telephone}</TableCell>
                             <TableCell>{institution.email}</TableCell>
                             <TableCell>{institution.website}</TableCell>
                             <TableCell>{institution.created_at}</TableCell>
