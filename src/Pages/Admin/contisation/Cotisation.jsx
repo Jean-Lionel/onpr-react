@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import Admin from "../../Admin";
 import * as XLSX from "xlsx";
 import { useState } from "react";
+import ReactExcel from "../../../components/admin/institution/ReadExcel";
 
 const Cotisation = () => {
 
@@ -32,20 +33,24 @@ const Cotisation = () => {
     return ( 
         <Admin>
             <Box>
-              <h1>Cotisation</h1>
+              {/* <h1>Cotisation</h1>
 
               <form>
                   <input type="file"  accept=".csv, .xlsx"  onChange={onChange}/>
                   <button onClick={upploadData}> data</button>
-              </form>
+              </form> */}
 
               <div>
+
                   {fileInfo && (
+                    
                       <div>
                           {fileInfo}
                       </div>
                   )}
               </div>
+
+              <ReactExcel/>
             </Box>  
         </Admin>
      );
