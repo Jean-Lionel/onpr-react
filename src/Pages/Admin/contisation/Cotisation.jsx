@@ -1,56 +1,42 @@
 import { Box } from "@mui/material";
+import useReadExcel from "../../../utility/useReadExcel";
 import Admin from "../../Admin";
-import * as XLSX from "xlsx";
-import { useState } from "react";
-import ReactExcel from "../../../components/admin/institution/ReadExcel";
+import {useState} from "react"
+import axios from "axios";
 
 const Cotisation = () => {
+     const [name, setName] = useState("");
 
-    const [fileInfo, setFileInfo] = useState("");
+     const {data, columns, dataTable, handleFileUpload}  = useReadExcel();
 
-    const upploadData = (e) => {
-        e.preventDefault();
-        alert("uploading data");
-    }
+     const submitData = (e) => {
+          e.preventDefault();
+          // console.log(data);
+          const postData = new FormData()
+          postData.append('data', JSON.stringify(data));
+          postData.append('name', name);  // name of the file
 
-    const onChange = (e) => {
-        const [file] = e.target.files;
-        const reader = new FileReader();
-    
-        reader.onload = (evt) => {
-          const bstr = evt.target.result;
-          const wb = XLSX.read(bstr, { type: "binary" });
-          const wsname = wb.SheetNames[0];
-          const ws = wb.Sheets[wsname];
-          const data = XLSX.utils.sheet_to_csv(ws, { header: 1 });
-
-            setFileInfo(data);
-          console.log(data);
-        };
-        reader.readAsBinaryString(file);
-      };
-
+          axios.post("cotisations", postData)
+                .then(res => {
+                     console.log(res);
+                }).catch(err => {
+                      console.log(err);
+                  })
+          
+     }
     return ( 
         <Admin>
             <Box>
-              {/* <h1>Cotisation</h1>
-
+              <h1>Cotisation</h1>
               <form>
-                  <input type="file"  accept=".csv, .xlsx"  onChange={onChange}/>
-                  <button onClick={upploadData}> data</button>
-              </form> */}
+                <input type="name" name="name" placeholder="name" onChange={(e) => setName(e.target.value)} />
+                <input type="file"  accept=".csv,.xlsx,.xls"  onChange={handleFileUpload}/>
 
+                <button onClick={submitData}>Enregistrer</button>
+              </form>
               <div>
-
-                  {fileInfo && (
-                    
-                      <div>
-                          {fileInfo}
-                      </div>
-                  )}
+                 { dataTable()}
               </div>
-
-              <ReactExcel/>
             </Box>  
         </Admin>
      );
