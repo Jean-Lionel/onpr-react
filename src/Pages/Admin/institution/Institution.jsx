@@ -4,7 +4,6 @@ import Admin from "../../Admin";
 const Institution = () => {
     return ( 
         <Admin>
-            <h1>Institution</h1>
             <InstitionList/>
         </Admin>
      );
