@@ -46,27 +46,27 @@ const AddCotisationAfilier = () => {
         >
         <div>
         <form onSubmit={submitData}>
-        <h5>Chargement des données afiliers</h5>
-        <Select
-        labelId="demo-simple-select-standard-label"
-        id="demo-simple-select-standard"
-        label="Age"
-        size="small"
-        width="200px"
-        required
-        value={instutionId}
-        onChange={(e) => setInstutionId(e.target.value)}
-        >
-            <MenuItem value="">
-            <em>None</em>
-            </MenuItem>
-            {loadInstitutions && loadInstitutions.map(e=>(
-                <MenuItem value={e.id}>{e.name}</MenuItem>
-            ))}
-        </Select>
-        <Input  type="file"  label="Chargement du fichier excel"   accept=".csv,.xlsx,.xls"  onChange={handleFileUpload}/>
-        <button type="submit" onClick={submitData}>Enregistrer</button>
-        </form>
+            <h5>Chargement des données afiliers</h5>
+            <Select
+            labelId="demo-simple-select-standard-label"
+            id="demo-simple-select-standard"
+            label="Age"
+            size="small"
+            width="200px"
+            required
+            value={instutionId}
+            onChange={(e) => setInstutionId(e.target.value)}
+            >
+                <MenuItem value="">
+                <em>None</em>
+                </MenuItem>
+                {loadInstitutions && loadInstitutions.map(e=>(
+                    <MenuItem value={e.id}>{e.name}</MenuItem>
+                ))}
+            </Select>
+            <Input  type="file"  label="Chargement du fichier excel"  accept="csv,xlsx,xls"   onChange={handleFileUpload}/>
+            <button type="submit" >Enregistrer</button>
+            </form>
         </div>
         </Box>
         <div>

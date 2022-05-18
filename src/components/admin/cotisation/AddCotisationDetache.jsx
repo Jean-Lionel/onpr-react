@@ -6,8 +6,7 @@ import usePostDate from "../../../utility/usePostData";
 const  AddCotisationDetache=  () => {
     const [instutionId, setInstutionId] = useState("");
     const {data : institutions } = useFetchDataWithPagination("/institutions/groupby/DETACHES");
-    const {isLoading, error, finished,submitData : saveData} = usePostDate();
-
+    const {response, isLoading, error, finished,submitData : saveData} = usePostDate();
     const loadInstitutions = institutions?.data ?? [];
     const {data,  dataTable, handleFileUpload}  = useReadExcel();
 
@@ -22,15 +21,13 @@ const  AddCotisationDetache=  () => {
         const postData = new FormData()
         postData.append('data', JSON.stringify(data));
         postData.append('institution_id', instutionId);  // name of the file
-        
         saveData("cotisations_detaches", postData);
-        
     }
     return ( 
         <Box>
             <h5>Chargement des données des detachées</h5>
             {error && (
-                <Alert severity="error"> {error}</Alert>
+                <Alert severity="error"> {JSON.stringify(response)}</Alert>
             )}
 
             {isLoading && (
@@ -67,8 +64,8 @@ const  AddCotisationDetache=  () => {
                 <MenuItem value={e.id}>{e.name}</MenuItem>
             ))}
         </Select>
-        <Input  type="file"  label="Chargement du fichier excel"   accept=".csv,.xlsx,.xls"  onChange={handleFileUpload}/>
-        <button type="submit" onClick={submitData}>Enregistrer</button>
+        <Input required type="file"  label="Chargement du fichier excel"   accept="csv,xlsx,xls"  onChange={handleFileUpload}/>
+        <button type="submit">Enregistrer</button>
         </form>
         </div>
         </Box>
