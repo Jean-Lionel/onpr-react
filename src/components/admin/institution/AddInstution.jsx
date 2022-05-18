@@ -1,4 +1,7 @@
-import { Box,Container, FormControl,InputLabel,OutlinedInput ,TextField, Button, Alert} from "@mui/material";
+import { 
+    Box,Container, 
+    FormControl,LinearProgress , 
+    InputLabel,OutlinedInput ,TextField, Button, Alert} from "@mui/material";
 import {useState , useEffect} from "react"
 import { useHistory } from "react-router-dom";
 import usePostDate from "../../../utility/usePostData"
@@ -43,9 +46,7 @@ const Addinstution = () => {
 
         {
             isLoading &&  (
-                <div>
-                    Loading ...
-                </div>
+                <LinearProgress color="success"/>
             )
         }
         {error && 
