@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import * as XLSX from 'xlsx';
 import DataTable from 'react-data-table-component';
 
-function ReactExcel() {
+function useReadExcel() {
 
   const [columns, setColumns] = useState([]);
   const [data, setData] = useState([]);
+ 
   // process CSV data
   const processData = dataString => {
     const dataStringLines = dataString.split(/\r\n|\n/);
@@ -41,6 +42,8 @@ function ReactExcel() {
       selector: c,
     }));
 
+    console.log(headers);
+
     setData(list);
     setColumns(columns);
   }
@@ -58,27 +61,23 @@ function ReactExcel() {
       const ws = wb.Sheets[wsname];
       /* Convert array of arrays */
       const data = XLSX.utils.sheet_to_csv(ws, { header: 1 });
-      console.log(JSON.stringify(data));
       processData(data);
     };
     reader.readAsBinaryString(file);
   }
 
-  return (
-    <div>
-      <input
-        type="file"
-        accept=".csv,.xlsx,.xls"
-        onChange={handleFileUpload}
-      />
-      <DataTable
+  const dataTable = () => {
+      return (
+        <DataTable
         pagination
         highlightOnHover
         columns={columns}
         data={data}
       />
-    </div>
-  );
+      )
+  }
+
+  return { data, columns, dataTable, handleFileUpload}
 }
 
-export default ReactExcel;
+export default useReadExcel;

@@ -1,14 +1,14 @@
 import { useState } from "react";
 import axios from 'axios'
 import { useHistory } from "react-router-dom";
-import { Box, FormControl, Input, InputLabel , TextField,Button, FilledInput} from "@mui/material";
+import { Box,Alert, FormControl,TextareaAutosize, Input, InputLabel , TextField,Button, FilledInput} from "@mui/material";
 
 const AddArticle = () => {
 
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("")
     const [selectedFile, setSelectedFile] = useState("")
-    const [error, setError] = useState("")
+    const [errorMessage, setErrorMessage] = useState("")
     let history = useHistory();
     
     const handleSubmit = (e) => {
@@ -34,7 +34,7 @@ const AddArticle = () => {
             history.push("/admin-article");
         })
         .catch(function (error) {
-            setError(error.response.data)
+            setErrorMessage(error.response.data)
             console.log(error)
         }).finally((e) ={ 
         })
@@ -47,27 +47,40 @@ const AddArticle = () => {
            
           }}
         >
-            {JSON.stringify(error)}
-            <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-                <InputLabel htmlFor="title">Title</InputLabel>
+            {errorMessage.errors &&  
+                    (
+                        <Alert> Vérifier vos informations</Alert>
+                    )
+                }
+          <form action="" onSubmit={handleSubmit}>
+
+          <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+                <h4>Ajouter un Article</h4>
+                <InputLabel htmlFor="title"  >Title</InputLabel>
                 <Input
                 id="title"
+
                 value={title}
+                
+                required
                 onChange={(e) => (setTitle(e.target.value))}
                 ></Input>
 
             </FormControl>
 
             <FormControl fullWidth sx={{ m:1 }} variant="standard">
-                <TextField
-                id="body"
-                label="Description"
-                multiline
-                rows={4}
-                defaultValue=""
+               
 
-                onChange={(e) => (setBody(e.target.value))}
-                />
+            <TextareaAutosize
+            aria-label="empty textarea"
+            placeholder="Empty"
+            label="Description"
+            rows={100}
+            cols={100}
+            style={{ width: "100%" }}
+            required
+            onChange={(e) => (setBody(e.target.value))}
+            />
             </FormControl>
 
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
@@ -75,17 +88,17 @@ const AddArticle = () => {
                 type="file"
                 id="image"
                 label="Image"
-
+                required
                 onChange={(e) => (setSelectedFile(e.target.files[0]))}              
                 ></FilledInput>
             </FormControl>
 
-            <Button
-            variant="contained"
-            onClick={handleSubmit}
+            <Button type="submit"            variant="contained"
+           
             >
                 Enregistrer
             </Button>
+          </form>
                 
 
         </Box>

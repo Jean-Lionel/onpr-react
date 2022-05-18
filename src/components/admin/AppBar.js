@@ -42,7 +42,7 @@ const routes = [
     path : "/institution"
   },
   {
-    name : "Cotisations",
+    name : "Déclaration",
     path : "/cotisations"
   },
 

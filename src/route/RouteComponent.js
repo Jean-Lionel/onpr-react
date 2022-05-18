@@ -8,6 +8,7 @@ import ArticleAdd from "../Pages/Admin/articles/ArticleAdd";
 import Article from "../Pages/Admin/articles/Articles";
 import Cotisation from "../Pages/Admin/contisation/Cotisation";
 import Institution from "../Pages/Admin/institution/Institution";
+import InstitutionAdd from "../Pages/Admin/institution/InstitutionAdd";
 import Slides from "../Pages/Admin/Slides/Slides";
 import Users from "../Pages/Admin/Users";
 import UserAdd from "../Pages/Admin/users/UserAdd";
@@ -30,6 +31,7 @@ const RouteComponent = () => {
           <ProtectedRoute  exact path="/test-compontent" component={TestComponent} /> 
           <ProtectedRoute  exact path="/institution" component={Institution} /> 
           <ProtectedRoute  exact path="/cotisations" component={Cotisation} /> 
+          <ProtectedRoute  exact path="/institutions/add" component={InstitutionAdd} /> 
         </Switch>
      );
 }

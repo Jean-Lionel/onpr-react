@@ -1,36 +1,93 @@
 import Admin from "./Admin";
-import {useState} from "react";
-import data from "../data/database.json"
-import ReactPaginate from "react-paginate";
+import React, {useState, useCallback} from "react";
+import IconButton from "@mui/material/IconButton";
+import SearchIcon from "@mui/icons-material/Search";
+import TextField from "@mui/material/TextField";
 
+const SearchBar = ({setSearchQuery}) => (
+    <form>
+      <TextField
+        id="search-bar"
+        className="text"
+        onInput={(e) => {
+          setSearchQuery(e.target.value);
+        }}
+        label="Rechercher ici !!"
+        variant="outlined"
+        placeholder="Search..."
+        size="small"
+      />
+      <IconButton type="submit" aria-label="search">
+        <SearchIcon style={{ fill: "blue" }} />
+      </IconButton>
+    </form>
+  );
+
+  const filterData = (query, data) => {
+    if (!query) {
+      return data;
+    } else {
+      return data.filter((d) => d.toLowerCase().includes(query));
+    }
+  };
+
+  const data = [
+    "Paris",
+    "Papa",
+    "Lionel",
+    "London",
+    "New York",
+    "Tokyo",
+    "Berlin",
+    "Buenos Aires",
+    "Cairo",
+    "Canberra",
+    "Rio de Janeiro",
+    "Dublin"
+  ];
+
+  function App() {
+    const [searchQuery, setSearchQuery] = useState("");
+    const dataFiltered = filterData(searchQuery, data);
+  
+    return (
+      <div
+        style={{
+          display: "flex",
+          alignSelf: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          padding: 20
+        }}
+      >
+        <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        <div style={{ padding: 3 }}>
+          {dataFiltered.map((d) => (
+            <div
+              className="text"
+              style={{
+                padding: 5,
+                justifyContent: "normal",
+                fontSize: 20,
+                color: "blue",
+                margin: 1,
+                width: "250px",
+                BorderColor: "green",
+                borderWidth: "10px"
+              }}
+              key={d.id}
+            >
+              {d}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
 const TestComponent = () => {
-    const [users, setUsers] = useState(data);
-    const [pageNumber, setPageNumber] = useState(0);
-    const usersPerPage = 10;
-    const pageVisited = usersPerPage * pageNumber;
-    const displayUsers = users.slice(pageVisited, pageVisited + usersPerPage).map(user => {
-        return(
-            <div key={user.id} >
-            {user.name}
-            </div>
-        )
-    });
-    const pageCount = Math.ceil(users.length / usersPerPage);
-    const changePage = ({selected}) => {
-        setPageNumber(selected);
-    };
     return ( <Admin>
-           {displayUsers}
-           <ReactPaginate
-           previousLabel={"Précedent"}
-           nextLabel={"Suivant"}
-           pageCount={pageCount}
-           onPageChange={changePage}
-           containerClassName={"paginationBttns"}
-           previousClassName=""
-           activeClassName={"paginationActive"}
-           />
+          <App/>
     </Admin> );
 }
  
