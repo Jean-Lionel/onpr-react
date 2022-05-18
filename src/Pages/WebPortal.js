@@ -3,6 +3,10 @@ import ArticleList from '../components/admin/articles/ArticleList'
 
 import '../styles/web.css'
 import Carroussel from './web/Carroussel'
+import Downloads from './web/Downloads'
+import Footer from './web/footer/Footer'
+import ImbededMap from './web/ImbededMap'
+import Publicity from './web/Publicity'
 
 export default function WebPortal() {
   return (
@@ -13,14 +17,20 @@ export default function WebPortal() {
 
         </div>
         <div className='publicities'>
-
+          <Publicity />
         </div>
       </div>
 
       <div className="articles">
-        <ArticleList />
+        <ImbededMap /> 
+        <Footer />
+        
       </div>
-
+      <div class="foot ">
+        <Downloads />
+      
+      </div>
     </div>
+   
   )
 }

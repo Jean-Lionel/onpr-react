@@ -115,7 +115,7 @@ export const Navbar = () => {
           >
             ONPR
           </Typography>
-          <Typography>
+          <Typography >
 
           <Link to="downloads">
             <p className=''>Teléchargements</p>
