@@ -6,9 +6,10 @@ import useFetchDataWithPagination from "../../../utility/useFetchDataWithPaginat
 
 const AddCotisationAfilier = () => {
     const [instutionId, setInstutionId] = useState("");
-    const {data : institutions ,isLoading, error, paginate,searchIntoDatabase} = useFetchDataWithPagination("institutions");
+    const {data : institutions } = useFetchDataWithPagination("/institutions/groupby/AFFILIERS");
     
-    const loadInstitutions = institutions?.data?.data
+    const loadInstitutions = institutions?.data ?? [];
+
     const {data,  dataTable, handleFileUpload}  = useReadExcel();
     const [errorMessage, setErrorMessage] = useState("");
     const submitData = (e) => {

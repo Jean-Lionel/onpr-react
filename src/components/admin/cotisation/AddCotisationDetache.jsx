@@ -3,14 +3,12 @@ import useReadExcel from "../../../utility/useReadExcel";
 import {useEffect, useState} from "react"
 import useFetchDataWithPagination from "../../../utility/useFetchDataWithPagination";
 import usePostDate from "../../../utility/usePostData";
-
-
 const  AddCotisationDetache=  () => {
     const [instutionId, setInstutionId] = useState("");
-    const {data : institutions } = useFetchDataWithPagination("institutions");
+    const {data : institutions } = useFetchDataWithPagination("/institutions/groupby/DETACHES");
     const {isLoading, error, finished,submitData : saveData} = usePostDate();
 
-    const loadInstitutions = institutions?.data?.data
+    const loadInstitutions = institutions?.data ?? [];
     const {data,  dataTable, handleFileUpload}  = useReadExcel();
 
     useEffect(() => {
@@ -25,7 +23,7 @@ const  AddCotisationDetache=  () => {
         postData.append('data', JSON.stringify(data));
         postData.append('institution_id', instutionId);  // name of the file
         
-        saveData("cotisations", postData);
+        saveData("cotisations_detaches", postData);
         
     }
     return ( 
@@ -38,6 +36,8 @@ const  AddCotisationDetache=  () => {
             {isLoading && (
                  <LinearProgress color="success"/>
             )}
+
+            {/* {JSON.stringify(loadInstitutions)} */}
         
         <Box
         component="form"
@@ -63,7 +63,7 @@ const  AddCotisationDetache=  () => {
             <MenuItem value="">
             <em>None</em>
             </MenuItem>
-            {loadInstitutions && loadInstitutions.map(e=>(
+            {loadInstitutions && loadInstitutions?.map(e=>(
                 <MenuItem value={e.id}>{e.name}</MenuItem>
             ))}
         </Select>

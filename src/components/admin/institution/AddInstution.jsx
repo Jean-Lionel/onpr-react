@@ -1,7 +1,7 @@
 import { 
     Box,Container, 
     FormControl,LinearProgress , 
-    InputLabel,OutlinedInput ,TextField, Button, Alert} from "@mui/material";
+    InputLabel,OutlinedInput ,TextField, Button, Alert, Select, MenuItem} from "@mui/material";
 import {useState , useEffect} from "react"
 import { useHistory } from "react-router-dom";
 import usePostDate from "../../../utility/usePostData"
@@ -15,6 +15,7 @@ const Addinstution = () => {
     const [email, setEmail] = useState("")
     const [telephone, setTelephone] = useState("")
     const [description, setDescription] = useState("")
+    const [typeInstution, setTypeInstution] = useState("")
     // address
     // telephone
     // type_istutions
@@ -33,7 +34,7 @@ const Addinstution = () => {
     const saveInputData = async (e) => {
         e.preventDefault();
         const institution = {
-            name, description, email,telephone,address,
+            name, description, email,telephone,address,typeInstution
         }
         submitData('institutions',institution)       
         
@@ -66,6 +67,25 @@ const Addinstution = () => {
                 label="Nom de l'institution"
                 />
             </FormControl>
+
+            <FormControl fullWidth sx={{ m: 1 }}  size="small">
+            <InputLabel id="demo-simple-select-label">Type d'institution</InputLabel>
+            <Select
+                 required
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={typeInstution}
+                label="Type d'institution"
+                onChange={e => setTypeInstution(e.target.value)}
+            >
+                <MenuItem value="">
+                    <em>selectionner le type</em>
+                </MenuItem>
+                <MenuItem value="DETACHES">DETACHES</MenuItem>
+                <MenuItem value="AFFILIERS">AFFILIERS</MenuItem>
+            </Select>
+            </FormControl>
+
             <FormControl fullWidth sx={{ m: 1 }}  size="small">
                 <InputLabel htmlFor="telephone"  size="small">Téléphone</InputLabel>
                 <OutlinedInput
@@ -76,6 +96,7 @@ const Addinstution = () => {
                 label="Téléphone"
                 />
             </FormControl>
+        
             
             <FormControl fullWidth sx={{ m: 1 }}  size="small">
                 <InputLabel htmlFor="email"  size="small">Email</InputLabel>
