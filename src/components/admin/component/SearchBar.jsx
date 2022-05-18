@@ -2,12 +2,13 @@ import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 
-const SearchBar = ({setSearchQuery}) => {
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    }
+const SearchBar = ({setSearchQuery, handleSubmit}) => {
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log("je suis un millionnaire")
+    // }
    return (
-        <form onSubmit={ handleSubmit} >
+        <form onSubmit={ handleSubmit } >
           <TextField
             id="search-bar"
             className="text"
@@ -19,7 +20,7 @@ const SearchBar = ({setSearchQuery}) => {
             placeholder="Search..."
             size="small"
           />
-          <IconButton type="submit" aria-label="search">
+          <IconButton type="submit"  aria-label="search">
             <SearchIcon style={{ fill: "blue" }} />
           </IconButton>
         </form>

@@ -8,9 +8,7 @@ const useFetchDataWithPagination = (url) => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null)
     // Get Token in local storage
-    const setUrl = (a) => {
-        url = a
-    }
+     
     useEffect(()=> {
         const abortConnection = new AbortController();
         const token = localStorage.getItem('token');
@@ -36,11 +34,10 @@ const useFetchDataWithPagination = (url) => {
     },[url])
 
     const changePage = ({selected}) => {
-        setUrl(url + "?page=" + selected)
-
+       
         const abortConnection = new AbortController();
         const token = localStorage.getItem('token');
-        axios.get(url,{
+        axios.get(url + "?page="+ selected,{
             signal : abortConnection.signal,
             headers :{
                 Authorization : 'Bearer ' +token
@@ -59,6 +56,33 @@ const useFetchDataWithPagination = (url) => {
 
         return () => abortConnection.abort()
     }
+
+    const searchIntoDatabase = (searchQuery) => {
+        console.log(searchQuery)
+
+        const abortConnection = new AbortController();
+        const token = localStorage.getItem('token');
+        axios.get(searchQuery,{
+            signal : abortConnection.signal,
+            headers :{
+                Authorization : 'Bearer ' +token
+            }
+        })
+        .then(response => {
+            setData(response);
+            setError(null);
+        })
+        .catch(error => {
+            console.error(error.message);
+            setError(error.message)
+        }).finally(() => {
+            setIsLoading(false);
+        })
+
+        return () => abortConnection.abort()
+    }
+
+
 
     const pageCount = Math.ceil(data?.data?.total / data?.data?.per_page);
 
@@ -79,8 +103,9 @@ const useFetchDataWithPagination = (url) => {
         );
     }
 
+    
 
-    return {data, isLoading, error,paginate};
+    return {data, isLoading, error,paginate, searchIntoDatabase};
     
 }
  

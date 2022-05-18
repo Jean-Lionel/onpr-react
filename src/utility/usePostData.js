@@ -1,41 +1,45 @@
-import {useState,useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import axios from 'axios'
 
-const usePostDate = (url, data) => {
+const usePostDate = () => {
     const [response, setResponse] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null)
+    const [finished, setFinished] = useState(false)
+    // Get Token in local storage
 
-    useEffect(()=> {
+    useEffect(() => {
+        return () => {
+            
+        };
+    }, [finished]);
 
-    },[url, data])
-
-    const submitData = () => {
-        const abortConnection = new AbortController();
-        const token = localStorage.getItem('token');
-        axios.post(
-            url,
-            data,
-            {
+    const submitData = async (url, data) => {
+          const abortConnection = new AbortController();
+          const token = localStorage.getItem('token');
+            setIsLoading(true);
+            setFinished(false);
+            try {
+                const response = await axios.post(url, data, {
                 signal : abortConnection.signal,
-                headers :{
-                    Authorization : 'Bearer ' +token
+                    headers :{
+                        Authorization : 'Bearer ' +token
                 }
-            }
-        )
-        .then(response => {
-            setResponse(response);
-            setError(null);
-        })
-        .catch(error => {
-            console.error(error.message);
-            setError(error.message)
-        }).finally(() => {
-            setIsLoading(false);
-        })
+                });
+                setResponse(response);
+                setError(null);
+                setFinished(true);
+            } catch (error) {
+                console.error(error.message);
+                setError(error.message)
+            } finally {
+                setIsLoading(false);
+        }
     }
 
-    return {response, isLoading, error, submitData};
+  
+
+    return {response, isLoading, error,finished,  submitData};
 }
  
 export default usePostDate;

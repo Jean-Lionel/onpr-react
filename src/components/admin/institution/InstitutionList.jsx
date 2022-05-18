@@ -1,8 +1,8 @@
-import { Box , TableContainer, TableHead, TableBody, TableCell, Table, TableRow,Paper } from "@mui/material";
+import { Box , TableContainer, TableHead, TableBody, TableCell, Table, TableRow,Paper, Grid , Item} from "@mui/material";
 import {useEffect, useState} from "react";
 import useFetchDataWithPagination from "../../../utility/useFetchDataWithPagination";
-import useSearchInput from "../../../utility/useSearchInput";
 import SearchBar from "../component/SearchBar";
+import {Link} from "react-router-dom"
 
 const filterData = (query, data) => {
     if (!query) {
@@ -14,11 +14,20 @@ const filterData = (query, data) => {
 
 const InstitionList = () => {
     const [searchQuery, setSearchQuery] = useState("");
-    const {data : institutions ,isLoading, error, paginate} = useFetchDataWithPagination("institutions");
+    const {data : institutions ,isLoading, error, paginate,searchIntoDatabase} = useFetchDataWithPagination("institutions");
+    const info = filterData(searchQuery,institutions?.data?.data);
 
-    const info = filterData(searchQuery,institutions?.data?.data)
+    const updateSearch = (e) => {
+        e.preventDefault();
+        if(searchQuery === "") {
+            //Recuperer tout les données
+            searchIntoDatabase("institutions/search/ALL_DATA");
+        }else{
+            searchIntoDatabase("institutions/search/" + searchQuery );
+        }
+        
+    }
 
-    
    useEffect(() => {
     
        return () => {
@@ -28,8 +37,20 @@ const InstitionList = () => {
     return ( <Box>
         {isLoading && <p>Loading...</p>}
         {error && <p>Error: {error.message}</p>}
-        <SearchBar setSearchQuery={setSearchQuery}/>
-        <h1>Institution</h1>
+    
+        <Grid container style={{
+            backgroundColor: "#abc"
+        }}>
+            <Grid item xs={6}>
+                <h4>Institution</h4>
+            </Grid>
+            <Grid item xs={5}>
+            <SearchBar setSearchQuery={setSearchQuery}  handleSubmit={updateSearch}/>
+            </Grid>
+            <Grid item xs={1}>
+                <Link to="/institutions/add"><button>Nouveau</button></Link>
+            </Grid>
+        </Grid>
         <TableContainer component={Paper}>
             <Table>
                 <TableHead>
