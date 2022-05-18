@@ -87,13 +87,13 @@ export const Navbar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              <Link to="/users"> 
-            <p className=''>Users</p>
-        </Link>
-        <Link to="admin-article">
-            <p className=''>Articles</p>
-        </Link>
-              
+              <Link to="/users">
+                <p className=''>Users</p>
+              </Link>
+              <Link to="admin-article">
+                <p className=''>Articles</p>
+              </Link>
+
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -115,8 +115,16 @@ export const Navbar = () => {
           >
             ONPR
           </Typography>
+          <Typography>
+
+          <Link to="downloads">
+            <p className=''>Teléchargements</p>
+          </Link>
+          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            
+          <Link to="infos">
+            <p className=''>A propos</p>
+          </Link>
           </Box>
 
         </Toolbar>
