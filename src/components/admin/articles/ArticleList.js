@@ -1,13 +1,6 @@
 import useFetchData from "../../../utility/useFecthData";
-<<<<<<< HEAD
-import { Link } from "react-router-dom"
-// import DateTabeleTest from "../../../test/DateTabeleTest";
-import CardArticle from "./CardArticle";
-import { CardMedia, Box, Avatar } from "@mui/material";
-=======
 import {Link} from "react-router-dom"
 import { Box, Avatar } from "@mui/material";
->>>>>>> 39c05cf5f9fbdc744468edd8947bb8e4252d2eb4
 
 const ArticleList = () => {
 	let { data: articles, isLoading, error } = useFetchData("articles");
