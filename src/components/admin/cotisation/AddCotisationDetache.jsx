@@ -1,16 +1,23 @@
-import { Box , Input, Select, MenuItem,Alert} from "@mui/material";
+import { Box , Input, Select, MenuItem,Alert, LinearProgress} from "@mui/material";
 import useReadExcel from "../../../utility/useReadExcel";
-import {useState} from "react"
-import axios from "axios";
+import {useEffect, useState} from "react"
 import useFetchDataWithPagination from "../../../utility/useFetchDataWithPagination";
+import usePostDate from "../../../utility/usePostData";
 
-const AddCotisationAfilier = () => {
+
+const  AddCotisationDetache=  () => {
     const [instutionId, setInstutionId] = useState("");
-    const {data : institutions ,isLoading, error, paginate,searchIntoDatabase} = useFetchDataWithPagination("institutions");
-    
+    const {data : institutions } = useFetchDataWithPagination("institutions");
+    const {isLoading, error, finished,submitData : saveData} = usePostDate();
+
     const loadInstitutions = institutions?.data?.data
     const {data,  dataTable, handleFileUpload}  = useReadExcel();
-    const [errorMessage, setErrorMessage] = useState("");
+
+    useEffect(() => {
+        return () => {
+            
+        };
+    }, [ finished]);
     const submitData = (e) => {
         e.preventDefault();
         // console.log(data);
@@ -18,21 +25,18 @@ const AddCotisationAfilier = () => {
         postData.append('data', JSON.stringify(data));
         postData.append('institution_id', instutionId);  // name of the file
         
-        axios.post("cotisations", postData)
-        .then(res => {
-            console.log(res);
-        }).catch(err => {
-            console.log(err);
-            setErrorMessage(err.response.data.message);
-        })
+        saveData("cotisations", postData);
         
     }
     return ( 
         <Box>
+            <h5>Chargement des données des detachées</h5>
+            {error && (
+                <Alert severity="error"> {error}</Alert>
+            )}
 
-            
-            {errorMessage && (
-                <Alert severity="error"> {errorMessage}</Alert>
+            {isLoading && (
+                 <LinearProgress color="success"/>
             )}
         
         <Box
@@ -45,7 +49,7 @@ const AddCotisationAfilier = () => {
         >
         <div>
         <form onSubmit={submitData}>
-        <h5>Chargement des données afiliers</h5>
+        
         <Select
         labelId="demo-simple-select-standard-label"
         id="demo-simple-select-standard"
@@ -75,4 +79,5 @@ const AddCotisationAfilier = () => {
         );
     }
     
-    export default AddCotisationAfilier;
+ 
+export default AddCotisationDetache;

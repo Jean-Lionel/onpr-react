@@ -1,10 +1,10 @@
 import Admin from "../../Admin";
-import AddCotisationAfilier from "./AddCotisationAfilier";
+import AddCotisation from "../../../components/admin/cotisation/AddCotisation";
 
 const Cotisation = () => {
      return ( 
           <Admin>
-               <AddCotisationAfilier/>
+               <AddCotisation/>
           </Admin>
       );
 }
