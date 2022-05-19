@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import Icon from '@mui/material/Icon';
 
 import { Link } from 'react-router-dom';
 import axios from "axios"
@@ -19,12 +20,14 @@ import axios from "axios"
 const settings = ['Profile', 'Account', 'Dashboard'];
 const routes = [
   {
-    name : "Utilisateurs",
-    path : "/users"
+    name: "Utilisateurs",
+    path: "/users",
+    icon: "settings"
   },
   {
-    name : "Articles",
-    path : "/admin-article"
+    name: "Articles",
+    path: "/admin-article",
+    icon: "profile"
   },
   {
     name : "Slides",
@@ -48,8 +51,8 @@ const routes = [
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
- // const [activeTab, setActiveTab] = React.useState("home");
- const connectedUser = JSON.parse(localStorage.getItem("user"));
+  // const [activeTab, setActiveTab] = React.useState("home");
+  const connectedUser = JSON.parse(localStorage.getItem("user"));
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -66,17 +69,17 @@ const ResponsiveAppBar = () => {
     setAnchorElUser(null);
   };
 
-  const handleLogoutUserMenu =  ()  => {
-    if( window.confirm("Are you sure you want to logout ?")){
-    
+  const handleLogoutUserMenu = () => {
+    if (window.confirm("Are you sure you want to logout ?")) {
+
       axios.post("/logout",
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+          }
         }
-      }
       ).then(res => {
         localStorage.removeItem("token")
         localStorage.removeItem("user")
@@ -87,15 +90,15 @@ const ResponsiveAppBar = () => {
         localStorage.removeItem("user")
         window.location = "/";
       })
-      
 
-      
+
+
     }
   }
 
   return (
     <AppBar position="static">
-      
+
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -147,7 +150,7 @@ const ResponsiveAppBar = () => {
               }}
             >
               {routes.map((route) => (
-                <Link to={route.path} key={route.name}  underline="none">
+                <Link to={route.path} key={route.name} underline="none">
                   <MenuItem key={route.name} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{route.name}</Typography>
                   </MenuItem>
@@ -179,32 +182,32 @@ const ResponsiveAppBar = () => {
               <Link to={route.path} key={index}>
                 <p>
                   <Button
-                  sx={{ my: 2, color: 'white', display: 'block' }}  
-                  onClick={() => 
-                    handleCloseNavMenu
-                  }
-                >
-                {route.name}
-              </Button>
+                    sx={{ my: 2, color: 'white', display: 'block' }}
+                    onClick={() =>
+                      handleCloseNavMenu
+                    }
+                  >
+                    {route.name}
+                  </Button>
                 </p>
-               
-              </Link>
+
+              </Link> 
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Typography
-               variant = "h5"
-               mr={2}
-              >
-                {connectedUser.user.name}
-              </Typography>
+                <Typography
+                  variant="h5"
+                  mr={2}
+                >
+                  {connectedUser.user.name}
+                </Typography>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                
+
               </IconButton>
-            
+
             </Tooltip>
             <Menu
               sx={{ mt: '45px' }}

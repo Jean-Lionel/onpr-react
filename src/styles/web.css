@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.web {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.accueil {
+  width: 65%;
+  height:60vh;
+  /* background-color: rgb(101, 110, 106); */
+  margin: 0 auto;
+  display: flex;
+
+}
+
+.infos {
+  /* background-color: antiquewhite; */
+  width: 60%;
+}
+
+.publicities {
+  background-color: brown;
+  width: 40%;
+}
+
+ul {
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-column-start: 2;
+  grid-gap: 50px;
+}

@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom"
+import WebPortal from "./Pages/WebPortal";
 
 const Home = () => {
     return ( <div className="App">
@@ -7,8 +8,9 @@ const Home = () => {
                 <p>Login</p>
             </Link>
         </h1>
+
         <div>
-        lorem ipsum dolor sit amet, consectetur adip
+        <WebPortal />
         </div>
     </div> );
 }
