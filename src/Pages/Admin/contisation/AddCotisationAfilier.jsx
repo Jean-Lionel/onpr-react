@@ -1,6 +1,6 @@
-import { Box , Input, Select, MenuItem,Alert} from "@mui/material";
+import { Box , Input, Select, MenuItem,Alert, Autocomplete, TextField, Button, Grid} from "@mui/material";
 import useReadExcel from "../../../utility/useReadExcel";
-import {useEffect, useState} from "react"
+import {useEffect, useMemo, useState} from "react"
 import useFetchDataWithPagination from "../../../utility/useFetchDataWithPagination";
 import usePostDate from "../../../utility/usePostData";
 import { useHistory } from "react-router-dom";
@@ -8,16 +8,28 @@ import { useHistory } from "react-router-dom";
 const AddCotisationAfilier = () => {
     const [instutionId, setInstutionId] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [options, setOptions] = useState([])
     const {data : institutions } = useFetchDataWithPagination("/institutions/groupby/AFFILIERS");
     const {response, isLoading, error, finished,submitData : saveData} = usePostDate();
-    
-    const loadInstitutions = institutions?.data ?? [];
+
+    const loadInstitutions =  useMemo(()=> institutions?.data ?? [], [institutions])
     const history = useHistory();
+
+    useEffect(() => {
+        const elts = loadInstitutions.map(element => {
+            return {
+                label: element.name,
+                value: element.id
+            }
+        })
+        setOptions(elts)
+
+    }, [loadInstitutions])
 
     useEffect(() => {
        
         if(finished) {
-            history.reload();
+            history.push("/cotisations");
         }
         return () => {
             
@@ -61,25 +73,28 @@ const AddCotisationAfilier = () => {
         <div>
         <form onSubmit={submitData}>
             <h5>Chargement des données afiliers</h5>
-            <Select
-            labelId="demo-simple-select-standard-label"
-            id="demo-simple-select-standard"
-            label="Age"
-            size="small"
-            width="200px"
-            required
-            value={instutionId}
-            onChange={(e) => setInstutionId(e.target.value)}
-            >
-                <MenuItem value="">
-                <em>None</em>
-                </MenuItem>
-                {loadInstitutions && loadInstitutions.map(e=>(
-                    <MenuItem value={e.id}>{e.name}</MenuItem>
-                ))}
-            </Select>
-            <Input  type="file"  label="Chargement du fichier excel"  accept="csv,xlsx,xls"   onChange={handleFileUpload}/>
-            <button type="submit" onClick={submitData}  >Enregistrer</button>
+
+            <Grid container spacing={2}>
+                <Grid item>
+                    <Autocomplete
+                    disablePortal
+                    id="combo-box-demo"
+                    options={options}
+                    sx={{ width: 300 }}
+                    required
+                    renderInput={(params) => <TextField {...params} size="small" label="INSTUTION" />}
+
+                    onChange={(event, v) => {setInstutionId(v?.value)}}
+                />
+                </Grid>
+                <Grid item sx={{m: 2}}>
+                <Input required type="file"  label="Chargement du fichier excel"  accept="csv,xlsx,xls"   onChange={handleFileUpload}/>
+                </Grid>
+                <Grid item sx={{m: 2}}>
+                <Button type="submit" variant="contained"  >Enregistrer</Button>
+                </Grid>
+
+            </Grid>
         </form>
         </div>
         </Box>
