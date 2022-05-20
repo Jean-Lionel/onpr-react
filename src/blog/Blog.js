@@ -18,6 +18,8 @@ import post3 from './blog-post.3.md';
 import LeftSideCard from './components/LeftSideCard';
 import RightSideCard from './components/RightSideCard';
 import GoogleMap from './components/GoogleMap';
+import YoutubeComponent from './components/YoutubeComponent';
+import SomeDefaultComponent from './components/SomeDefaultComponent';
 //Connaître ONPR || Information || Nouvelles || Annonces & Communiqués || Contacts
 const sections = [
   { title: 'Connaître ONPR', url: '#' },
@@ -102,11 +104,13 @@ export default function Blog() {
             
             <Grid item xs={12} md={6}>
              <h1>A</h1>
+             <SomeDefaultComponent></SomeDefaultComponent>
             </Grid>
             <Grid item xs={12} md={3}>
              <RightSideCard/>
             </Grid>
           </Grid>
+          <YoutubeComponent/>
           <GoogleMap/>
           
         </main>

@@ -5,7 +5,7 @@ const RightSideTwitter = () => {
         <TwitterTimelineEmbed
         sourceType="profile"
         screenName="Onpr2018"
-        options={{height: '400px' }}
+        options={{height: '550px' }}
         />
      );
 }
