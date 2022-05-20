@@ -1,54 +1,39 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import navHeader from '../asset/img/navheader.jpg';
+import { CssBaseline } from '@mui/material';
 
 
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
+       <img src={navHeader}  alt="Bar de Footer"  style={{ height: "auto", width: "100%" }}/>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://onpr.bi/">
+       ONPR 
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'} 
-      
-      <img src={navHeader}   style={{ height: "auto", width: "100%" }}/>
 
     </Typography>
   );
 }
 
 function Footer(props) {
-  const { description, title } = props;
+ 
 
   return (
-    <Box component="footer" sx={{ bgcolor: 'background.paper', py: 6 }}>
+    <Box component="footer" sx={{ bgcolor: 'background.paper' }}>
       <Container maxWidth="lg">
-        <Typography variant="h6" align="center" gutterBottom>
-          {title}
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          {description}
-        </Typography>
+        <CssBaseline />
         <Copyright />
       </Container>
     </Box>
   );
 }
 
-Footer.propTypes = {
-  description: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-};
 
 export default Footer;

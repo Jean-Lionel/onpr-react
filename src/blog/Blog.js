@@ -17,6 +17,7 @@ import post2 from './blog-post.2.md';
 import post3 from './blog-post.3.md';
 import LeftSideCard from './components/LeftSideCard';
 import RightSideCard from './components/RightSideCard';
+import GoogleMap from './components/GoogleMap';
 //Connaître ONPR || Information || Nouvelles || Annonces & Communiqués || Contacts
 const sections = [
   { title: 'Connaître ONPR', url: '#' },
@@ -106,26 +107,12 @@ export default function Blog() {
              <RightSideCard/>
             </Grid>
           </Grid>
+          <GoogleMap/>
           
-          <Grid container spacing={4}>
-            {featuredPosts.map((post) => (
-              <FeaturedPost key={post.title} post={post} />
-            ))}
-          </Grid>
-          <Grid container spacing={5} sx={{ mt: 3 }}>
-            <Main title="From the firehose" posts={posts} />
-            <Sidebar
-              title={sidebar.title}
-              description={sidebar.description}
-              archives={sidebar.archives}
-              social={sidebar.social}
-            />
-          </Grid>
         </main>
       </Container>
       <Footer
-        title="Footer"
-        description="Something here to give the footer a purpose!"
+       
       />
     </ThemeProvider>
   );

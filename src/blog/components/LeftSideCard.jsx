@@ -11,7 +11,7 @@ function LeftSideCard(props) {
     <Grid item xs={12} md={12}>
       <CardActionArea component="a" href="#">
         <Card sx={{ display: 'flex' }}>
-          <CardContent sx={{ flex: 1 }}>
+          <CardContent >
             <ListeItemLeft data={leftData}/>
           </CardContent>
           
@@ -21,8 +21,8 @@ function LeftSideCard(props) {
   );
 }
 
-const leftData = {
-  directionGenerale: {
+const leftData = [
+   {
       title: 'Direction Générale',
       corps: [
         {
@@ -35,7 +35,7 @@ const leftData = {
           label: 'Agences',
         },
         {
-          label: 'Cellule Communication et Relations Publiques',
+          label: 'Cellule Communication  et Relations Publiques',
         },
         {
           label: 'Cellule Informatique',
@@ -53,9 +53,41 @@ const leftData = {
           label: 'Bibliothèque et Archives',
         },
       ]
+  },
+  {
+    title: 'Direction Administrative et Finacière',
+    corps :[
+      {
+        label: 'Secrétariat',
+      },
+      {
+        label: 'Service du Personnel et Logistique',
+      },
+      {
+        label: 'Service de Recouvrement',
+      },
+      {
+        label: 'Service Comptable',
+      }
+    ]
+
+  },
+  {
+    title: 'Direction des Prestation',
+    corps :[
+      {
+        label: 'Secrétariat',
+      },
+      {
+        label: 'Service des Pensions',
+      },
+      {
+        label: 'Service des Risques Professionnels',
+      }
+    ]
   }
 
-}
+]
 
 
 export default LeftSideCard;
