@@ -15,18 +15,18 @@ import Footer from './Footer';
 import post1 from './blog-post.1.md';
 import post2 from './blog-post.2.md';
 import post3 from './blog-post.3.md';
-
+//Connaître ONPR || Information || Nouvelles || Annonces & Communiqués || Contacts
 const sections = [
-  { title: 'Technology', url: '#' },
-  { title: 'Design', url: '#' },
-  { title: 'Culture', url: '#' },
-  { title: 'Business', url: '#' },
-  { title: 'Politics', url: '#' },
-  { title: 'Opinion', url: '#' },
-  { title: 'Science', url: '#' },
-  { title: 'Health', url: '#' },
-  { title: 'Style', url: '#' },
-  { title: 'Travel', url: '#' },
+  { title: 'Connaître ONPR', url: '#' },
+  { title: 'Information', url: '#' },
+  { title: 'Nouvelles', url: '#' },
+  { title: 'Annonces & Communiqués', url: '#' },
+  { title: 'Contacts', url: '#' },
+  { title: 'Se Connecter', url: '#' },
+  // { title: 'Science', url: '#' },
+  // { title: 'Health', url: '#' },
+  // { title: 'Style', url: '#' },
+  // { title: 'Travel', url: '#' },
 ];
 
 const mainFeaturedPost = {
@@ -40,7 +40,7 @@ const mainFeaturedPost = {
 
 const featuredPosts = [
   {
-    title: 'Featured post',
+    title: 'ONPR',
     date: 'Nov 12',
     description:
       'This is a wider card with supporting text below as a natural lead-in to additional content.',
@@ -86,11 +86,13 @@ const sidebar = {
 const theme = createTheme();
 
 export default function Blog() {
+
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Header title="ONPR Office Nationnal des pensions ..." sections={sections} />
+        <Header title="L’Office National des Pensions et Risques Professionnels des fonctionnaires, des magistrats et des agents de l’ordre judiciaire (ONPR)" sections={sections} />
         <main>
           <MainFeaturedPost post={mainFeaturedPost} />
           <Grid container spacing={4}>

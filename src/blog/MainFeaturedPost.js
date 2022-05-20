@@ -5,6 +5,8 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
+import backImg from '../asset/img/2.jpg';
+import L from "react-router-dom/Link"
 
 function MainFeaturedPost(props) {
   const { post } = props;
@@ -19,11 +21,12 @@ function MainFeaturedPost(props) {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        backgroundImage: `url(${post.image})`,
+        backgroundImage: `url(${backImg})`,
       }}
     >
       {/* Increase the priority of the hero background image */}
       {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
+
       <Box
         sx={{
           position: 'absolute',
@@ -44,14 +47,19 @@ function MainFeaturedPost(props) {
             }}
           >
             <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-              {post.title}
+              ONPR
             </Typography>
             <Typography variant="h5" color="inherit" paragraph>
-              {post.description}
+            Office National des Pensions et Risques Professionnels des      
+              Fonctionnaires, des Magistrats et des Agents de l’Ordre Judiciaire
             </Typography>
-            <Link variant="subtitle1" href="#">
-              {post.linkText}
-            </Link>
+            <L variant="subtitle1" to="/" style={{
+              color: '#fff',
+              textDecoration: 'none',
+              cursor: 'pointer',
+            }}>
+              www.onpr.bi            
+              </L>
           </Box>
         </Grid>
       </Grid>

@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
+import navHeader from '../asset/img/navheader.jpg';
+
 
 function Copyright() {
   return (
@@ -13,7 +15,10 @@ function Copyright() {
         Your Website
       </Link>{' '}
       {new Date().getFullYear()}
-      {'.'}
+      {'.'} 
+      
+      <img src={navHeader}   style={{ height: "auto", width: "100%" }}/>
+
     </Typography>
   );
 }
