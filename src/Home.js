@@ -1,16 +1,11 @@
-import {Link} from "react-router-dom"
-
+import Blog from "./blog/Blog";
 const Home = () => {
-    return ( <div className="App">
-        <h1>
-            <Link to="/login">
-                <p>Login</p>
-            </Link>
-        </h1>
+    return (
         <div>
-        lorem ipsum dolor sit amet, consectetur adip
+            <Blog/>
+
         </div>
-    </div> );
+     )
 }
  
 export default Home;
