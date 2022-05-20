@@ -1,12 +1,8 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
-import navHeader from "../asset/img/navheader.jpg";
 import logo from "../asset/img/onpr_logo.jpg"
 import embleme from "../asset/img/langfr-200px-Blason_du_Burundi.svg.png"
 import { Grid,Avatar } from '@mui/material';
@@ -82,6 +78,7 @@ function Header(props) {
             variant="body2"
             href={section.url}
             sx={{ p: 1, flexShrink: 0 }}
+            to={section.url}
           >
             {section.title}
           </Link>
