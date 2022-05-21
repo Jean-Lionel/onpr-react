@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from 'axios'
 import { useHistory } from "react-router-dom";
 import { Box,Alert, FormControl,TextareaAutosize, Input, InputLabel , TextField,Button, FilledInput} from "@mui/material";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const AddArticle = () => {
 
@@ -69,18 +71,13 @@ const AddArticle = () => {
             </FormControl>
 
             <FormControl fullWidth sx={{ m:1 }} variant="standard">
-               
+            <ReactQuill 
+                theme="snow" value={body}
+                onChange={setBody}
+            
+            >
+            </ReactQuill>
 
-            <TextareaAutosize
-            aria-label="empty textarea"
-            placeholder="Empty"
-            label="Description"
-            rows={100}
-            cols={100}
-            style={{ width: "100%" }}
-            required
-            onChange={(e) => (setBody(e.target.value))}
-            />
             </FormControl>
 
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
