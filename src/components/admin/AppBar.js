@@ -12,23 +12,37 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-
 import { Link } from 'react-router-dom';
 import axios from "axios"
+import CellTowerIcon from '@mui/icons-material/CellTower';
+import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
+import ArticleIcon from '@mui/icons-material/Article';
+import SlideshowIcon from '@mui/icons-material/Slideshow';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import BlenderIcon from '@mui/icons-material/Blender';
+import onpr_logo from '../../asset/img/onpr_logo.jpg';
 
 const settings = ['Profile', 'Account', 'Dashboard'];
 const routes = [
   {
+    name : "Web",
+    path : "/web",
+    icon : <CellTowerIcon />
+  },
+  {
     name : "Utilisateurs",
-    path : "/users"
+    path : "/users",
+    icon: <PeopleOutlineIcon />
   },
   {
     name : "Articles",
-    path : "/admin-article"
+    path : "/admin-article",
+    icon: <ArticleIcon />
   },
   {
     name : "Slides",
-    path : "/admin-slides"
+    path : "/admin-slides",
+    icon : <SlideshowIcon/>
   },
   {
     name : "Test",
@@ -36,11 +50,14 @@ const routes = [
   },
   {
     name : "Institution",
-    path : "/institution"
+    path : "/institution",
+    icon : <AdminPanelSettingsIcon />
   },
+  
   {
     name : "Déclaration",
-    path : "/cotisations"
+    path : "/cotisations",
+    icon : <BlenderIcon />
   },
 
 ];
@@ -98,7 +115,13 @@ const ResponsiveAppBar = () => {
       
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+         
+          <Avatar 
+          src={onpr_logo}
+          sx={{ width: 56, height: 56 }}
+                    
+          >
+          </Avatar>
           <Typography
             variant="h6"
             noWrap
@@ -149,6 +172,7 @@ const ResponsiveAppBar = () => {
               {routes.map((route) => (
                 <Link to={route.path} key={route.name}  underline="none">
                   <MenuItem key={route.name} onClick={handleCloseNavMenu}>
+                    {route.icon}
                     <Typography textAlign="center">{route.name}</Typography>
                   </MenuItem>
                 </Link>
@@ -184,6 +208,7 @@ const ResponsiveAppBar = () => {
                     handleCloseNavMenu
                   }
                 >
+                    {route.icon}
                 {route.name}
               </Button>
                 </p>

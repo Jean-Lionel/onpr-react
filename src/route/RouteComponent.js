@@ -14,6 +14,7 @@ import Users from "../Pages/Admin/Users";
 import UserAdd from "../Pages/Admin/users/UserAdd";
 import Login from "../Pages/Login";
 import TestComponent from "../Pages/TestComponent";
+import WebAdmin from "../Pages/WebAdmin";
 import ProtectedRoute from "../utility/ProtectedRouter";
 
 
@@ -32,6 +33,7 @@ const RouteComponent = () => {
           <ProtectedRoute  exact path="/institution" component={Institution} /> 
           <ProtectedRoute  exact path="/cotisations" component={Cotisation} /> 
           <ProtectedRoute  exact path="/institutions/add" component={InstitutionAdd} /> 
+          <ProtectedRoute  exact path="/web" component={WebAdmin} /> 
         </Switch>
      );
 }

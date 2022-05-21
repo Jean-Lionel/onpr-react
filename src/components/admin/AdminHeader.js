@@ -11,7 +11,6 @@ const AdminHeader = () => {
         window.location = "/login";
     }
    
-
     return ( 
     <div className="header">
         <p className="logo">User Management System</p>
