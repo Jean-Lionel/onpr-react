@@ -2,6 +2,7 @@ import {
     Switch,
     Route,
   } from "react-router-dom";
+import BasePage from "../BasePage";
 import Home from "../Home";
 import Admin from "../Pages/Admin";
 import ArticleAdd from "../Pages/Admin/articles/ArticleAdd";
@@ -23,6 +24,7 @@ const RouteComponent = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/detail" component={BasePage} />
           <ProtectedRoute exact path="/admin" component={Admin} /> 
           <ProtectedRoute exact path="/users" component={Users} /> 
           <ProtectedRoute exact path="/admin-article" component={Article} /> 

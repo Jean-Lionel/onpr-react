@@ -9,7 +9,6 @@ import backImg from '../asset/img/2.jpg';
 import L from "react-router-dom/Link"
 
 function MainFeaturedPost(props) {
-  const { post } = props;
 
   return (
     <Paper
@@ -25,8 +24,7 @@ function MainFeaturedPost(props) {
       }}
     >
       {/* Increase the priority of the hero background image */}
-      {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
-
+      
       <Box
         sx={{
           position: 'absolute',
@@ -66,15 +64,5 @@ function MainFeaturedPost(props) {
     </Paper>
   );
 }
-
-MainFeaturedPost.propTypes = {
-  post: PropTypes.shape({
-    description: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    imageText: PropTypes.string.isRequired,
-    linkText: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
-};
 
 export default MainFeaturedPost;
