@@ -23,11 +23,9 @@ export default function CardBlog(props) {
         <Typography gutterBottom variant="body2" component="div">
           {article.title}
         </Typography>
-        
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button size="small"  variant="contained">Lire plus</Button>
       </CardActions>
     </Card>
   );

@@ -16,15 +16,7 @@ import YoutubeComponent from './components/YoutubeComponent';
 import SomeDefaultComponent from './components/SomeDefaultComponent';
 import BlogArticlesListe from './Articles/BlogArticlesListe';
 //Connaître ONPR || Information || Nouvelles || Annonces & Communiqués || Contacts
-const sections = [
-  { title: 'Connaître ONPR', url: '#' },
-  { title: 'Information', url: '#' },
-  { title: 'Nouvelles', url: '#' },
-  { title: 'Annonces & Communiqués', url: '#' },
-  { title: 'Contacts', url: '#' },
-  { title: 'Services en ligne', url: '#' },
-  { title: 'Se Connecter', url: '/login' },
-];
+
 
 const theme = createTheme();
 
@@ -35,7 +27,7 @@ export default function Blog() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Header title="L’Office National des Pensions et Risques Professionnels des fonctionnaires, des magistrats et des agents de l’ordre judiciaire (ONPR)" sections={sections} />
+        <Header />
         <main>
           <MainFeaturedPost />
           <Grid container spacing={2}>

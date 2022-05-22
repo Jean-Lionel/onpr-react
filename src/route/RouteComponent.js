@@ -13,7 +13,9 @@ import InstitutionAdd from "../Pages/Admin/institution/InstitutionAdd";
 import Slides from "../Pages/Admin/Slides/Slides";
 import Users from "../Pages/Admin/Users";
 import UserAdd from "../Pages/Admin/users/UserAdd";
+import ConsultationCotisation from "../Pages/ConsultationCotisation";
 import Login from "../Pages/Login";
+import OnlineService from "../Pages/OnlineService";
 import TestComponent from "../Pages/TestComponent";
 import WebAdmin from "../Pages/WebAdmin";
 import ProtectedRoute from "../utility/ProtectedRouter";
@@ -25,6 +27,8 @@ const RouteComponent = () => {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/detail" component={BasePage} />
+          <Route exact path="/online-service" component={OnlineService} />
+          <Route exact path="/client-consultation-cotisation" component={ConsultationCotisation} />
           <ProtectedRoute exact path="/admin" component={Admin} /> 
           <ProtectedRoute exact path="/users" component={Users} /> 
           <ProtectedRoute exact path="/admin-article" component={Article} /> 

@@ -7,9 +7,18 @@ import logo from "../asset/img/onpr_logo.jpg"
 import embleme from "../asset/img/langfr-200px-Blason_du_Burundi.svg.png"
 import { Grid,Avatar } from '@mui/material';
 
+const sections = [
+  { title: 'Accueil', url: '/' },
+  // { title: 'Connaître ONPR', url: '/' },
+  { title: 'Information', url: '#' },
+  { title: 'Nouvelles', url: '#' },
+  { title: 'Annonces & Communiqués', url: '#' },
+  { title: 'Contacts', url: '#' },
+  { title: 'Services en ligne', url: '/online-service' },
+  { title: 'Se Connecter', url: '/login' },
+];
 function Header(props) {
-  const { sections, title } = props;
-
+  
   return (
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'green', backgroundColor:'#f50057' }}>
@@ -88,14 +97,5 @@ function Header(props) {
   );
 }
 
-Header.propTypes = {
-  sections: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  title: PropTypes.string.isRequired,
-};
 
 export default Header;
