@@ -35,7 +35,7 @@ const columns = [
 
 
 
-const ListeCotisationClient = () => {
+const ListeCotisationClientDetaches = () => {
     const [data, setData] = useState([]);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -128,4 +128,4 @@ const ListeCotisationClient = () => {
     </div> );
 }
  
-export default ListeCotisationClient;
+export default ListeCotisationClientDetaches;

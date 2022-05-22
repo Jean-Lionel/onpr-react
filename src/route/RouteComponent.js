@@ -14,6 +14,7 @@ import Slides from "../Pages/Admin/Slides/Slides";
 import Users from "../Pages/Admin/Users";
 import UserAdd from "../Pages/Admin/users/UserAdd";
 import ConsultationCotisation from "../Pages/ConsultationCotisation";
+import ConsultationCotisationDetataches from "../Pages/ConsultationCotisationDetataches";
 import Login from "../Pages/Login";
 import OnlineService from "../Pages/OnlineService";
 import TestComponent from "../Pages/TestComponent";
@@ -28,7 +29,8 @@ const RouteComponent = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/detail" component={BasePage} />
           <Route exact path="/online-service" component={OnlineService} />
-          <Route exact path="/client-consultation-cotisation" component={ConsultationCotisation} />
+          <Route exact path="/client-consultation-cotisation-afilier" component={ConsultationCotisation} />
+          <Route exact path="/client-consultation-cotisation-detaches" component={ConsultationCotisationDetataches} />
           <ProtectedRoute exact path="/admin" component={Admin} /> 
           <ProtectedRoute exact path="/users" component={Users} /> 
           <ProtectedRoute exact path="/admin-article" component={Article} /> 

@@ -1,13 +1,13 @@
 import { Box } from "@mui/material";
 import BasePage from "../BasePage";
-import ListeCotisationClient from "../components/web/ListeCotisationClient";
+import ListeCotisationClientDetaches from "../components/web/ListeCotisationClientDetaches";
 
-const ConsultationCotisation = () => {
+const ConsultationCotisationDetataches = () => {
     
     return ( 
         <BasePage>
             <Box>
-                <h1>Consultation de cotisation pour les affiliers</h1>
+                <h1>Consultation de cotisation pour les detaches</h1>
                 <p>
                     Onpr offre une opportunite de visualiser vos cotisation en ligne d'une façon simple
                     et rapide.
@@ -15,11 +15,11 @@ const ConsultationCotisation = () => {
                
                 {/* <button onClick={searchInformation}>Consulter</button> */}
                 <Box>
-                    <ListeCotisationClient/>
+                    <ListeCotisationClientDetaches/>
                 </Box>
             </Box>
         </BasePage>
      );
 }
  
-export default ConsultationCotisation;
+export default ConsultationCotisationDetataches;

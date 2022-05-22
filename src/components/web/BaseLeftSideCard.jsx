@@ -3,8 +3,13 @@ import {Link} from "react-router-dom";
 
 const data = [
     {
-        title: "Consultation des cotisations",
-        url : "/client-consultation-cotisation",
+        title: "Consultation des cotisations pour les affiliers",
+        url : "/client-consultation-cotisation-afilier",
+        icon : ""
+    },
+    {
+        title: "Consultation des cotisations pour les détaches",
+        url : "/client-consultation-cotisation-detaches",
         icon : ""
     },
     {
@@ -20,18 +25,20 @@ const BaseLeftSideCard = () => {
         aria-label="contacts"
       >
       <Grid item xs={12} md={12}
-      sx={{
-       textAlign: 'left',
-      }}
-      
+        sx={{
+        textAlign: 'left',
+        }}
       >
           {data.map((element, index )=>(
-                <Typography key={index} variant="a">
+              <p key={index}>
+                  <Typography  variant="a">
                     <Link to={element.url}>
                     {element.title}
                     </Link>
                    
                  </Typography>
+              </p>
+                
         ))}
             
         </Grid>

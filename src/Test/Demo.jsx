@@ -1,29 +1,41 @@
-import React, { useState,useEffect } from "react";
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import DataTable from 'react-data-table-component';
 
+// A super simple expandable component.
+const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
 
-const Demo = () => {
-    const [value, setValue] = useState('');
+const columns = [
+    {
+        name: 'Title',
+        selector: row => row.title,
+    },
+    {
+        name: 'Year',
+        selector: row => row.year,
+    },
+];
 
-    useEffect(() => {
-        console.log(value);
+const data = [
+    {
+        id: 1,
+        title: 'Beetlejuice',
+        year: '1988',
+    },
+    {
+        id: 2,
+        title: 'Ghostbusters',
+        year: '1984',
+    },
+]
 
-    }, [value])
-
+ function MyComponent() {
     return (
-        <div>
-            <div>
-            <ReactQuill
-                value={value}
-                readOnly={true}
-                theme={"bubble"}
-                />
-            </div>
-            <ReactQuill theme="snow" value={value} onChange={setValue}/>
-        </div>
-      
+        <DataTable
+            columns={columns}
+            data={data}
+            expandableRows
+            expandableRowsComponent={ExpandedComponent}
+        />
     );
-}
- 
-export default Demo;
+};
+
+export default MyComponent;
