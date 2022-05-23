@@ -21,6 +21,7 @@ import SlideshowIcon from '@mui/icons-material/Slideshow';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import BlenderIcon from '@mui/icons-material/Blender';
 import onpr_logo from '../../asset/img/onpr_logo.jpg';
+import PrimarySearchAppBar from './component/PrimarySearchAppBar';
 
 const settings = ['Profile', 'Account', 'Dashboard'];
 const routes = [
@@ -104,8 +105,6 @@ const ResponsiveAppBar = () => {
         localStorage.removeItem("user")
         window.location = "/";
       })
-      
-
       
     }
   }
@@ -217,11 +216,13 @@ const ResponsiveAppBar = () => {
             ))}
           </Box>
 
+          <PrimarySearchAppBar/>
+
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
               <Typography
-               variant = "h5"
+               variant = "small"
                mr={2}
               >
                 {connectedUser.user.name}

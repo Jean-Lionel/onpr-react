@@ -1,15 +1,18 @@
-import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import { Box, Button, FormControl, InputLabel, LinearProgress, MenuItem, Select, TextField } from "@mui/material";
 import { useState } from "react";
 import ReactQuill from "react-quill";
 import SendIcon from '@mui/icons-material/Send';
+import usePostDate from "../../utility/usePostData";
 
 const FormulaireDeclaration = () => {
+
+    const {response, isLoading, error,  submitData} = usePostDate()
 
     const [nom_instution, setNom_instution] = useState("");
     const [adresse, setAdresse] = useState("");
     const [telephone, setTelephone] = useState("");
     const [email, setEmail] = useState("");
-    const [nom_declarant, setNom_declarant] = useState("");
+    const [nom_declarant, setNomDeclarant] = useState("");
     const [motif_declaration, setMotif_declaration] = useState("");
     const [date_declaration, setDate_declaration] = useState("");
     const [victime_name, setVictime_name] = useState("");
@@ -25,8 +28,37 @@ const FormulaireDeclaration = () => {
     const [file_name_3, setFile_name_3] = useState("");
     const [file_justification_3, setFile_justification_3] = useState("");
 
+    console.log("La valeur est de " + nom_declarant)
+
     const handleSubmit = (e) => {
         e.preventDefault();
+        const data = new FormData()
+        data.append('nom_instution', nom_instution)
+        data.append('adresse', adresse)
+        data.append('telephone', telephone)
+        data.append('email', email)
+        data.append('nom_declarant', nom_declarant)
+        data.append('motif_declaration', motif_declaration)
+        data.append('date_declaration', date_declaration)
+        data.append('victime_name', victime_name)
+        data.append('victime_prenom', victime_prenom)
+        data.append('type_declaration', type_declaration)
+        data.append('victime_matricule', victime_matricule)
+        data.append('victime_telephone', victime_telephone)
+        data.append('victime_fonction', victime_fonction)
+        data.append('file_name_1', file_name_1)
+        data.append('file_justification_1', file_justification_1)
+        data.append('file_name_2', file_name_2)
+        data.append('file_justification_2', file_justification_2)
+        data.append('file_name_3', file_name_3)
+        data.append('file_justification_3', file_justification_3)
+       
+        submitData('declaration/',data);
+        // axios.post('declaration/', data,{
+        //   headers: {
+        //     'Content-Type': 'multipart/form-data',
+        //   }
+        // });
        
     }
     return ( <Box>
@@ -94,8 +126,7 @@ const FormulaireDeclaration = () => {
           size="small"
           required
           placeholder="ex: BUCUMI JEAN LEO"
-          value={nom_declarant}
-          onchange={(e)=>setNom_declarant(e.target.value)}
+          onChange={(e) => setNomDeclarant(e.target.value)}
         />
 
         <TextField
@@ -108,8 +139,7 @@ const FormulaireDeclaration = () => {
                 shrink: true,
               }}
             required
-            value={date_declaration}
-            onChange={setDate_declaration}
+            onChange={(e) => setDate_declaration(e.target.value)}
 
       />
         
@@ -119,7 +149,7 @@ const FormulaireDeclaration = () => {
       <FormControl fullWidth sx={{ m:2, width: '92%' }} variant="standard">
             <ReactQuill 
                 theme="snow" value={motif_declaration}
-                onChange={setMotif_declaration}
+                onChange={ setMotif_declaration}
             >
             </ReactQuill>
 
@@ -135,7 +165,7 @@ const FormulaireDeclaration = () => {
           size="small"
           placeholder="ex: Ndongani"
           required
-          onChange={setVictime_name}
+          onChange={(e)=> setVictime_name(e.target.value)}
         />
         <TextField
           label="Prénom"
@@ -143,7 +173,7 @@ const FormulaireDeclaration = () => {
           size="small"
           placeholder="ex: Ndongani"
           required
-          onChange={setVictime_prenom}
+          onChange={(e)=> setVictime_prenom(e.target.value)}
         />
       </div>
       <div>
@@ -153,7 +183,7 @@ const FormulaireDeclaration = () => {
             labelId="demo-select-small"
             id="type_declaration"
             label="Age"
-            onChange={setType_declaration}
+            onChange={(e)=> setType_declaration(e.target.value)}
             >
             <MenuItem value="">
             <em>None</em>
@@ -170,7 +200,7 @@ const FormulaireDeclaration = () => {
           size="small"
           placeholder=""
           required
-          onChange={setVictime_matricule}
+          onChange={(e) => setVictime_matricule(e.target.value)}
         />
       </div>
 
@@ -180,14 +210,14 @@ const FormulaireDeclaration = () => {
           id="victime_telephone"
           size="small"
           placeholder=""
-          onChange={setVictime_telephone}
+          onChange={(e) => setVictime_telephone(e.target.value)}
         />
       <TextField
           label="Fonction"
           id="victime_fonction"
           size="small"
           placeholder=""
-          onChange={setVictime_fonction}
+          onChange={(e) => setVictime_fonction(e.target.value)}
         />
 
       </div>
@@ -199,7 +229,8 @@ const FormulaireDeclaration = () => {
         <TextField
         size="small"
         label="Titre du document justificatif I"
-        
+        value={file_name_1}
+        onChange={(e) => setFile_name_1(e.target.value)}
         required
         />
         <TextField
@@ -210,13 +241,16 @@ const FormulaireDeclaration = () => {
         InputLabelProps={{
             shrink: true,
           }}
+        onChange={(e) => setFile_justification_1(e.target.files[0])}
         />
       </div>
 
       <div>
         <TextField
         size="small"
-        label="Titre du document justificatif II" 
+        label="Titre du document justificatif II"
+        value={file_name_2}
+        onChange={(e) => setFile_name_2(e.target.value)}
         />
         <TextField
         type="file"
@@ -225,6 +259,7 @@ const FormulaireDeclaration = () => {
         InputLabelProps={{
             shrink: true,
           }}
+        onChange={(e) => setFile_justification_2(e.target.files[0])}
         />
       </div>
 
@@ -232,6 +267,8 @@ const FormulaireDeclaration = () => {
         <TextField
         size="small"
         label="Titre du document justificatif III" 
+        value={file_name_3}
+        onChange={(e) => setFile_name_3(e.target.value)}
         />
         <TextField
         type="file"
@@ -240,8 +277,12 @@ const FormulaireDeclaration = () => {
         InputLabelProps={{
             shrink: true,
           }}
+        onChange={(e) => setFile_justification_3(e.target.files[0])}
         />
       </div>
+      {isLoading && <LinearProgress />}
+      {error && <p>{ JSON.stringify(error) }</p>}
+      {response && <p>{ response.data.success }</p>}
       <div >
           <Button type="submit" size="small" startIcon={(<SendIcon />)}
           sx={{ width: '92%' }}
