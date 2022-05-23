@@ -13,8 +13,8 @@ const data = [
         icon : ""
     },
     {
-        title: "Déclaration des accidents",
-        url : "/client-declaration-cotisation",
+        title: "Déclaration ",
+        url : "/client-declaration",
         icon : ""
     },
 ]

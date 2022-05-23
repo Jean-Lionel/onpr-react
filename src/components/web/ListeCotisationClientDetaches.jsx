@@ -60,7 +60,7 @@ const ListeCotisationClientDetaches = () => {
         setLoading(true);
         setError(null);
         try {
-            const response = await axios.get(`cotisations_afiliers/${matricule}`);
+            const response = await axios.get(`cotisation_detaches/${matricule}`);
             const json = await response.data;
             setData(json);
             if(json.length === 0){

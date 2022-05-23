@@ -15,6 +15,7 @@ import Users from "../Pages/Admin/Users";
 import UserAdd from "../Pages/Admin/users/UserAdd";
 import ConsultationCotisation from "../Pages/ConsultationCotisation";
 import ConsultationCotisationDetataches from "../Pages/ConsultationCotisationDetataches";
+import DeclarationFormulaire from "../Pages/DeclarationFormulaire";
 import Login from "../Pages/Login";
 import OnlineService from "../Pages/OnlineService";
 import TestComponent from "../Pages/TestComponent";
@@ -31,6 +32,7 @@ const RouteComponent = () => {
           <Route exact path="/online-service" component={OnlineService} />
           <Route exact path="/client-consultation-cotisation-afilier" component={ConsultationCotisation} />
           <Route exact path="/client-consultation-cotisation-detaches" component={ConsultationCotisationDetataches} />
+          <Route exact path="/client-declaration" component={DeclarationFormulaire} />
           <ProtectedRoute exact path="/admin" component={Admin} /> 
           <ProtectedRoute exact path="/users" component={Users} /> 
           <ProtectedRoute exact path="/admin-article" component={Article} /> 
