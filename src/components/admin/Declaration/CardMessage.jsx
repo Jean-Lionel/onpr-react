@@ -3,11 +3,9 @@ import Card from '@mui/material/Card';
 import { Box, Button, Grid, Typography } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 
-
 export default function CardMessage(props) {
   const message = props.message;
   const history = useHistory();
-
   const onpenMessage = (message) =>{
     //console.log(message);
     history.push("ricieved-message/"+ message.id)
