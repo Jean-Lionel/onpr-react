@@ -31,7 +31,7 @@ const usePostDate = () => {
                 setFinished(true);
             } catch (error) {
                 console.error(error.message);
-                setError(error.message)
+                setError(error)
             } finally {
                 setIsLoading(false);
         }

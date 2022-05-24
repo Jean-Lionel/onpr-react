@@ -3,6 +3,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import { Box } from '@mui/material';
 import { useState, useEffect, useMemo } from 'react';
 import useFetchData from '../../../utility/useFecthData';
+import {Link} from "react-router-dom";
 
 const PrimarySearchAppBar = () => {
   const [unreadMessage, setUnreadMessage] = useState(0);
@@ -18,7 +19,7 @@ const PrimarySearchAppBar = () => {
     marginRight: '6px',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '0.5rem',
+    padding: '0.1rem',
     backgroundColor: '#fafafa',
     borderBottom: '1px solid #e0e0e0',
     borderTop: '1px solid #e0e0e0',
@@ -28,9 +29,17 @@ const PrimarySearchAppBar = () => {
     borderRadius: '0.5rem',
 
   }}>
-    <Badge badgeContent={JSON.stringify(unreadMessage)} color="success">
+    <Link to="/ricieved-message">
+
+    <Badge  
+        sx={{
+          cursor: 'pointer',
+        }}
+     badgeContent={JSON.stringify(unreadMessage)} color="success">
         <MailIcon color="action" />
     </Badge>
+
+    </Link>
    
   </Box> );
 }

@@ -22,6 +22,7 @@ const useFetchData = (url) => {
             setError(null);
         })
         .catch(error => {
+            console.log(error);
             console.error(error.message);
             setError(error.message)
         }).finally(() => {

@@ -18,10 +18,10 @@ import ConsultationCotisationDetataches from "../Pages/ConsultationCotisationDet
 import DeclarationFormulaire from "../Pages/DeclarationFormulaire";
 import Login from "../Pages/Login";
 import OnlineService from "../Pages/OnlineService";
+import RicievedMessage from "../Pages/RicievedMessage";
 import TestComponent from "../Pages/TestComponent";
 import WebAdmin from "../Pages/WebAdmin";
 import ProtectedRoute from "../utility/ProtectedRouter";
-
 
 const RouteComponent = () => {
     return ( 
@@ -44,6 +44,7 @@ const RouteComponent = () => {
           <ProtectedRoute  exact path="/cotisations" component={Cotisation} /> 
           <ProtectedRoute  exact path="/institutions/add" component={InstitutionAdd} /> 
           <ProtectedRoute  exact path="/web" component={WebAdmin} /> 
+          <ProtectedRoute  exact path="/ricieved-message" component={RicievedMessage} /> 
         </Switch>
      );
 }
