@@ -51,8 +51,10 @@ export default function BasicTabs() {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Enregistrement des informations des affiliers" />
-          <Tab label="Enregistrement des informations des detaches"  />
+          <Tab label="publications des données des affiliers" />
+          <Tab label="publications des données des detaches"  />
+          <Tab label="Déclaration des données des affiliers"  />
+          <Tab label="Déclaration des données des detaches"  />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
@@ -60,6 +62,12 @@ export default function BasicTabs() {
       </TabPanel>
       <TabPanel value={value} index={1}>
        <AddCotisationDetache/>
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+      12
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+       13
       </TabPanel>
       
     </Box>

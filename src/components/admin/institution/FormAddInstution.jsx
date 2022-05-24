@@ -1,11 +1,11 @@
 import { Box, FormControl, InputLabel, Input, Button, Alert, Select,MenuItem , TextField} from "@mui/material";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 //import usePostData from "../../../utility/usePostData";
 import axios from "axios"
-import { useHistory } from "react-router-dom";
 import useFetchData from "../../../utility/useFecthData";
+import {useParams} from "react-router-dom"
 
-const AddUser = (props) => {
+const FormAddInstution = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [telephone, setTelephone] = useState("");
@@ -13,14 +13,20 @@ const AddUser = (props) => {
     const [description, setDescription] = useState("");
     const [password, setPassword] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState("");
+    const [error, setError] = useState([]);
     let {data: roles} = useFetchData("roles");
     const [roleId, setRoleId] = useState("");
-    
-    const instution_id = props.maches.id
+    let { id:institution_id } = useParams();
+    const [errorMessages, setErrorMessages] = useState(null)
 
-    console.log(instution_id)
-    const history = useHistory();
+    //const history = useHistory();
+
+    useEffect(() => {
+      if(error && error.errors){
+        setErrorMessages(Object.entries(error.errors))
+      }
+ 
+    }, [error])
 
     const submitData = async (e) => {
         e.preventDefault();
@@ -40,7 +46,7 @@ const AddUser = (props) => {
                 telephone,
                 description,
                 mobile,
-
+                institution_id
 
             },{
                 headers: {
@@ -52,10 +58,10 @@ const AddUser = (props) => {
             // localStorage.setItem('user', JSON.stringify(response.data.data));
             setIsLoading(false);
             // window.location.href = '/admin';
-            history.push("/users")
+           // history.push("/users")
             console.log(response.data)
         } catch (error) {
-            setError(error.response.data.message);
+            setError(error.response.data);
             setIsLoading(false);
         }
        
@@ -66,23 +72,21 @@ const AddUser = (props) => {
     sx={{
       width: "80%",
       margin: "auto",
-     
     }}
     
     >
         <div>
-            <h1>Ajouter un utilisateur</h1>
-        <FormControl fullWidth sx={{ m: 1 }}  size="small" variant="standard">
-          <InputLabel htmlFor="name" size="small">Nom et Prénom *</InputLabel>
+            <h5>Ajouter un utilisateur</h5>
+        <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+          <InputLabel htmlFor="name">Nom et Prénom *</InputLabel>
           <Input
             id="name"
             value={name}
             required
-            size="small"
             onChange={(e) => (setName(e.target.value))}
           />
         </FormControl>
-        <FormControl size="small" fullWidth sx={{ m: 1 }} variant="standard">
+        <FormControl fullWidth sx={{ m: 1 }} variant="standard">
           <InputLabel htmlFor="email">Email *</InputLabel>
           <Input
             id="email"
@@ -93,7 +97,7 @@ const AddUser = (props) => {
           />
         </FormControl>
 
-        <FormControl size="small" fullWidth sx={{ m: 1 }} variant="standard">
+        <FormControl fullWidth sx={{ m: 1 }} variant="standard">
           <InputLabel htmlFor="telephone">Téléphone</InputLabel>
           <Input
             id="telephone"
@@ -104,7 +108,7 @@ const AddUser = (props) => {
           />
         </FormControl>
 
-        <FormControl size="small" fullWidth sx={{ m: 1 }} variant="standard">
+        <FormControl fullWidth sx={{ m: 1 }} variant="standard">
           <InputLabel htmlFor="mobile">Mobile</InputLabel>
           <Input
             id="mobile"
@@ -115,10 +119,9 @@ const AddUser = (props) => {
           />
         </FormControl>
 
-        <FormControl size="small" fullWidth>
+        <FormControl fullWidth>
             <InputLabel id="role_id">Role</InputLabel>
             <Select
-              size="small"
               labelId="role_id"
               id="role_id"
               value={roleId}
@@ -133,8 +136,8 @@ const AddUser = (props) => {
             </Select>
         </FormControl>
 
-        <FormControl size="small" fullWidth sx={{ m: 1 }} variant="standard">
-          <InputLabel size="small" htmlFor="password">Mot de passe *</InputLabel>
+        <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+          <InputLabel htmlFor="password">Mot de passe *</InputLabel>
           <Input
             id="password"
             type="password"
@@ -144,13 +147,13 @@ const AddUser = (props) => {
           />
         </FormControl>
 
-        <FormControl size="small" fullWidth sx={{ m:1 }} variant="standard">
+        <FormControl fullWidth sx={{ m:1 }} variant="standard">
         <TextField
           id="description"
           label="Multiline"
           multiline
           rows={4}
-          defaultValue=""
+          defaultValue="Default Value"
 
           onChange={(e) => (setDescription(e.target.value))}
         />
@@ -163,12 +166,31 @@ const AddUser = (props) => {
             </div>
         )}
         {error && (
-            <Alert severity="error">{ error }</Alert>
+          <Box>
+             <Alert severity="error">{ 
+              error.message
+               }</Alert>
+               {
+                  errorMessages && (<div>
+                    {
+                      errorMessages && errorMessages.map(e => (
+                        <Alert severity="error">
+                          {e[1][0]}
+                        </Alert>
+                      ))
+                    }
+                  </div>)
+                  
+               }
+               
+          </Box>
+           
         )}
         <Button variant="contained" type="submit" onClick={submitData}>Enregistrer</Button>
         </div>
 
-    </Box> );
+    </Box> 
+    )
 }
  
-export default AddUser;
+export default FormAddInstution;

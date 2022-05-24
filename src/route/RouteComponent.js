@@ -4,6 +4,7 @@ import {
   } from "react-router-dom";
 import BasePage from "../BasePage";
 import Home from "../Home";
+import AddUserToInstution from "../Pages/AddUserToInstution";
 import Admin from "../Pages/Admin";
 import ArticleAdd from "../Pages/Admin/articles/ArticleAdd";
 import Article from "../Pages/Admin/articles/Articles";
@@ -47,6 +48,7 @@ const RouteComponent = () => {
           <ProtectedRoute  exact path="/web" component={WebAdmin} /> 
           <ProtectedRoute  exact path="/ricieved-message" component={RicievedMessage} /> 
           <ProtectedRoute  exact path="/ricieved-message/:id" component={RecievedMessageDetail} /> 
+          <ProtectedRoute  exact path="/add-user-to-institution/:id" component={AddUserToInstution} /> 
         </Switch>
      );
 }

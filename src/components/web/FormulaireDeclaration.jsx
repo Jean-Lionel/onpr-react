@@ -188,9 +188,9 @@ const FormulaireDeclaration = () => {
             <MenuItem value="">
             <em>None</em>
             </MenuItem>
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            <MenuItem value="ACCIDENT DE TRAVAIL">ACCIDENT DE TRAVAIL</MenuItem>
+            <MenuItem value="MALADIE PROFESSIONNELLES">MALADIE PROFESSIONNELLES</MenuItem>
+           
         </Select>
         </FormControl>
 

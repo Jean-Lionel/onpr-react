@@ -8,11 +8,12 @@ import usePostDate from "../../../utility/usePostData"
 
 const Addinstution = () => {
     
-    const {response, isLoading, error, finished,submitData} = usePostDate();
+    const {isLoading, error, finished,submitData} = usePostDate();
     let history = useHistory();
     const [name, setName] = useState("")
     const [address, setAddress] = useState("")
     const [email, setEmail] = useState("")
+    const [identify, setIdentify] = useState("")
     const [telephone, setTelephone] = useState("")
     const [description, setDescription] = useState("")
     const [typeInstution, setTypeInstution] = useState("")
@@ -34,7 +35,7 @@ const Addinstution = () => {
     const saveInputData = async (e) => {
         e.preventDefault();
         const institution = {
-            name, description, email,telephone,address,typeInstution
+            name, description, email,telephone,address,typeInstution,identify
         }
         submitData('institutions',institution)       
         
@@ -65,6 +66,17 @@ const Addinstution = () => {
                 onChange={(e) => setName(e.target.value)}
                 
                 label="Nom de l'institution"
+                />
+            </FormControl>
+            <FormControl fullWidth sx={{ m: 1 }}  size="small">
+                <InputLabel htmlFor="identify"  size="small">Code  de l'institution</InputLabel>
+                <OutlinedInput
+                id="identify"
+                value={identify}
+                required
+                onChange={(e) => setIdentify(e.target.value)}
+                
+                label="Code de l'institution"
                 />
             </FormControl>
 

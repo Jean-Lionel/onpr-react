@@ -2,7 +2,7 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import { Box, Button, Grid, Typography } from '@mui/material';
 import { useHistory } from 'react-router-dom';
-
+import PreviewIcon from '@mui/icons-material/Preview';
 export default function CardMessage(props) {
   const message = props.message;
   const history = useHistory();
@@ -21,17 +21,26 @@ export default function CardMessage(props) {
             justifyContent: 'space-between',
             bgcolor:  (message.is_opened ? 'white' : 'rgba(0,0,0,0.2)')
           }}>
-            <div>
-              <p>
+            <Box sx={{
+              textAlign: 'left',
+              marginLeft: "10px"
+            }} >
+              <div>
               Nom de l'instution : <b>{message.nom_instution}</b>
-              </p>
-              <p>
+              </div>
+              <div>
               Nom du Déclarant : {message.nom_declarant}
-              </p>
+              </div>
+              <div>
+                Type de déclaration : <span >
+                {message.type_declaration}
+                </span>
+              </div>
            
-            </div>
+            </Box>
             <Typography sx={{
               mr: '10px',
+              textAlign: 'right'
             }} >
               <div>
               <small>Date de déclaration  : {message.date_declaration}</small>
@@ -46,6 +55,7 @@ export default function CardMessage(props) {
               </div>
               <div>
                   <Button onClick={() => onpenMessage(message)}>
+                    <PreviewIcon/>
                     Ouvrir La déclaration
                   </Button>
               </div>
