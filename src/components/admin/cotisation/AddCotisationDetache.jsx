@@ -1,9 +1,8 @@
-import { Box , Input, Select, MenuItem,Alert, LinearProgress, Grid, Autocomplete, TextField, Button} from "@mui/material";
+import { Box , Input,Alert, LinearProgress, Grid, Autocomplete, TextField, Button} from "@mui/material";
 import useReadExcel from "../../../utility/useReadExcel";
 import {useEffect, useMemo, useState} from "react"
 import useFetchDataWithPagination from "../../../utility/useFetchDataWithPagination";
 import usePostDate from "../../../utility/usePostData";
-import { useHistory } from "react-router-dom";
 const  AddCotisationDetache=  () => {
     const [instutionId, setInstutionId] = useState("");
     const [options, setOptions] = useState([])
@@ -12,7 +11,6 @@ const  AddCotisationDetache=  () => {
     const {data,  dataTable, handleFileUpload}  = useReadExcel();
 
     const loadInstitutions =  useMemo(()=> institutions?.data ?? [], [institutions])
-    const history = useHistory();
 
     useEffect(() => {
         const elts = loadInstitutions.map(element => {
@@ -49,7 +47,6 @@ const  AddCotisationDetache=  () => {
             {isLoading && (
                  <LinearProgress color="success"/>
             )}
-
             {/* {JSON.stringify(loadInstitutions)} */}
         
         <Box

@@ -18,6 +18,7 @@ import ConsultationCotisationDetataches from "../Pages/ConsultationCotisationDet
 import DeclarationFormulaire from "../Pages/DeclarationFormulaire";
 import Login from "../Pages/Login";
 import OnlineService from "../Pages/OnlineService";
+import RecievedMessageDetail from "../Pages/RecievedMessageDetail";
 import RicievedMessage from "../Pages/RicievedMessage";
 import TestComponent from "../Pages/TestComponent";
 import WebAdmin from "../Pages/WebAdmin";
@@ -45,6 +46,7 @@ const RouteComponent = () => {
           <ProtectedRoute  exact path="/institutions/add" component={InstitutionAdd} /> 
           <ProtectedRoute  exact path="/web" component={WebAdmin} /> 
           <ProtectedRoute  exact path="/ricieved-message" component={RicievedMessage} /> 
+          <ProtectedRoute  exact path="/ricieved-message/:id" component={RecievedMessageDetail} /> 
         </Switch>
      );
 }

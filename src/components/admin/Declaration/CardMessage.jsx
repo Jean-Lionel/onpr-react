@@ -1,27 +1,37 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import { Box, Button, Grid, Typography } from '@mui/material';
+import { useHistory } from 'react-router-dom';
 
 
 export default function CardMessage(props) {
   const message = props.message;
+  const history = useHistory();
+
+  const onpenMessage = (message) =>{
+    //console.log(message);
+    history.push("ricieved-message/"+ message.id)
+  }
 
   return (
-    <Card>
+    <Card >
       <Box>
         <Grid>
           <Grid  md={12} sx={{
             width: '100%',
             display: 'flex',
             justifyContent: 'space-between',
-            bgcolor: 'red',
+            bgcolor:  (message.is_opened ? 'white' : 'rgba(0,0,0,0.2)')
           }}>
             <div>
-            <Typography variant="h6">Nom de l'instution : {message.nom_instution}</Typography>
-            <Typography variant="h6">Nom du Déclarant : {message.nom_declarant}</Typography>
-            </div>
-            
+              <p>
+              Nom de l'instution : <b>{message.nom_instution}</b>
+              </p>
+              <p>
+              Nom du Déclarant : {message.nom_declarant}
+              </p>
            
+            </div>
             <Typography sx={{
               mr: '10px',
             }} >
@@ -37,12 +47,11 @@ export default function CardMessage(props) {
               
               </div>
               <div>
-                <Button>
-                  Ouvrir La déclaration
-                </Button>
+                  <Button onClick={() => onpenMessage(message)}>
+                    Ouvrir La déclaration
+                  </Button>
               </div>
-
-
+            
               </Typography>
            </Grid>
         </Grid>

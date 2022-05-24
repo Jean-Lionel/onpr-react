@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from 'axios'
 import { useHistory } from "react-router-dom";
-import { Box,Alert, FormControl,TextareaAutosize, Input, InputLabel , TextField,Button, FilledInput} from "@mui/material";
+import { Box,Alert, FormControl, Input, InputLabel ,Button, FilledInput} from "@mui/material";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
@@ -63,7 +63,6 @@ const AddArticle = () => {
                 id="title"
 
                 value={title}
-                
                 required
                 onChange={(e) => (setTitle(e.target.value))}
                 ></Input>
