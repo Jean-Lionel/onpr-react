@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 
-const usePostDate = () => {
+const usePostData = () => {
     const [response, setResponse] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null)
@@ -42,4 +42,4 @@ const usePostDate = () => {
     return {response, isLoading, error,finished,  submitData};
 }
  
-export default usePostDate;
+export default usePostData;

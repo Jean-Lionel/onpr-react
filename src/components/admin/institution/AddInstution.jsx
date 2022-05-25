@@ -30,7 +30,7 @@ const Addinstution = () => {
         return () => {
            
         };
-    }, [finished]);
+    }, [finished, history]);
 
     const saveInputData = async (e) => {
         e.preventDefault();

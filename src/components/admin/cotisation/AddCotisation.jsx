@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import AddCotisationAfilier from '../../../Pages/Admin/contisation/AddCotisationAfilier';
 import AddCotisationDetache from './AddCotisationDetache';
+import OnLineDecleration from './OnLineDecleration';
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -42,6 +44,7 @@ TabPanel.propTypes = {
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
+  
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -49,13 +52,15 @@ export default function BasicTabs() {
 
   return (
     <Box sx={{ width: '100%' }}>
+    
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="publications des données des affiliers" />
           <Tab label="publications des données des detaches"  />
-          <Tab label="Déclaration des données des affiliers"  />
-          <Tab label="Déclaration des données des detaches"  />
+          <Tab label="Déclaration des données pour les membres"  />
+         
         </Tabs>
+       
       </Box>
       <TabPanel value={value} index={0}>
       <AddCotisationAfilier/>
@@ -64,11 +69,9 @@ export default function BasicTabs() {
        <AddCotisationDetache/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-      12
+        <OnLineDecleration/>
       </TabPanel>
-      <TabPanel value={value} index={3}>
-       13
-      </TabPanel>
+   
       
     </Box>
   );
