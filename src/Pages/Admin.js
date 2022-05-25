@@ -1,15 +1,15 @@
-const Admin = () => {
-    const logout = () => {
-        localStorage.removeItem("token")
-        localStorage.removeItem("user")
-        window.location = "/login";
-    }
-    return ( <div>
-        <h1>
-            Administraion
-        </h1>
+import AdminFooter from "../components/admin/AdminFooter";
+//import AdminHeader from "../components/admin/AdminHeader";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ResponsiveAppBar from "../components/admin/AppBar";
 
-        <button onClick={() => logout()} class>Decconnexion</button>
+const Admin = (props) => {
+    return ( <div>
+        <ResponsiveAppBar/>
+          <ToastContainer/>
+          {props.children}
+        <AdminFooter/>  
     </div> );
 }
  

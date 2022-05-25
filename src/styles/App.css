@@ -1,0 +1,10 @@
+
+body{
+    text-align: center;
+    padding: auto;
+}
+
+.error-message{
+    font-size: 1.2rem;
+    color: red;
+}

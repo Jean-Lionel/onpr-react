@@ -1,14 +1,13 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import "./styles/pagination.css";
+
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
+  
 } from "react-router-dom";
-
-import Home from "./Home"
-import Admin from "./Pages/Admin";
-import Bonjour from "./Pages/Bonjour";
-import Login from "./Pages/Login";
-import ProtectedRoute from "./utility/ProtectedRouter";
+import RouteComponent from "./route/RouteComponent";
+import "./styles/App.css"
 
 
 function App() {
@@ -16,12 +15,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/bonjour" component={Bonjour} />
-          <Route exact path="/login" component={Login} />
-          <ProtectedRoute exact path="/admin" component={Admin} /> 
-        </Switch>
+        <RouteComponent/>
       </div>
     </Router>
   );
