@@ -21,6 +21,9 @@ const RicievedMessage = () => {
            
             {isLoading && <LinearProgress color="success" />}  
             {error && <p>Error: {error.message}</p>}
+            <h5>
+                Déclaration en ligne
+            </h5>
             <Box    ml={5} mr={5}>
                 {unreadMessages && unreadMessages.map(message => (
                     <Box key={message.id}>

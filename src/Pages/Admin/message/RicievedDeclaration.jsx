@@ -23,8 +23,9 @@ const RicievedDeclaration = () => {
          }}>
          {isLoading && <LinearProgress color="success" />}  
          {error && <p>Error: {error.message}</p>}
-            <h1>Ricieved Declaration</h1>
-            
+            <h4>
+                <u>Déclaration des instutions</u>
+            </h4>
             <Box>
                 {declarations && declarations.map(declaration => (
                     <Box key={declaration.id}>
