@@ -28,7 +28,7 @@ export default function WebAdminToolBar() {
   return (
     <Box sx={{ width: '100%' }}>
       <Tabs value={value} onChange={handleChange} aria-label="nav tabs example">
-        <LinkTab label="Page One" to="/drafts" />
+        <LinkTab label="Vidéo web" to="/admin-slides" />
         <LinkTab label="Page Two" to="/trash" />
         <LinkTab label="Page Three" to="/spam" />
       </Tabs>
