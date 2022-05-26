@@ -7,11 +7,12 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
 import SendIcon from '@mui/icons-material/Send';
 import useFetchData from '../../../utility/useFecthData';
 import usePostData from "../../../utility/usePostData";
+import { useHistory } from "react-router-dom";
 
 const OnLineDecleration = () => {
    
     const {data, isLoading} = useFetchData("get_user_instution");
-    const {response, isLoading: saveLoading,error, submitData} = usePostData();
+    const {response, isLoading: saveLoading,finished, error, submitData} = usePostData();
     const [instution, setInstution] = useState("");
     const [code_instution ,setCode_instution] = useState("");
     const [titre, setTitre] = useState("");
@@ -25,7 +26,7 @@ const OnLineDecleration = () => {
     const [file_name_2 ,setFile_name_2] = useState("");
     const [file_uploaded_2 ,setFile_uploaded_2] = useState("");
     const [institution_id ,setInstitution_id] = useState("");
-
+    const history = useHistory();
 
     useEffect(() => {
         setMois(date_declaration.getMonth())
@@ -45,10 +46,16 @@ const OnLineDecleration = () => {
         }
     
       },[data,instution])
+
+      useEffect(() => {
+          if(finished){
+            history.push("/cotisations")
+          }
+
+      }, [finished, history])
     
     const sendData = (e) => {
         e.preventDefault();
-        alert("Je suis un Millionnaire")
 
         const formData = new FormData();
         formData.append("titre", titre);
@@ -65,6 +72,8 @@ const OnLineDecleration = () => {
         formData.append("institution_id", institution_id);
 
         submitData("online_declaration_detaches",formData);
+
+       
     }
 
     return ( <Box sx={{ 
@@ -73,6 +82,7 @@ const OnLineDecleration = () => {
         marginRight: { md:15, xs: 2 }
     }}>
          {isLoading && <LinearProgress/> }
+         
 
          {instution && (
              <Box>
@@ -237,6 +247,8 @@ const OnLineDecleration = () => {
                </FormControl>
             </Grid>
         </Grid>
+        {saveLoading && <LinearProgress color="success" />}
+        {error &&   JSON.stringify(error.message) }
         </Box>
          )}
 

@@ -7,8 +7,7 @@ import Box from '@mui/material/Box';
 import AddCotisationAfilier from '../../../Pages/Admin/contisation/AddCotisationAfilier';
 import AddCotisationDetache from './AddCotisationDetache';
 import OnLineDecleration from './OnLineDecleration';
-
-
+import MeDeclarationComponent from './MeDeclarationComponent';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -58,7 +57,7 @@ export default function BasicTabs() {
           <Tab label="publications des données des affiliers" />
           <Tab label="publications des données des detaches"  />
           <Tab label="Déclaration des données pour les membres"  />
-         
+          <Tab label="Mes déclarations"  />
         </Tabs>
        
       </Box>
@@ -71,7 +70,9 @@ export default function BasicTabs() {
       <TabPanel value={value} index={2}>
         <OnLineDecleration/>
       </TabPanel>
-   
+      <TabPanel value={value} index={3}>
+        <MeDeclarationComponent/>
+      </TabPanel>
       
     </Box>
   );
