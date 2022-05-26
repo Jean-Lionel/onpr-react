@@ -65,10 +65,10 @@ const OnLineDecleration = () => {
         formData.append("annee", annee);
         formData.append("date_declaration", `${annee}-${mois}-${date_declaration.getDate()}`);
         formData.append("description", description);
-        formData.append("file_name_one", file_name_1);
-        formData.append("file_uploaded_one", file_uploaded_1);
-        formData.append("file_name_two", file_name_2);
-        formData.append("file_uploaded_two", file_uploaded_2);
+        formData.append("file_name_1", file_name_1);
+        formData.append("file_uploaded_1", file_uploaded_1);
+        formData.append("file_name_2", file_name_2);
+        formData.append("file_uploaded_2", file_uploaded_2);
         formData.append("institution_id", institution_id);
 
         submitData("online_declaration_detaches",formData);

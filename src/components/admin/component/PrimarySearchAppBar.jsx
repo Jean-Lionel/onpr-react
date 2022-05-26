@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 import { useState, useEffect, useMemo } from 'react';
 import useFetchData from '../../../utility/useFecthData';
 import {Link} from "react-router-dom";
+import LocationCityIcon from '@mui/icons-material/LocationCity';
 
 const PrimarySearchAppBar = () => {
   const [unreadMessage, setUnreadMessage] = useState(0);
@@ -16,7 +17,7 @@ const PrimarySearchAppBar = () => {
   
   return ( <Box sx={{ 
     display: 'flex',
-    marginRight: '6px',
+    marginRight: '10px',
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '0.1rem',
@@ -34,9 +35,33 @@ const PrimarySearchAppBar = () => {
     <Badge  
         sx={{
           cursor: 'pointer',
+          marginRight: '5px',
+          display: 'block',
+          padding: '2px',
+          '&:hover': {
+            backgroundColor: 'rgba(255,40,0,0.8)'
+          }
         }}
-     badgeContent={JSON.stringify(unreadMessage)} color="success">
+     badgeContent={unreadMessage} color="success">
         <MailIcon color="action" />
+    </Badge>
+
+    </Link>
+    <Link to="/ricieved-message">
+
+    <Badge  
+        sx={{
+          cursor: 'pointer',
+          marginRight: '5px',
+          display: 'block',
+          padding: '2px',
+          '&:hover': {
+            backgroundColor: 'rgba(255,40,0,0.8)'
+          }
+        }}
+     badgeContent={unreadMessage} color="success">
+
+        <LocationCityIcon color="action" />
     </Badge>
 
     </Link>

@@ -21,14 +21,16 @@ const DetailDeclarationComponent = () => {
         };
     }, [data]);
 
-    return ( <Box>
+    return ( <Box sx={{
+        marginRight: {md: "40px", lg: "80px", sx: "5px"},
+        marginLeft: {md: "40px", lg: "80px", sx: "5px"},
+    }}>
         {isLoading && <LinearProgress color="success" />}
         {error && <Alert >
                 {JSON.stringify(error)}
             </Alert>}
        {declaration && <Box>
-           {JSON.stringify(declaration)}
-
+           
            <Grid container spacing={2}>
                <Grid item md={8} sx={{ textAlign: 'left'}}>
                <h6>Tire de la déclaration : <b>{declaration.titre}</b></h6>
@@ -56,10 +58,21 @@ const DetailDeclarationComponent = () => {
 
                 </Grid>
                
-               <Grid item md={4}>
+               <Grid item md={4} sx={{ textAlign: 'right'}}>
                    <h6>Les documents attachés</h6>
-                   <div>
-
+                   <div> 
+                       { declaration.file_uploaded_one && (
+                           <a href={declaration.file_uploaded_one} rel="noreferrer" target="_blank">
+                               {declaration.file_name_one}
+                           </a>
+                       ) }
+                   </div>
+                   <div> 
+                       { declaration.file_uploaded_two && (
+                           <a href={declaration.file_uploaded_two} rel="noreferrer" target="_blank">
+                               {declaration.file_name_two}
+                           </a>
+                       ) }
                    </div>
                </Grid>
 
