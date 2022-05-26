@@ -27,7 +27,7 @@ const CardDeclaration = (props) => {
                      </div>
                    <div>
                        <Button size="small" variant="contained" color="primary" onClick={() => {
-                            history.push(`/admin/declaration/edit/${declaration.id}`)
+                            history.push(`show-detail-declaration/${declaration.id}`)
                         }} >
                            <PreviewIcon size="small" color="primary"/> lire
                         </Button>

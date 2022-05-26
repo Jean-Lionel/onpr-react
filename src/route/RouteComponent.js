@@ -9,6 +9,7 @@ import Admin from "../Pages/Admin";
 import ArticleAdd from "../Pages/Admin/articles/ArticleAdd";
 import Article from "../Pages/Admin/articles/Articles";
 import Cotisation from "../Pages/Admin/contisation/Cotisation";
+import DetailDeclaration from "../Pages/Admin/DetailDeclaration";
 import Institution from "../Pages/Admin/institution/Institution";
 import InstitutionAdd from "../Pages/Admin/institution/InstitutionAdd";
 import Slides from "../Pages/Admin/Slides/Slides";
@@ -49,6 +50,7 @@ const RouteComponent = () => {
           <ProtectedRoute  exact path="/ricieved-message" component={RicievedMessage} /> 
           <ProtectedRoute  exact path="/ricieved-message/:id" component={RecievedMessageDetail} /> 
           <ProtectedRoute  exact path="/add-user-to-institution/:id" component={AddUserToInstution} /> 
+          <ProtectedRoute  exact path="/show-detail-declaration/:id" component={DetailDeclaration} /> 
         </Switch>
      );
 }
