@@ -12,6 +12,7 @@ import Cotisation from "../Pages/Admin/contisation/Cotisation";
 import DetailDeclaration from "../Pages/Admin/DetailDeclaration";
 import Institution from "../Pages/Admin/institution/Institution";
 import InstitutionAdd from "../Pages/Admin/institution/InstitutionAdd";
+import RicievedDeclaration from "../Pages/Admin/message/RicievedDeclaration";
 import Slides from "../Pages/Admin/Slides/Slides";
 import Users from "../Pages/Admin/Users";
 import UserAdd from "../Pages/Admin/users/UserAdd";
@@ -48,6 +49,7 @@ const RouteComponent = () => {
           <ProtectedRoute  exact path="/institutions/add" component={InstitutionAdd} /> 
           <ProtectedRoute  exact path="/web" component={WebAdmin} /> 
           <ProtectedRoute  exact path="/ricieved-message" component={RicievedMessage} /> 
+          <ProtectedRoute  exact path="/ricieved-declaration" component={RicievedDeclaration} /> 
           <ProtectedRoute  exact path="/ricieved-message/:id" component={RecievedMessageDetail} /> 
           <ProtectedRoute  exact path="/add-user-to-institution/:id" component={AddUserToInstution} /> 
           <ProtectedRoute  exact path="/show-detail-declaration/:id" component={DetailDeclaration} /> 

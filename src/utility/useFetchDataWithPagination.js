@@ -1,6 +1,7 @@
 import {useState,useEffect} from 'react'
 import axios from 'axios'
 import ReactPaginate from "react-paginate";
+import { Box } from '@mui/material';
 
 const useFetchDataWithPagination = (url) => {
 
@@ -87,19 +88,28 @@ const useFetchDataWithPagination = (url) => {
     const pageCount = Math.ceil(data?.data?.total / data?.data?.per_page);
 
     const paginate = () => {
-    
+       
         return (
-            <ReactPaginate
+           <Box>
+                {
+                pageCount > 1 && (
+                    <ReactPaginate
             
-            previousLabel={"Précedent"}
-            nextLabel={"Suivant"}
-            pageCount={pageCount}
-            onPageChange={changePage}
-            containerClassName={"paginationBttns"}
-            previousClassName=""
-            activeClassName={"paginationActive"}
+                    previousLabel={"Précedent"}
+                    nextLabel={"Suivant"}
+                    pageCount={pageCount}
+                    onPageChange={changePage}
+                    containerClassName={"paginationBttns"}
+                    previousClassName=""
+                    activeClassName={"paginationActive"}
+                    
+                   />
+
+                ) 
+            }
+           </Box>
             
-           />
+           
         );
     }
 

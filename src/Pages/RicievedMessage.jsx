@@ -5,7 +5,7 @@ import useFetchDataWithPagination from "../utility/useFetchDataWithPagination";
 import Admin from "./Admin";
 
 const RicievedMessage = () => {
-    const {data, error, isLoading } = useFetchDataWithPagination("declarations")
+    const {data, error, isLoading , paginate } = useFetchDataWithPagination("declarations")
      const [unreadMessages, setUnreadMessages] = useState([]);
      const [readMessages, setReadMessages] = useState([])
 
@@ -36,6 +36,7 @@ const RicievedMessage = () => {
                   </Box>
               ))}
             </Box>
+            {paginate()}
         </Admin> 
     );
 }

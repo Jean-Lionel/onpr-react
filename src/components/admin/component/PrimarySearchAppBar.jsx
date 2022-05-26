@@ -9,7 +9,7 @@ import LocationCityIcon from '@mui/icons-material/LocationCity';
 const PrimarySearchAppBar = () => {
   const [unreadMessage, setUnreadMessage] = useState(0);
   const {data} =  useFetchData('unReadDeclaration');
-  const message = useMemo(() => data?.data?.success , [data]);
+  const message = useMemo(() => data?.data , [data]);
 
   useEffect(() => {
     setUnreadMessage(message)
@@ -30,6 +30,7 @@ const PrimarySearchAppBar = () => {
     borderRadius: '0.5rem',
 
   }}>
+    
     <Link to="/ricieved-message">
 
     <Badge  
@@ -42,24 +43,25 @@ const PrimarySearchAppBar = () => {
             backgroundColor: 'rgba(255,40,0,0.8)'
           }
         }}
-     badgeContent={unreadMessage} color="success">
+     badgeContent={unreadMessage?.web_declaration} color="success">
+       
         <MailIcon color="action" />
     </Badge>
 
     </Link>
-    <Link to="/ricieved-message">
+    <Link to="/ricieved-declaration">
 
     <Badge  
         sx={{
           cursor: 'pointer',
-          marginRight: '5px',
+          marginRight: '15px',
           display: 'block',
           padding: '2px',
           '&:hover': {
             backgroundColor: 'rgba(255,40,0,0.8)'
           }
         }}
-     badgeContent={unreadMessage} color="success">
+     badgeContent={unreadMessage?.instution_declaration } color="success">
 
         <LocationCityIcon color="action" />
     </Badge>
