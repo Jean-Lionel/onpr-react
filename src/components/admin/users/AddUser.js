@@ -17,9 +17,6 @@ const AddUser = (props) => {
     let {data: roles} = useFetchData("roles");
     const [roleId, setRoleId] = useState("");
     
-    const instution_id = props.maches.id
-
-    console.log(instution_id)
     const history = useHistory();
 
     const submitData = async (e) => {

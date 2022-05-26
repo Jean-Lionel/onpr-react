@@ -60,8 +60,10 @@ const FormAddInstution = () => {
             // window.location.href = '/admin';
            // history.push("/users")
             console.log(response.data)
+
+            
         } catch (error) {
-            setError(error.response.data);
+            setError(error);
             setIsLoading(false);
         }
        
@@ -175,7 +177,7 @@ const FormAddInstution = () => {
                     {
                       errorMessages && errorMessages.map(e => (
                         <Alert severity="error">
-                          {e[1][0]}
+                          {JSON.stringify(e)}
                         </Alert>
                       ))
                     }
