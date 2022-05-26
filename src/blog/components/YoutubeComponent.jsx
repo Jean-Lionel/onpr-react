@@ -27,8 +27,6 @@ export default function YoutubeComponent() {
              </Grid>
 
           ))}
-           
-          
         </Grid>
       
     </Card>
