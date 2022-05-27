@@ -2,9 +2,6 @@ import { useEffect, useState } from "react";
 
 const useGetConnectedUser = () => {
     const [user, setUser] = useState(null);
-
-    
-
     useEffect(() => {
         const u = localStorage.getItem("user");
         if (u) {
@@ -21,7 +18,7 @@ const useGetConnectedUser = () => {
         isAffiler: () => (user?.role.name === "AFFILIER"),
         isEmployeur: () => (user?.role.name === "EMPLOYEUR"),
         isCandidat: () => (user?.role.name === "CANDIDAT"),
-        user: () => user,
+        user:  user,
 
     }
 

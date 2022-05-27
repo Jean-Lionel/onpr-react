@@ -12,63 +12,24 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { Link } from 'react-router-dom';
+import {Link} from "react-router-dom"
 import axios from "axios"
-import CellTowerIcon from '@mui/icons-material/CellTower';
-import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
-import ArticleIcon from '@mui/icons-material/Article';
-import SlideshowIcon from '@mui/icons-material/Slideshow';
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import BlenderIcon from '@mui/icons-material/Blender';
 import onpr_logo from '../../asset/img/onpr_logo.jpg';
 import PrimarySearchAppBar from './component/PrimarySearchAppBar';
-
+import useGetConnectedUser from '../../utility/useGetConnectedUser';
+import useMenuRoutes from "./menu/useMenuRoutes"
+import RouterLinkComponent from './menu/RouterLinkComponent';
 
 const settings = ['Profile', 'Account', 'Dashboard'];
-const routes = [
-  {
-    name : "Web",
-    path : "/web",
-    icon : <CellTowerIcon />
-  },
-  {
-    name : "Utilisateurs",
-    path : "/users",
-    icon: <PeopleOutlineIcon />
-  },
-  {
-    name : "Articles",
-    path : "/admin-article",
-    icon: <ArticleIcon />
-  },
-  {
-    name : "Slides",
-    path : "/admin-slides",
-    icon : <SlideshowIcon/>
-  },
-  {
-    name : "Test",
-    path : "/test-compontent"
-  },
-  {
-    name : "Institution",
-    path : "/institution",
-    icon : <AdminPanelSettingsIcon />
-  },
-  
-  {
-    name : "Déclaration",
-    path : "/cotisations",
-    icon : <BlenderIcon />
-  },
 
-];
 
 const ResponsiveAppBar = () => {
+  const {routes} = useMenuRoutes();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
  // const [activeTab, setActiveTab] = React.useState("home");
- const connectedUser = JSON.parse(localStorage.getItem("user"));
+ const {userConnected} = useGetConnectedUser();
+
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -200,25 +161,24 @@ const ResponsiveAppBar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {routes.map((route, index) => (
-              <Link to={route.path} key={index}>
-                <p>
-                  <Button
-                  sx={{ my: 2, color: 'white', display: 'block' }}  
-                  onClick={() => 
-                    handleCloseNavMenu
-                  }
-                >
-                    {route.icon}
-                {route.name}
-              </Button>
-                </p>
-               
-              </Link>
+
+             <div>
+                {  (userConnected.isAdmin()) ? (
+                    <RouterLinkComponent route={route} handleCloseNavMenu={handleCloseNavMenu} />
+
+                ) : (
+                  (!userConnected.isAdmin() && !route.isAdmin) &&
+                  <RouterLinkComponent route={route} handleCloseNavMenu={handleCloseNavMenu} />
+                ) }
+             </div>
+
+             
             ))}
           </Box>
-
-          <PrimarySearchAppBar/>
-
+          {
+            (userConnected.isAdmin()) && <PrimarySearchAppBar/>
+          }
+          
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -226,7 +186,7 @@ const ResponsiveAppBar = () => {
                variant = "small"
                mr={2}
               >
-                {connectedUser.user.name}
+                {userConnected?.user?.user.name}
               </Typography>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                 

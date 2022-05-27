@@ -1,11 +1,15 @@
-import { Box, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { Box, Button, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { useEffect, useState } from "react";
 import {useParams} from "react-router-dom"
 import useFetchDataWithPagination from "../../../utility/useFetchDataWithPagination";
+import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
+import useGetConnectedUser from "../../../utility/useGetConnectedUser";
 
 const AllowedUserInstution = () => {
+   const {userConnected} = useGetConnectedUser();
+
     const {id} = useParams()
-    const {data, isLoading, error} = useFetchDataWithPagination("get_user_by_instutions/"+id);
+    const {data, isLoading} = useFetchDataWithPagination("get_user_by_instutions/"+id);
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -17,6 +21,10 @@ const AllowedUserInstution = () => {
     useEffect(() => {
 
     }, [data])
+
+    const deleteUser = (id) => {
+        console.log(id)
+    }
 
     return ( <Box>
         <Grid container>
@@ -32,8 +40,10 @@ const AllowedUserInstution = () => {
                             <TableCell>Téléphone</TableCell>
                             <TableCell>Email</TableCell>
                             <TableCell>Mobile</TableCell>
-                            <TableCell>Role</TableCell>
-                            <TableCell>Action</TableCell>
+                            {
+                                userConnected.isAdmin() &&
+                                <TableCell>Action</TableCell>
+                            }
                         </TableRow>
                     </TableHead>
                     <TableBody size="small">
@@ -47,9 +57,14 @@ const AllowedUserInstution = () => {
                                 <TableCell>{row.email}</TableCell>
                                 <TableCell>{row.mobile}</TableCell>
                                 <TableCell>{row.role?.name}</TableCell>
-                                <TableCell>
-                                    <button>Supprimer</button>
-                                </TableCell>
+                                {
+                                userConnected.isAdmin() &&
+                                    <TableCell>
+                                        <Button onClick={() => deleteUser(row.id)}>
+                                        <PersonRemoveIcon color="red"/>
+                                        </Button>
+                                    </TableCell>
+                                }
                             </TableRow>
                         ))}
                     </TableBody>
