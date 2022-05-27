@@ -9,8 +9,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary">
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://onpr.bi/">
+        ONPR
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -22,12 +22,11 @@ export default function AdminFooter() {
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '0vh',
+        position: 'absolute',
+        bottom:0,
+        width: '100%',
       }}
     >
-     
      
       <Box
         component="footer"
@@ -43,7 +42,7 @@ export default function AdminFooter() {
       >
         <Container maxWidth="sm">
           <Typography variant="body1">
-            My sticky footer can be found here.
+          Office National des Pensions et Risques Professionnels 
           </Typography>
           <Copyright />
         </Container>
