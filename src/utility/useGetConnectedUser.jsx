@@ -22,8 +22,6 @@ const useGetConnectedUser = () => {
 
     }
 
-   
-
     return { 
         userConnected
     };

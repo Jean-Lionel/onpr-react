@@ -8,6 +8,7 @@ import AddCotisationAfilier from '../../../Pages/Admin/contisation/AddCotisation
 import AddCotisationDetache from './AddCotisationDetache';
 import OnLineDecleration from './OnLineDecleration';
 import MeDeclarationComponent from './MeDeclarationComponent';
+import useGetConnectedUser from "../../../utility/useGetConnectedUser";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -43,30 +44,37 @@ TabPanel.propTypes = {
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
-  
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  const {userConnected} = useGetConnectedUser();
+  
 
   return (
     <Box sx={{ width: '100%' }}>
     
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="publications des données des affiliers" />
-          <Tab label="publications des données des detaches"  />
-          <Tab label="Déclaration des données pour les membres"  />
-          <Tab label="Mes déclarations"  />
+        <Tabs value={value} aria-label="basic tabs example">
+          {userConnected.isAdmin() && (
+                <Tab label="publications des données des affiliers" onClick={() => setValue(0)}/>
+          )}
+          {userConnected.isAdmin() && (
+                <Tab label="publications des données des detaches" onClick={() =>  setValue(1)} />
+          )}
+
+          <Tab label="Déclaration des données pour les membres"  onClick={() =>  setValue(2)}  />
+          <Tab label="Mes déclarations" onClick={() =>  setValue(3)} />
         </Tabs>
        
       </Box>
-      <TabPanel value={value} index={0}>
-      <AddCotisationAfilier/>
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-       <AddCotisationDetache/>
-      </TabPanel>
+      {userConnected.isAdmin() && (
+        <Box>
+          <TabPanel value={value} index={0}>
+          <AddCotisationAfilier/>
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+          <AddCotisationDetache/>
+          </TabPanel>
+        </Box>
+      )}
       <TabPanel value={value} index={2}>
         <OnLineDecleration/>
       </TabPanel>
