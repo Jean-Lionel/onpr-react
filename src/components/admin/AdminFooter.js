@@ -22,16 +22,15 @@ export default function AdminFooter() {
   return (
     <Box
       sx={{
-        position: 'absolute',
-        bottom:0,
-        width: '100%',
+        position: "fixed",
+        bottom: 0,
+        width: "100%",    
       }}
     >
      
       <Box
         component="footer"
         sx={{
-          py: 3,
           px: 2,
           mt: 'auto',
           backgroundColor: (theme) =>
