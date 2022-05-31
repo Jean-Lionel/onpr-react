@@ -2,7 +2,7 @@ import Blog from "./blog/Blog";
 const Home = () => {
     return (
         <div>
-            <Blog/>
+            <Blog className="card_blog"/>
         </div>
      )
 }

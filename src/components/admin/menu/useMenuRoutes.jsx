@@ -6,8 +6,6 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import BlenderIcon from '@mui/icons-material/Blender';
 
 const useMenuRoutes = () => {
-
-
     const routes = [
         {
           name : "Web",

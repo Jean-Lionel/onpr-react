@@ -61,7 +61,6 @@ const ArticleList = () => {
                         true && <tr key={index}>
                                     <td>{index + 1}</td>
                                     <td>
-                    
                                     <Avatar
                                     alt={article.title}
                                     src={article.image_source_url}
@@ -78,11 +77,7 @@ const ArticleList = () => {
                         
                     </tbody>
                 </table>
-        </div>
-                
-          
-          
-            
+        </div>  
         </Box>
      );
 }

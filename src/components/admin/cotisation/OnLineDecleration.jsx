@@ -12,7 +12,7 @@ import { useHistory } from "react-router-dom";
 const OnLineDecleration = () => {
    
     const {data, isLoading} = useFetchData("get_user_instution");
-    const {response, isLoading: saveLoading,finished, error, submitData} = usePostData();
+    const {isLoading: saveLoading,finished, error, submitData} = usePostData();
     const [instution, setInstution] = useState("");
     const [code_instution ,setCode_instution] = useState("");
     const [titre, setTitre] = useState("");

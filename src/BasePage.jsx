@@ -17,13 +17,12 @@ const theme = createTheme();
 
 export default function BasePage(props ) {
 
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" >
         <Header />
-        <main>
+        <main >
          
           <Grid container spacing={2}>
             <Grid item xs={12} md={3}>

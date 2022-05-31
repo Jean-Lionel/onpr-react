@@ -19,7 +19,6 @@ const useGetConnectedUser = () => {
         isEmployeur: () => (user?.role.name === "EMPLOYEUR"),
         isCandidat: () => (user?.role.name === "CANDIDAT"),
         user:  user,
-
     }
 
     return { 

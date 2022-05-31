@@ -35,13 +35,14 @@ const BaseLeftSideCard = () => {
                     <Link to={element.url}>
                     {element.title}
                     </Link>
-                   
                  </Typography>
               </p>
                 
         ))}
             
         </Grid>
+
+       
     </Box>
         
      );
