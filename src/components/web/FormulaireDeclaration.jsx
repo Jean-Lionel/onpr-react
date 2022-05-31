@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, InputLabel, LinearProgress, MenuItem, Select, TextField } from "@mui/material";
+import { Box, Button, FormControl, Grid, InputLabel, LinearProgress, MenuItem, Select, TextField } from "@mui/material";
 import { useState } from "react";
 import ReactQuill from "react-quill";
 import SendIcon from '@mui/icons-material/Send';
@@ -226,60 +226,79 @@ const FormulaireDeclaration = () => {
       </h5>
 
       <div>
-        <TextField
-        size="small"
-        label="Titre du document justificatif I"
-        value={file_name_1}
-        onChange={(e) => setFile_name_1(e.target.value)}
-        required
-        />
-        <TextField
-        type="file"
-        size="small"
-        label="Document justificatif I"
-        required
-        InputLabelProps={{
-            shrink: true,
-          }}
-        onChange={(e) => setFile_justification_1(e.target.files[0])}
-        />
-      </div>
+            <Grid container spacing={2} mr={2} ml={2} mt={1} >
+              <Grid item md={5}>
+                 
+                <input type="text"
+                 onChange={(e) => setFile_name_1(e.target.value)}
+                  required
+                  className="form-control form-control-sm"
+                  placeholder="Titre de document No I"
+                />
+              </Grid>
 
-      <div>
-        <TextField
-        size="small"
-        label="Titre du document justificatif II"
-        value={file_name_2}
-        onChange={(e) => setFile_name_2(e.target.value)}
-        />
-        <TextField
-        type="file"
-        size="small"
-        label="Document justificatif II"
-        InputLabelProps={{
-            shrink: true,
-          }}
-        onChange={(e) => setFile_justification_2(e.target.files[0])}
-        />
-      </div>
+              <Grid item md={5}>
+              <input type="file" accept=".pdf"
+              onChange={(e) => setFile_justification_1(e.target.files[0])}
+                  className="form-control form-control-sm"
+                  
+            />
+              </Grid>
+              
+            </Grid>   
+        
+          </div>
+          
 
-      <div>
-        <TextField
-        size="small"
-        label="Titre du document justificatif III" 
-        value={file_name_3}
-        onChange={(e) => setFile_name_3(e.target.value)}
-        />
-        <TextField
-        type="file"
-        size="small"
-        label="Document justificatif III"
-        InputLabelProps={{
-            shrink: true,
-          }}
-        onChange={(e) => setFile_justification_3(e.target.files[0])}
-        />
-      </div>
+          <div>
+            <Grid container spacing={2} mr={2} ml={2} mt={1} >
+              <Grid item md={5}>
+                 
+                <input type="text"
+                  onChange={(e) => setFile_name_2(e.target.value)}
+                  required
+                  className="form-control form-control-sm"
+                  placeholder="Titre du document justificatif II"
+                />
+              </Grid>
+
+              <Grid item md={5}>
+              <input type="file" accept=".pdf"
+                 onChange={(e) => setFile_justification_2(e.target.files[0])}
+                  className="form-control form-control-sm"
+                  
+            />
+              </Grid>
+              
+            </Grid>   
+        
+          </div>
+
+
+          <div>
+            <Grid container spacing={2} mr={2} ml={2} mt={1} >
+              <Grid item md={5}>
+                 
+                <input type="text"
+                  onChange={(e) => setFile_name_3(e.target.value)}
+                  required
+                  className="form-control form-control-sm"
+                  placeholder="Titre du document justificatif III"
+                />
+              </Grid>
+
+              <Grid item md={5}>
+              <input type="file" accept=".pdf"
+                 onChange={(e) => setFile_justification_3(e.target.files[0])}
+                  className="form-control form-control-sm"
+                  
+            />
+              </Grid>
+              
+            </Grid>   
+        
+          </div>
+
       {isLoading && <LinearProgress />}
       {error && <p>{ JSON.stringify(error) }</p>}
       {response && <p>{ response.data.success }</p>}
