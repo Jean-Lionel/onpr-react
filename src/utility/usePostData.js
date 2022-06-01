@@ -19,24 +19,16 @@ const usePostData = () => {
           const token = localStorage.getItem('token');
             setIsLoading(true);
             setFinished(false);
-            try {
-                const response = method === 'post' ? await axios.post(url, data, {
-                signal : abortConnection.signal,
-                    headers :{
-                        Authorization : 'Bearer ' +token
-                }
-                }) : (
-                        method === 'put' ? await axios.put(url, data, {
-                            signal: abortConnection.signal,
-                            headers: {
-                                Authorization: 'Bearer ' + token
-                            }
-                        }) : await axios.delete(url, data, {
-                            signal: abortConnection.signal,
-                            headers: {
-                                Authorization: 'Bearer ' + token
-                            }
-                        })   
+        try {
+                const config = {
+                    signal : abortConnection.signal,
+                        headers :{
+                            Authorization : 'Bearer ' +token
+                    }
+                    }
+            const response = method.toLowerCase() === 'post' ? await axios.post(url, data, config) :
+                (
+                    method.toLowerCase() === 'put' ? await axios.put(url, data, config) : await axios.delete(url, data, config)   
                 ) ;
 
                 setResponse(response);

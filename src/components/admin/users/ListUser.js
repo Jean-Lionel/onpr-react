@@ -33,7 +33,7 @@ const ListUser = () => {
         </Link>
        </Box>
       
-        <table className="table table-hover table-sm">
+        <table className="table table-hover table-sm table-responsive">
             <thead className="table-dark">
                 <tr>
                     <th>ID</th>

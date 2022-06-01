@@ -45,7 +45,7 @@ const EditerUser = () => {
             mobile,
             description,
             password,
-            roleId
+            role_id : roleId
         }
         submitData("users/" + id, data, "PUT");
     }
@@ -59,7 +59,7 @@ const EditerUser = () => {
         {postError && <Alert severity="error">{postError.message}</Alert>}
         {postLoading && <LinearProgress />}
         {JSON.stringify(response)}
-        {finished && history.push("/admin/users")}
+        {finished && history.push("/users")}
         {data?.data && (
         <div>
             <h1>Modifier l utilisateur</h1>
