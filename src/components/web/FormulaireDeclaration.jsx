@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, Grid, InputLabel, LinearProgress, MenuItem, Select, TextField } from "@mui/material";
+import { Alert, Box, Button, FormControl, Grid, InputLabel, LinearProgress, MenuItem, Select, TextField } from "@mui/material";
 import { useState } from "react";
 import ReactQuill from "react-quill";
 import SendIcon from '@mui/icons-material/Send';
@@ -244,16 +244,11 @@ const FormulaireDeclaration = () => {
                   
             />
               </Grid>
-              
             </Grid>   
-        
           </div>
-          
-
           <div>
             <Grid container spacing={2} mr={2} ml={2} mt={1} >
-              <Grid item md={5}>
-                 
+              <Grid item md={5}>                 
                 <input type="text"
                   onChange={(e) => setFile_name_2(e.target.value)}
                   required
@@ -300,8 +295,25 @@ const FormulaireDeclaration = () => {
           </div>
 
       {isLoading && <LinearProgress />}
-      {error && <p>{ JSON.stringify(error) }</p>}
-      {response && <p>{ response.data.success }</p>}
+          {error && <>
+            <Alert severity="error">
+              <p className="is-invalid" style={{background: "red"}}>
+              Vos informations n'ont pas été validées
+              </p>
+            </Alert>
+          </>}
+          {response && response.data.success && 
+            <Alert severity="success">
+            <div>
+              <h5>Votre déclaration a été reçu</h5>
+              <p>
+                Vous aurrez une Email de confirmation quand votre déclaration sera validé
+              </p>
+            </div>
+
+            </Alert>
+      
+      }
       <div >
           <Button type="submit" size="small" startIcon={(<SendIcon />)}
           sx={{ width: '92%' }}

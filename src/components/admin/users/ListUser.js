@@ -1,15 +1,18 @@
 import useFetchData from "../../../utility/useFecthData";
-import {Fab,Icon} from '@mui/material';
+import {Box, Button, Fab,Icon} from '@mui/material';
 import { DeleteTwoTone, EditNotifications } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import EditIcon from '@mui/icons-material/Edit';
+import DesktopAccessDisabledIcon from '@mui/icons-material/DesktopAccessDisabled';
 
 const ListUser = () => {
-         let {data: users, isLoading, error} = useFetchData("users");
-         let listUser = users?.data?.data
+    let {data: users, isLoading, error} = useFetchData("users");
+    let listUser = users?.data?.data
+    const history = useHistory();
         
     return ( <div>
         <div>
-            <h1>Liste des utilisateurs</h1>
+        <h4>Liste des utilisateurs</h4>
             {isLoading && (
                 <div>
                     {
@@ -21,9 +24,14 @@ const ListUser = () => {
                 <span className="error-message"> {error}</span>
             )}
         </div>
+        <Box sx={{
+            textAlign: "right",
+            marginRight: 2
+        }}>
         <Link to="admin-add-user">
          <Icon>add_circle</Icon> Ajouter un utilisateur
         </Link>
+       </Box>
       
         <table className="table table-hover table-sm">
             <thead className="table-dark">
@@ -49,12 +57,18 @@ const ListUser = () => {
                         <td>{user?.role?.name}</td>
                        
                         <td>
-                            <button className="btn btn-warning btn-sm" type="button">Modifier</button>
+                            <Button 
+                                size="small"
+                                onClick={() => { history.push("edit-user/"+user.id) }}
+                            >
                             <Fab size="small" color="secondary" aria-label="edit">
-                                <EditNotifications />
+                                <EditIcon />
                             </Fab>
+                                
+                            </Button>
+                            
                             <Fab size="small" color="primary">
-                                <DeleteTwoTone />
+                                <DesktopAccessDisabledIcon />
                             </Fab>
                         </td>
                     </tr>

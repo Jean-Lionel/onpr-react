@@ -14,18 +14,31 @@ const usePostData = () => {
         };
     }, [finished]);
 
-    const submitData = async (url, data) => {
+    const submitData = async (url, data, method="post") => {
           const abortConnection = new AbortController();
           const token = localStorage.getItem('token');
             setIsLoading(true);
             setFinished(false);
             try {
-                const response = await axios.post(url, data, {
+                const response = method === 'post' ? await axios.post(url, data, {
                 signal : abortConnection.signal,
                     headers :{
                         Authorization : 'Bearer ' +token
                 }
-                });
+                }) : (
+                        method === 'put' ? await axios.put(url, data, {
+                            signal: abortConnection.signal,
+                            headers: {
+                                Authorization: 'Bearer ' + token
+                            }
+                        }) : await axios.delete(url, data, {
+                            signal: abortConnection.signal,
+                            headers: {
+                                Authorization: 'Bearer ' + token
+                            }
+                        })   
+                ) ;
+
                 setResponse(response);
                 setError(null);
                 setFinished(true);

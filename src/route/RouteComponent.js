@@ -24,6 +24,7 @@ import OnlineService from "../Pages/OnlineService";
 import RecievedMessageDetail from "../Pages/RecievedMessageDetail";
 import RicievedMessage from "../Pages/RicievedMessage";
 import TestComponent from "../Pages/TestComponent";
+import UserEdit from "../Pages/UserEdit";
 import WebAdmin from "../Pages/WebAdmin";
 import ProtectedRoute from "../utility/ProtectedRouter";
 
@@ -53,6 +54,7 @@ const RouteComponent = () => {
           <ProtectedRoute  exact path="/ricieved-message/:id" component={RecievedMessageDetail} /> 
           <ProtectedRoute  exact path="/add-user-to-institution/:id" component={AddUserToInstution} /> 
           <ProtectedRoute  exact path="/show-detail-declaration/:id" component={DetailDeclaration} /> 
+          <ProtectedRoute  exact path="/edit-user/:id" component={UserEdit} /> 
         </Switch>
      );
 }
