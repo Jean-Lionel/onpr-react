@@ -35,52 +35,49 @@ TabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-// function a11yProps(index) {
-//   return {
-//     id: `simple-tab-${index}`,
-//     'aria-controls': `simple-tabpanel-${index}`,
-//   };
-// }
-
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
-
   const {userConnected} = useGetConnectedUser();
-  
-
   return (
     <Box sx={{ width: '100%' }}>
-    
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} aria-label="basic tabs example">
           {userConnected.isAdmin() && (
-                <Tab label="publications des données des affiliers" onClick={() => setValue(0)}/>
+            <>
+              <Tab label="publications des données des affiliers" onClick={() => setValue(0)} />
+              <Tab label="publications des données des detaches" onClick={() =>  setValue(1)} />
+              <Tab label="Données partagées" onClick={() =>  setValue(2)} />
+            </>    
           )}
-          {userConnected.isAdmin() && (
-                <Tab label="publications des données des detaches" onClick={() =>  setValue(1)} />
-          )}
-
-          <Tab label="Déclaration des données pour les membres"  onClick={() =>  setValue(2)}  />
-          <Tab label="Mes déclarations" onClick={() =>  setValue(3)} />
+        
+          <Tab label="Déclaration des données pour les membres"  onClick={() =>  setValue(3)}  />
+          <Tab label="Mes déclarations" onClick={() =>  setValue(4)} />
         </Tabs>
        
       </Box>
+      <Box>
       {userConnected.isAdmin() && (
-        <Box>
+        <>
           <TabPanel value={value} index={0}>
           <AddCotisationAfilier/>
           </TabPanel>
           <TabPanel value={value} index={1}>
           <AddCotisationDetache/>
           </TabPanel>
-        </Box>
+        </>
       )}
       <TabPanel value={value} index={2}>
-        <OnLineDecleration/>
+      Lets do some thing good 
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <MeDeclarationComponent/>
+      <OnLineDecleration/>
+        
       </TabPanel>
+      <TabPanel value={value} index={4}>
+      <MeDeclarationComponent/>
+        </TabPanel>
+      
+      </Box>
       
     </Box>
   );

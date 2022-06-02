@@ -79,7 +79,6 @@ const AddCotisationAfilier = () => {
                                 Vos données ont été bien sauvegarder
                             </Alert>
             )}
-
             {
                 error && (
                     <Alert severity="error">

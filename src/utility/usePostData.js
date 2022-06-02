@@ -26,9 +26,12 @@ const usePostData = () => {
                             Authorization : 'Bearer ' +token
                     }
                     }
-            const response = method.toLowerCase() === 'post' ? await axios.post(url, data, config) :
+            const response = method.toLowerCase() === 'post' ?
+                await axios.post(url, data, config) :
                 (
-                    method.toLowerCase() === 'put' ? await axios.put(url, data, config) : await axios.delete(url, data, config)   
+                    method.toLowerCase() === 'put' ?
+                        await axios.put(url, data, config) :
+                        await axios.delete(url, data, config)   
                 ) ;
 
                 setResponse(response);
