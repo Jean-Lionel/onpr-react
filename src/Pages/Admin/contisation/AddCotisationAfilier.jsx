@@ -1,4 +1,4 @@
-import { Box , Input, Select, MenuItem,Alert, Autocomplete, TextField, Button, Grid} from "@mui/material";
+import { Box , Input, Select, MenuItem,Alert, Autocomplete, TextField, Button, Grid, AlertTitle, LinearProgress} from "@mui/material";
 import useReadExcel from "../../../utility/useReadExcel";
 import {useEffect, useMemo, useState} from "react"
 import useFetchDataWithPagination from "../../../utility/useFetchDataWithPagination";
@@ -10,7 +10,7 @@ const AddCotisationAfilier = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const [options, setOptions] = useState([])
     const {data : institutions } = useFetchDataWithPagination("/institutions/groupby/AFFILIERS");
-    const {response, isLoading, error, finished,submitData : saveData} = usePostDate();
+    const {response, isLoading, error, finished,submitData} = usePostDate();
 
     const loadInstitutions =  useMemo(()=> institutions?.data ?? [], [institutions])
     const history = useHistory();
@@ -38,14 +38,14 @@ const AddCotisationAfilier = () => {
 
     const {data,  dataTable, handleFileUpload}  = useReadExcel();
    
-    const submitData = (e) => {
+    const saveData = (e) => {
         e.preventDefault();
         // console.log(data);
         const postData = new FormData()
         postData.append('data', JSON.stringify(data));
         postData.append('institution_id', instutionId);  // name of the file
         
-        saveData("cotisations", postData); 
+        submitData("cotisations", postData); 
 
         // axios.post("cotisations", postData)
         // .then(res => {
@@ -71,8 +71,29 @@ const AddCotisationAfilier = () => {
         autoComplete="off"
         >
         <div>
-        <form onSubmit={submitData}>
-            <h5>Chargement des données afiliers</h5>
+        <form onSubmit={saveData }>
+                        <h5>Chargement des données afiliers</h5>
+                        
+                        {response && (
+                            <Alert severity="success">
+                                Vos données ont été bien sauvegarder
+                            </Alert>
+            )}
+
+            {
+                error && (
+                    <Alert severity="error">
+                        <AlertTitle>Erreur</AlertTitle>
+                        <p>
+                            une erreur est survenue lors de l'enregistrement des données. Verfiez vos données et Réessayez encore !!!
+                        </p>
+                    </Alert>
+                )
+            }
+
+            {isLoading && (
+                 <LinearProgress color="success"/>
+            )}
 
             <Grid container spacing={2}>
                 <Grid item>
@@ -91,7 +112,7 @@ const AddCotisationAfilier = () => {
                 <Input required type="file"  label="Chargement du fichier excel"  accept="csv,xlsx,xls"   onChange={handleFileUpload}/>
                 </Grid>
                 <Grid item sx={{m: 2}}>
-                <Button type="submit" variant="contained"  >Enregistrer</Button>
+                <Button type="submit" variant="contained" onClick={saveData} >Enregistrer</Button>
                 </Grid>
 
             </Grid>

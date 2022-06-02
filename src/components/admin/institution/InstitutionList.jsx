@@ -64,6 +64,7 @@ const InstitionList = () => {
                     <TableRow>
                         <TableCell>#</TableCell>
                         <TableCell>Name</TableCell>
+                        <TableCell>Type</TableCell>
                         <TableCell>Addresse</TableCell>
                         <TableCell>Code de l'institution</TableCell>
                         <TableCell>Phone</TableCell>
@@ -79,6 +80,7 @@ const InstitionList = () => {
                         <TableRow key={institution.id}>
                             <TableCell>{institution.id}</TableCell>
                             <TableCell>{institution.name}</TableCell>
+                            <TableCell>{institution.typeInstution}</TableCell>
                             <TableCell>{institution.address}</TableCell>
                             <TableCell>{institution.identify}</TableCell>
                             <TableCell>{institution.telephone}</TableCell>
