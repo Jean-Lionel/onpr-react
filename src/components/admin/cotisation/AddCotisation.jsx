@@ -9,9 +9,9 @@ import AddCotisationDetache from './AddCotisationDetache';
 import OnLineDecleration from './OnLineDecleration';
 import MeDeclarationComponent from './MeDeclarationComponent';
 import useGetConnectedUser from "../../../utility/useGetConnectedUser";
+import DisplayCotisation from './DisplayCotisation';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -67,7 +67,7 @@ export default function BasicTabs() {
         </>
       )}
       <TabPanel value={value} index={2}>
-      Lets do some thing good 
+        <DisplayCotisation />
       </TabPanel>
       <TabPanel value={value} index={3}>
       <OnLineDecleration/>
