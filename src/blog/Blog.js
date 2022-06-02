@@ -16,13 +16,8 @@ import YoutubeComponent from './components/YoutubeComponent';
 import SomeDefaultComponent from './components/SomeDefaultComponent';
 import BlogArticlesListe from './Articles/BlogArticlesListe';
 //Connaître ONPR || Information || Nouvelles || Annonces & Communiqués || Contacts
-
-
 const theme = createTheme();
-
 export default function Blog() {
-
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -31,7 +26,6 @@ export default function Blog() {
         <main>
           <MainFeaturedPost />
           <Grid container spacing={2}>
-
             <Grid item xs={12} md={3}>
              <LeftSideCard/>
             </Grid>
@@ -47,7 +41,6 @@ export default function Blog() {
           <BlogArticlesListe/>
           <YoutubeComponent/>
           <GoogleMap/>
-          
         </main>
       </Container>
       <Footer

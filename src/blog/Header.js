@@ -24,55 +24,30 @@ function Header(props) {
       <Toolbar sx={{ borderBottom: 1, borderColor: 'green', backgroundColor:'#f50057' }}>
 
       <Grid container spacing={2}>
-          <Grid item xs={2}>
+          <Grid item md={2} xs={2}>
           {/* <img src={logo} alt="Logo de ONPR"  style={{ height: "auto", width: "100px" }}/> */}
           <Avatar
             alt="Logo de ONPR"
             src={logo}
-            sx={{ width: 100, height: 100 }}
+            sx={{ width: { md: "100px", sx:"25px" }, height: { md: "100px", sx:"25px" } }}
           />
 
           </Grid>
-          <Grid item xs={8}>
-          <Typography variant="h6" color="white" wrap>
+          <Grid item md={8} xs={ 10}>
+            <Typography variant="h6" sx={{ 
+              fontFamily: "cascadia",
+          }} color="white" >
            OFFICE NATIONAL DES PENSIONS ET RISQUES PROFESSIONNELS DES <br />
            FONCTIONNAIRES, DES MAGISTRATS ET DES AGENTS DE L’ORDRE JUDICIAIRE
           </Typography>
           </Grid>
           <Grid item xs={2}>
           
-          <Avatar
-            alt="Emblême du Burundi"
-            src={embleme}
-            sx={{ width: 100, height: 80 }}
-          />
+         
           </Grid>
           
       </Grid>
-
-       
-        {/* <Button size="small">ONPR</Button>
-        <Typography
-          component="h5"
-          variant="h5"
-          color="inherit"
-          align="center"
-          noWrap
-          sx={{ flex: 1 }}
-        >
-          {title}
-        </Typography>
-        <IconButton>
-          <SearchIcon />
-        </IconButton>
-
-        <Link to="login">
-        <Button variant="outlined" size="small">
-          Se Connecter
-         
-        </Button>
-        </Link> */}
-        
+      
       </Toolbar>
       <Toolbar
         component="nav"

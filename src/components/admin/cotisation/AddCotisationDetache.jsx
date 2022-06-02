@@ -1,4 +1,4 @@
-import { Box , Input,Alert, LinearProgress, Grid, Autocomplete, TextField, Button} from "@mui/material";
+import { Box , Input,Alert, LinearProgress, Grid, Autocomplete, TextField, Button, AlertTitle} from "@mui/material";
 import useReadExcel from "../../../utility/useReadExcel";
 import {useEffect, useMemo, useState} from "react"
 import useFetchDataWithPagination from "../../../utility/useFetchDataWithPagination";
@@ -7,7 +7,7 @@ const  AddCotisationDetache=  () => {
     const [instutionId, setInstutionId] = useState("");
     const [options, setOptions] = useState([])
     const {data : institutions } = useFetchDataWithPagination("/institutions/groupby/DETACHES");
-    const {response, isLoading, error, finished,submitData : saveData} = usePostDate();
+    const {response, isLoading, error, finished,submitData } = usePostDate();
     const {data,  dataTable, handleFileUpload}  = useReadExcel();
 
     const loadInstitutions =  useMemo(()=> institutions?.data ?? [], [institutions])
@@ -29,20 +29,31 @@ const  AddCotisationDetache=  () => {
             
         };
     }, [ finished]);
-    const submitData = (e) => {
+    const saveData = (e) => {
         e.preventDefault();
         // console.log(data);
         const postData = new FormData()
         postData.append('data', JSON.stringify(data));
         postData.append('institution_id', instutionId);  // name of the file
-        saveData("cotisations_detaches", postData);
+        submitData("cotisations_detaches", postData);
     }
     return ( 
         <Box>
             <h5>Chargement des données des detachées</h5>
-            {error && (
-                <Alert severity="error"> {JSON.stringify(response)}</Alert>
+            {response && (
+                <Alert severity="success"> {response?.data.success}</Alert>
             )}
+
+            {
+                error && (
+                    <Alert severity="error">
+                        <AlertTitle>Erreur</AlertTitle>
+                        <p>
+                            une erreur est survenue lors de l'enregistrement des données. Verfiez vos données et Réessayez encore !!!
+                        </p>
+                    </Alert>
+                )
+            }
 
             {isLoading && (
                  <LinearProgress color="success"/>
@@ -59,7 +70,7 @@ const  AddCotisationDetache=  () => {
         >
         <div>
 
-        <form onSubmit={submitData}>
+        <form onSubmit={saveData}>
             <Grid container spacing={2}>
                 <Grid item>
                     <Autocomplete
@@ -77,7 +88,7 @@ const  AddCotisationDetache=  () => {
                 <Input required type="file"  label="Chargement du fichier excel"  accept="csv,xlsx,xls"   onChange={handleFileUpload}/>
                 </Grid>
                 <Grid item sx={{m: 2}}>
-                <Button type="submit" variant="contained"  >Enregistrer</Button>
+                <Button type="submit" variant="contained" onClick={saveData}  >Enregistrer</Button>
                 </Grid>
 
             </Grid>

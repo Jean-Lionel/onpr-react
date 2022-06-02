@@ -19,6 +19,7 @@ import UserAdd from "../Pages/Admin/users/UserAdd";
 import ConsultationCotisation from "../Pages/ConsultationCotisation";
 import ConsultationCotisationDetataches from "../Pages/ConsultationCotisationDetataches";
 import DeclarationFormulaire from "../Pages/DeclarationFormulaire";
+import DetailBlog from "../Pages/DetailBlog";
 import Login from "../Pages/Login";
 import OnlineService from "../Pages/OnlineService";
 import RecievedMessageDetail from "../Pages/RecievedMessageDetail";
@@ -32,6 +33,7 @@ const RouteComponent = () => {
     return ( 
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/detail/:id" component={DetailBlog} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/detail" component={BasePage} />
           <Route exact path="/online-service" component={OnlineService} />
