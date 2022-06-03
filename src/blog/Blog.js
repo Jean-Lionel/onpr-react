@@ -31,7 +31,6 @@ export default function Blog() {
             </Grid>
             
             <Grid item xs={12} md={6}>
-             <h1>A</h1>
              <SomeDefaultComponent></SomeDefaultComponent>
             </Grid>
             <Grid item xs={12} md={3}>

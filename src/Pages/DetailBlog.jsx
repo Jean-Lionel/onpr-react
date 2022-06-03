@@ -33,7 +33,7 @@ const DetailBlog = () => {
                         </h4>
 
                         <div>
-                            <img src={artcle.image} className="" alt={artcle.title } />
+                            <img src={artcle.image_source_url} className="" alt={artcle.title } />
                         </div>
 
                         <ReactQuill

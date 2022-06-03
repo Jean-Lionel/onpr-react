@@ -156,7 +156,7 @@ const FormulaireDeclaration = () => {
             </FormControl>
       </div>
       
-      <h5>Information du victime</h5>
+      <h5>Information de la victime</h5>
       
       <div>
         <TextField
@@ -180,15 +180,13 @@ const FormulaireDeclaration = () => {
         <FormControl sx={{ m: 1, minWidth: '45%' }} size="small">
         <InputLabel id="demo-select-small">Type de déclaration</InputLabel>
         <Select
-            labelId="demo-select-small"
-            id="type_declaration"
-            label="Age"
+            label="Type de déclaration"
             onChange={(e)=> setType_declaration(e.target.value)}
             >
             <MenuItem value="">
             <em>None</em>
-            </MenuItem>
-            <MenuItem value="ACCIDENT DE TRAVAIL">ACCIDENT DE TRAVAIL</MenuItem>
+            </MenuItem> <br />
+            <MenuItem value="ACCIDENT DE TRAVAIL">ACCIDENT DE TRAVAIL</MenuItem>  <br />
             <MenuItem value="MALADIE PROFESSIONNELLES">MALADIE PROFESSIONNELLES</MenuItem>
            
         </Select>
@@ -222,7 +220,7 @@ const FormulaireDeclaration = () => {
 
       </div>
       <h5>
-          Document Justificatif
+          Documents Justificatifs
       </h5>
 
       <div>
@@ -303,11 +301,11 @@ const FormulaireDeclaration = () => {
             </Alert>
           </>}
           {response && response.data.success && 
-            <Alert severity="success">
+            <Alert severity="success" >
             <div>
               <h5>Votre déclaration a été reçu</h5>
               <p>
-                Vous aurrez une Email de confirmation quand votre déclaration sera validé
+                Vous aurez un message de confirmation quand votre déclaration sera validée
               </p>
             </div>
 

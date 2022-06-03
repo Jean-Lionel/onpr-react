@@ -1,10 +1,16 @@
 import useFetchData from "../../../utility/useFecthData";
 import {Link} from "react-router-dom"
-import { Box, Avatar } from "@mui/material";
+import { Box, Avatar, LinearProgress } from "@mui/material";
 
 const ArticleList = () => {
     let {data: articles, isLoading, error} = useFetchData("articles");
-         let articlesList = articles?.data?.data
+    let articlesList = articles?.data?.data
+
+    const updateArcticle = (id) => {
+        alert(id)
+    }
+    
+
     return ( 
         <Box
 
@@ -24,9 +30,7 @@ const ArticleList = () => {
                 </p>
             </Link>
                 {isLoading && ( 
-                    <div>
-                        Loading...
-                    </div>
+                   <LinearProgress />
                 )}
 
                 {error && ( 
@@ -36,7 +40,7 @@ const ArticleList = () => {
                 )}
             
         <div>
-            <table>
+            <table className="table table-striped">
                     <thead>
                         <tr>
                             <th>
@@ -54,6 +58,9 @@ const ArticleList = () => {
                             <th>
                                 Date de modification
                             </th>
+                            <th>
+                                Action
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,13 +71,18 @@ const ArticleList = () => {
                                     <Avatar
                                     alt={article.title}
                                     src={article.image_source_url}
-                                    sx={{ width: 200, height: 200 }}
+                                    sx={{ width: 100, height: 100 }}
                                     />
                                         
                                     </td>
                                     <td>{article.title}</td>
                                     <td>{article.created_at}</td>
-                                    <td>{article.updated_at}</td>
+                            <td>{article.updated_at}</td>
+                            <td>
+                                <button onChange={(e) => updateArcticle(article.id)}>
+                                    Modifier
+                                </button>
+                            </td>
                             </tr>
               
                     ))}

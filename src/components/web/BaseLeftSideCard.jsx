@@ -21,7 +21,14 @@ const data = [
 const BaseLeftSideCard = () => {
     return ( 
         <Box
-        sx={{ width: '100%', bgcolor: 'background.paper' }}
+            sx={{
+                width: '100%',
+                minHeight: {md: '80vh',xs:"auto"},
+                bgcolor: 'background.paper',
+                border: '2px solid green',
+                borderRadius: "6px"
+            
+            }}
         aria-label="contacts"
       >
       <Grid item xs={12} md={12}

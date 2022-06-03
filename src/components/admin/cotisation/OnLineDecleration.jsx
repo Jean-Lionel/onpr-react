@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, FormHelperText, Grid, Input, InputLabel, LinearProgress, TextField, Typography } from "@mui/material";
+import { Alert, Box, Button, FormControl, FormHelperText, Grid, Input, InputLabel, LinearProgress, TextField, Typography } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { useEffect, useState } from "react";
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
@@ -71,8 +71,9 @@ const OnLineDecleration = () => {
         formData.append("file_uploaded_2", file_uploaded_2);
         formData.append("institution_id", institution_id);
 
-        submitData("online_declaration_detaches",formData);
-
+        submitData("online_declaration_detaches", formData);
+        
+        history.push("/cotisations")
        
     }
 
@@ -81,7 +82,13 @@ const OnLineDecleration = () => {
         marginLeft: { md:15, xs: 2 },
         marginRight: { md:15, xs: 2 }
     }}>
-         {isLoading && <LinearProgress/> }
+        {isLoading && <LinearProgress />}
+        {finished && 
+            <Alert severity="succees">
+                Opération réussi
+            </Alert>
+        
+        }
          
 
          {instution && (

@@ -32,10 +32,7 @@ const useMenuRoutes = () => {
           icon : <SlideshowIcon/>,
           isAdmin : true,
         },
-        {
-          name : "Test",
-          path : "/test-compontent"
-        },
+
         {
           name : "Institution",
           path : "/institution",

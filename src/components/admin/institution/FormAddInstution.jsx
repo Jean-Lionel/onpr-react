@@ -160,8 +160,7 @@ const FormAddInstution = () => {
           onChange={(e) => (setDescription(e.target.value))}
         />
         </FormControl>
-
-
+        <Button variant="contained" type="submit" onClick={submitData}>Enregistrer</Button>
         {isLoading && ( 
             <div>
                 Is Loading...
@@ -188,7 +187,7 @@ const FormAddInstution = () => {
           </Box>
            
         )}
-        <Button variant="contained" type="submit" onClick={submitData}>Enregistrer</Button>
+        
         </div>
 
     </Box> 

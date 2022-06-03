@@ -7,7 +7,7 @@ const  BlogArticlesListe= () => {
     let articlesList = articles?.data?.data
 
     return ( <div>
-        <h1>Les articles récements</h1>
+        <h1>Les articles récents</h1>
         <CssBaseline/>
         {isLoading && <p>Loading...</p>}
         {error && <p>Error: {error.message}</p>}
