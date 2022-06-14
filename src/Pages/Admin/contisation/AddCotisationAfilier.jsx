@@ -4,7 +4,7 @@ import {useEffect, useMemo, useState} from "react"
 import useFetchDataWithPagination from "../../../utility/useFetchDataWithPagination";
 import usePostDate from "../../../utility/usePostData";
 import { useHistory } from "react-router-dom";
-
+import cotisation_model from "../../../asset/pdf/cotisation.xlsx"
 const AddCotisationAfilier = () => {
     const [instutionId, setInstutionId] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -95,7 +95,7 @@ const AddCotisationAfilier = () => {
             )}
 
             <Grid container spacing={2}>
-                <Grid item>
+                <Grid item md={3}>
                     <Autocomplete
                     disablePortal
                     id="combo-box-demo"
@@ -107,11 +107,17 @@ const AddCotisationAfilier = () => {
                     onChange={(event, v) => {setInstutionId(v?.value)}}
                 />
                 </Grid>
-                <Grid item sx={{m: 2}}>
+                <Grid item  md={3} sx={{m: 2}}>
                 <Input required type="file"  label="Chargement du fichier excel"  accept="csv,xlsx,xls"   onChange={handleFileUpload}/>
                 </Grid>
-                <Grid item sx={{m: 2}}>
+                <Grid  md={2} item sx={{m: 2}}>
                 <Button type="submit" variant="contained" onClick={saveData} >Enregistrer</Button>
+                            </Grid>
+                            
+                <Grid item md={2}>
+                                <h6>
+                                    <a href={ cotisation_model} download="modele_de_cotisation">Télécharger le modèle</a>
+                                </h6>         
                 </Grid>
 
             </Grid>

@@ -53,7 +53,7 @@ const DetailMessage = () => {
                     <Grid item md={12} sx={{ textAlign: 'right'}}>
                       
                         <Typography sx={{ textAlign: 'center' }} variant="h6" gutterBottom>
-                                Information du victime
+                                Information de la victime
                             </Typography>
                     </Grid>
                     <Grid item md={6} sx={{ textAlign: 'left'}}>
@@ -91,21 +91,21 @@ const DetailMessage = () => {
                   </Grid>
 
                   <Grid item md={12}>
-                      <h6>Les documents justificatif</h6>
+                      <h6>Les documents justificatifs</h6>
                   </Grid>
                   <Grid item md={12} sx={{ 
                       display: 'flex',
                       justifyContent: 'space-between',
                   }}>
                         <p>
-                            <a href={message.file_justification_1} rel="noopener" target="_blank">
+                            <a href={message.file_justification_1} rel="noreferrer" target="_blank">
                                 <AttachFileIcon/>
                             { message.file_name_1   }
                             </a>
                         </p>
                         { message.file_name_2 && (
                             <p>
-                                <a href={message.file_justification_2} target="_blank">
+                                <a href={message.file_justification_2} rel="noreferrer" target="_blank">
                                 <AttachFileIcon/>
                             { message.file_name_2   }
                             </a>

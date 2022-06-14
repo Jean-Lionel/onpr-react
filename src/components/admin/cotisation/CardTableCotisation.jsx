@@ -9,7 +9,7 @@ const CardTableCotisation = ({ url }) => {
         if (data?.data) {
             setCotisatios(data.data.data);
         }
-    }, [data])
+    }, [data,cotisations,paginate])
 
 
     return (<Box>
