@@ -10,6 +10,7 @@ import Header from "../blog/Header";
 import {useParams} from "react-router-dom"
 import useFetchDataWithPagination from "../utility/useFetchDataWithPagination";
 import { useEffect, useState } from "react";
+import ReactQuill from "react-quill";
 
 const theme = createTheme();
 const ArticleSearch = () => {
@@ -41,9 +42,15 @@ const ArticleSearch = () => {
                         {contenu && (
                             <Box>
                                 <h4>{contenu?.title}</h4>
-                                <p>
-                                    {JSON.stringify(contenu)}
-                                </p>
+                                <ReactQuill
+                                        value={contenu.description}
+                                        readOnly={true}
+                                        modules = {{
+                                            toolbar : false,
+                
+                                        }}
+                        
+                            />
                             </Box>
                         )}
                         

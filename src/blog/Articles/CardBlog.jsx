@@ -21,7 +21,7 @@ export default function CardBlog(props) {
         image={article.image_source_url}
         alt={article.title}
 
-        onClick={() => history.push("detail/"+article.id)}
+        onClick={() => history.push("/detail/"+article.id)}
       />
       <CardContent>
         <Typography gutterBottom variant="body2" component="div">
