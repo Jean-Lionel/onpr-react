@@ -7,6 +7,7 @@ import AddGroupe from "../blog/components/AddGroupe";
 import Home from "../Home";
 import AddUserToInstution from "../Pages/AddUserToInstution";
 import Admin from "../Pages/Admin";
+import AjoutConenue from "../Pages/Admin/AjoutConenue";
 import ArticleAdd from "../Pages/Admin/articles/ArticleAdd";
 import Article from "../Pages/Admin/articles/Articles";
 import Cotisation from "../Pages/Admin/contisation/Cotisation";
@@ -59,6 +60,7 @@ const RouteComponent = () => {
           <ProtectedRoute  exact path="/add-user-to-institution/:id" component={AddUserToInstution} /> 
           <ProtectedRoute  exact path="/show-detail-declaration/:id" component={DetailDeclaration} /> 
           <ProtectedRoute  exact path="/edit-user/:id" component={UserEdit} /> 
+          <ProtectedRoute  exact path="/ajouter-contenu/:id" component={AjoutConenue} /> 
         </Switch>
      );
 }

@@ -23,7 +23,7 @@ export default function AdminFooter() {
     <Box
       sx={{
         position: "fixed",
-        bottom: 0,
+        
         width: "100%",    
       }}
     >
