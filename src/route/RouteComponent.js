@@ -18,6 +18,7 @@ import RicievedDeclaration from "../Pages/Admin/message/RicievedDeclaration";
 import Slides from "../Pages/Admin/Slides/Slides";
 import Users from "../Pages/Admin/Users";
 import UserAdd from "../Pages/Admin/users/UserAdd";
+import ArticleSearch from "../Pages/ArticleSearch";
 import ConsultationCotisation from "../Pages/ConsultationCotisation";
 import ConsultationCotisationDetataches from "../Pages/ConsultationCotisationDetataches";
 import DeclarationFormulaire from "../Pages/DeclarationFormulaire";
@@ -36,6 +37,7 @@ const RouteComponent = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/detail/:id" component={DetailBlog} />
+          <Route exact path="/article-search/:id" component={ArticleSearch} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/detail" component={BasePage} />
           <Route exact path="/online-service" component={OnlineService} />
