@@ -3,6 +3,7 @@ import {
     Route,
   } from "react-router-dom";
 import BasePage from "../BasePage";
+import AddGroupe from "../blog/components/AddGroupe";
 import Home from "../Home";
 import AddUserToInstution from "../Pages/AddUserToInstution";
 import Admin from "../Pages/Admin";
@@ -51,6 +52,7 @@ const RouteComponent = () => {
           <ProtectedRoute  exact path="/cotisations" component={Cotisation} /> 
           <ProtectedRoute  exact path="/institutions/add" component={InstitutionAdd} /> 
           <ProtectedRoute  exact path="/web" component={WebAdmin} /> 
+          <ProtectedRoute  exact path="/add-groupe" component={AddGroupe} /> 
           <ProtectedRoute  exact path="/ricieved-message" component={RicievedMessage} /> 
           <ProtectedRoute  exact path="/ricieved-declaration" component={RicievedDeclaration} /> 
           <ProtectedRoute  exact path="/ricieved-message/:id" component={RecievedMessageDetail} /> 

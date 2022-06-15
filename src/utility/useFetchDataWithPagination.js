@@ -83,6 +83,9 @@ const useFetchDataWithPagination = (url) => {
         return () => abortConnection.abort()
     }
 
+    const refreshSearch = () => {
+        searchIntoDatabase(url)
+    }
 
 
     const pageCount = Math.ceil(data?.data?.total / data?.data?.per_page);
@@ -115,7 +118,9 @@ const useFetchDataWithPagination = (url) => {
 
     
 
-    return {data, isLoading, error,paginate, searchIntoDatabase};
+    
+
+    return {data, isLoading, error,paginate, searchIntoDatabase, refreshSearch};
     
 }
  

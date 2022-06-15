@@ -31,7 +31,7 @@ const usePostData = () => {
                 (
                     method.toLowerCase() === 'put' ?
                         await axios.put(url, data, config) :
-                        await axios.delete(url, data, config)   
+                        await axios.delete(url, config)   
                 ) ;
 
                 setResponse(response);
