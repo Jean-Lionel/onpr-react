@@ -8,7 +8,7 @@ const BackGroundImage = () => {
     const [image, setImage] = useState("");
     const [title, setTitle] = useState("");
     const [errorMessage, setErrorMessage] = useState("")
-    const { data, isLoading: loading , paginate} = useFetchDataWithPagination("slides")
+    const { data, isLoading: loading , paginate, refreshSearch} = useFetchDataWithPagination("slides")
     const [imagesListe, setImagesList] = useState(null)
     useEffect(() => {
         if (data?.data) {
@@ -17,7 +17,12 @@ const BackGroundImage = () => {
     }, [data])
 
     const deleteImage = (id) => {
-        submitData(`slides/${id}`, {}, "DELETE")
+        const r = window.confirm("êtes-vous sûr ? ")
+        if (r) {
+            submitData(`slides/${id}`, null, "DELETE")
+            refreshSearch();
+        }
+       
     }
  
     const saveData = (e) => {
@@ -28,7 +33,10 @@ const BackGroundImage = () => {
             const data = new FormData()
         data.append("image", image)
         data.append("title", title)
-        submitData("/slides", data)
+            submitData("/slides", data)
+            refreshSearch();
+            setImage("")
+            setTitle("")
         }
     }
     return (<>

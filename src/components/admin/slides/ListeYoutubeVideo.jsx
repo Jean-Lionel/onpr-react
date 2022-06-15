@@ -2,10 +2,12 @@ import { Box, Button, Card, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import YoutubeEmbed from "../../../blog/components/YoutubeEmbed";
 import useFetchDataWithPagination from "../../../utility/useFetchDataWithPagination";
+import usePostData from "../../../utility/usePostData";
 
 const ListeYoutubeVideo = () => {
-    const { data, isLoading, error , paginate} = useFetchDataWithPagination("youtube_medias");
-    const [youtubes, setYoutubes] = useState(null);
+    const { data, isLoading, error , paginate, refreshSearch } = useFetchDataWithPagination("youtube_medias");
+  const [youtubes, setYoutubes] = useState(null);
+  const { submitData } = usePostData()
 
     useEffect(() => {
         if(data?.data){
@@ -13,10 +15,15 @@ const ListeYoutubeVideo = () => {
         }
       },[data])
 
-      const deleteMedia = (id) => {
+  const deleteMedia = (id) => {
+
+    const response = window.confirm("êtes-vous sûr ? ")
+
+    if (response) {
+      submitData("youtube_medias/" + id, null, "DELETE")
+      refreshSearch()
+    }
        
-        console.log("delete media .... " );
-        alert("delete media .... " + id);
       }
 
     return ( <Box>
@@ -26,13 +33,14 @@ const ListeYoutubeVideo = () => {
           {youtubes && youtubes.map((youtube,index) => (
              <Grid item md={3} xs={12} key={index}>
              <YoutubeEmbed embedId={youtube.youtube_media} />
-             <Button OnClick={() => deleteMedia(index)}>
+             <button className="btn btn-danger btn-block btn-sm" onClick={() => deleteMedia(youtube.id)}>
                  Supprimer
-             </Button>
+             </button>
              </Grid>
 
           ))}
         </Grid>
+        {paginate()}
       
     </Card>
 
