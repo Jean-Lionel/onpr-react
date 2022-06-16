@@ -1,14 +1,22 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
-import backImg from '../asset/img/2.jpg';
 import L from "react-router-dom/Link"
+import useFetchDataWithPagination from '../utility/useFetchDataWithPagination';
 
 function MainFeaturedPost(props) {
+
+  const { data } = useFetchDataWithPagination("slides");
+  const [background, setBackground] = React.useState("")
+  
+  React.useEffect(() => {
+    if (data?.data) {
+      setBackground(data?.data?.data[0])
+    }
+
+  }, [data])
 
   return (
     <Paper
@@ -20,7 +28,7 @@ function MainFeaturedPost(props) {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        backgroundImage: `url(${backImg})`,
+        backgroundImage: `url(${background?.image})`,
       }}
     >
       {/* Increase the priority of the hero background image */}
@@ -45,7 +53,7 @@ function MainFeaturedPost(props) {
             }}
           >
             <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-              ONPR
+              ONPR 
             </Typography>
             <Typography variant="h5" color="inherit" paragraph>
             Office National des Pensions et Risques Professionnels des      

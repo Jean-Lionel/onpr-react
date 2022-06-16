@@ -1,13 +1,21 @@
-import useFetchData from "../../../utility/useFecthData";
+
 import {Link} from "react-router-dom"
 import { Box, Avatar, LinearProgress } from "@mui/material";
+import useFetchDataWithPagination from "../../../utility/useFetchDataWithPagination";
+import usePostData from "../../../utility/usePostData";
 
 const ArticleList = () => {
-    let {data: articles, isLoading, error} = useFetchData("articles");
+    let {data: articles, isLoading, error, refreshSearch } = useFetchDataWithPagination("articles");
     let articlesList = articles?.data?.data
+    const {submitData } = usePostData()
 
-    const updateArcticle = (id) => {
-        alert(id)
+    const deleteArcticle = (id) => {
+        const r = window.confirm("Vous êtes sur de supprimer cet article")
+
+        if (r) {
+            submitData("articles/"+id, null, 'DELETE')
+            refreshSearch()
+        }
     }
     
 
@@ -79,8 +87,8 @@ const ArticleList = () => {
                                     <td>{article.created_at}</td>
                             <td>{article.updated_at}</td>
                             <td>
-                                <button onChange={(e) => updateArcticle(article.id)}>
-                                    Modifier
+                                <button className="btn btn-danger" onClick={(e) => deleteArcticle(article.id)}>
+                                    Supprimer
                                 </button>
                             </td>
                             </tr>
