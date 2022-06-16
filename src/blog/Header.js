@@ -13,7 +13,7 @@ const sections = [
   { title: 'Information', url: '#' },
   { title: 'Nouvelles', url: '#' },
   { title: 'Annonces & Communiqués', url: '#' },
-  { title: 'Contacts', url: '#' },
+  { title: 'Contacts', url: '#web-footer', isId: true },
   { title: 'Services en ligne', url: '/online-service' },
   { title: 'Se Connecter', url: '/login' },
 ];
@@ -55,7 +55,10 @@ function Header(props) {
         sx={{ justifyContent: 'space-between', overflowX: 'auto', borderBottom: 1, borderColor: 'green' }}
       >
         {sections.map((section) => (
-          <Link
+        <>
+            {section?.isId && <a href={section.url}>{section.title}</a>}
+            
+            { !section?.isId &&  <Link
             color="inherit"
             noWrap
             key={section.title}
@@ -65,7 +68,9 @@ function Header(props) {
             to={section.url}
           >
             {section.title}
-          </Link>
+            </Link>}
+         
+            </>
         ))}
       </Toolbar>
     </React.Fragment>

@@ -54,9 +54,6 @@ export default function WebAdminToolBar() {
           {userConnected.isAdmin() && (
                 <Tab label="Photo" onClick={() =>  setValue(1)} />
           )}
-
-          <Tab label="Déclaration des données pour les membres"  onClick={() =>  setValue(2)}  />
-          <Tab label="Mes déclarations" onClick={() =>  setValue(3)} />
         </Tabs>
        
       </Box>
@@ -70,12 +67,7 @@ export default function WebAdminToolBar() {
           </TabPanel>
         </Box>
       )}
-      <TabPanel value={value} index={2}>
       
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-    
-      </TabPanel>
       
     </Box>
   );
