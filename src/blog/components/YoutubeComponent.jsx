@@ -22,7 +22,7 @@ export default function YoutubeComponent() {
       {isLoading && <p>.... is loading</p>}
         <Grid container spacing={2}>
           {youtubes && youtubes.map((youtube,index) => (
-             <Grid item xs={3} key={index}>
+             <Grid item xs={12} md={3} key={index}>
              <YoutubeEmbed embedId={youtube.youtube_media} />
              </Grid>
 

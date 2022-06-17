@@ -27,9 +27,9 @@ function Footer(props) {
  
 
   return (
-    <Box id="web-footer" component="footer" sx={{ bgcolor: 'background.paper' }}>
-      <Container maxWidth="lg">
-        <div className="row">
+    <Box id="web-footer" component="footer" sx={{  }}>
+      <Container maxWidth="lg" sx={{ backgroundColor: '#359901', color: 'white'}}>
+        <div className="row" >
           <div className="col-md-12">
             <h5>Contact</h5>
           </div>

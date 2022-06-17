@@ -10,9 +10,9 @@ import { Grid,Avatar } from '@mui/material';
 const sections = [
   { title: 'Accueil', url: '/' },
   // { title: 'Connaître ONPR', url: '/' },
-  { title: 'Information', url: '#' },
+  { title: 'Informations', url: '#informations', isId: true},
   { title: 'Nouvelles', url: '#' },
-  { title: 'Annonces & Communiqués', url: '#' },
+  { title: 'Annonces & Communiqués', url: '#', isId: true},
   { title: 'Contacts', url: '#web-footer', isId: true },
   { title: 'Services en ligne', url: '/online-service' },
   { title: 'Se Connecter', url: '/login' },
@@ -21,7 +21,7 @@ function Header(props) {
   
   return (
     <React.Fragment>
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'green', backgroundColor:'#f50057' }}>
+      <Toolbar sx={{ borderBottom: 1, borderColor: 'green', backgroundColor:'red', color:'green' }}>
 
       <Grid container spacing={2}>
           <Grid item md={2} xs={2}>

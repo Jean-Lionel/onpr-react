@@ -6,8 +6,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from './blog/Header';
 // import MainFeaturedPost from './blog/MainFeaturedPost';
 
-import SomeDefaultComponent from './blog/components/SomeDefaultComponent';
-import RightSideCard from './blog/components/RightSideCard';
 import Footer from './blog/Footer';
 import BaseLeftSideCard from './components/web/BaseLeftSideCard';
 

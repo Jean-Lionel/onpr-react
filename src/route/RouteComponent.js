@@ -4,6 +4,7 @@ import {
   } from "react-router-dom";
 import BasePage from "../BasePage";
 import AddGroupe from "../blog/components/AddGroupe";
+import AddFormulaireDeclaration from "../blog/components/addgroupe/AddFormulaireDeclaration";
 import Home from "../Home";
 import AddUserToInstution from "../Pages/AddUserToInstution";
 import Admin from "../Pages/Admin";
@@ -63,6 +64,7 @@ const RouteComponent = () => {
           <ProtectedRoute  exact path="/show-detail-declaration/:id" component={DetailDeclaration} /> 
           <ProtectedRoute  exact path="/edit-user/:id" component={UserEdit} /> 
           <ProtectedRoute  exact path="/ajouter-contenu/:id" component={AjoutConenue} /> 
+          <ProtectedRoute  exact path="/add-formulaire" component={AddFormulaireDeclaration} /> 
         </Switch>
      );
 }

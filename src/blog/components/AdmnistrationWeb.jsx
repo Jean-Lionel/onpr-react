@@ -5,7 +5,10 @@ const AdmnistrationWeb = () => {
     return (<Box>
         <ul>
             <li>
-                <Link to="add-groupe" className=""> Groupe</Link>
+                <Link to="/add-groupe" className=""> Groupe</Link>
+            </li>
+            <li>
+                <Link to="/add-formulaire" className=""> Formulaire de déclaration</Link>
             </li>
             
         </ul>

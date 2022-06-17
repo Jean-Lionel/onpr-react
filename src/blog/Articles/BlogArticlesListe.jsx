@@ -6,7 +6,7 @@ const  BlogArticlesListe= () => {
     let {data: articles, isLoading, error} = useFetchData("articles");
     let articlesList = articles?.data?.data
 
-    return ( <div>
+    return ( <div id="informations">
         <h1>Les articles récents</h1>
         <CssBaseline/>
         {isLoading && <p>Loading...</p>}
