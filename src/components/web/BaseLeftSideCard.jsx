@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 const data = [
     {
-        title: "Consultation des cotisations pour les affiliers",
+        title: "Consultation des cotisations pour les affilies",
         url : "/client-consultation-cotisation-afilier",
         icon : ""
     },

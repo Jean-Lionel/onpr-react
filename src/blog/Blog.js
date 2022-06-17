@@ -18,7 +18,7 @@ export default function Blog() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ backgroundColor: 'rgba(0,255,255,0)'}}>
         <Header />
         <main>
           <MainFeaturedPost />
