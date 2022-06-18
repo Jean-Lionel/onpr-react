@@ -13,7 +13,12 @@ export default function CardBlog(props) {
   const history = useHistory();
 
   return (
-    <Card sx={{ maxWidth: 300 }} className="card_blog">
+    <Card sx={{
+      maxWidth: {md: 300, xs: '100%'}
+    }} className="card_blog"
+    
+    onClick={() => history.push("/detail/"+article.id)}
+    >
       <CardMedia
         className="image_artcle"
         component="img"
@@ -21,7 +26,7 @@ export default function CardBlog(props) {
         image={article.image_source_url}
         alt={article.title}
 
-        onClick={() => history.push("/detail/"+article.id)}
+       
       />
       <CardContent>
         <Typography gutterBottom variant="body2" component="div">

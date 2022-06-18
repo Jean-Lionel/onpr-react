@@ -36,7 +36,7 @@ function Header(props) {
           <Grid item md={8} xs={ 10}>
             <Typography variant="h6" sx={{ 
               fontFamily: "cascadia",
-              fontSize: { md: "18px", xs:"10px" }
+              fontSize: { md: "1.2rem", xs:"1rem" }
           }} color="black" >
            OFFICE NATIONAL DES PENSIONS ET RISQUES PROFESSIONNELS DES <br />
            FONCTIONNAIRES, DES MAGISTRATS ET DES AGENTS DE L’ORDRE JUDICIAIRE
@@ -48,7 +48,15 @@ function Header(props) {
       <Toolbar
         component="nav"
         variant="dense"
-        sx={{ justifyContent: 'space-between', overflowX: 'auto', borderBottom: 1, borderColor: 'green' }}
+        sx={{
+          display: { md: "flex", xs: "grid" },
+          gridTemplateColumns: '1fr auto',
+          justifyContent: 'space-between',
+          textAlign: 'left',
+          overflowX: 'auto',
+          borderBottom: 1,
+          borderColor: 'green'
+        }}
       >
         {sections.map((section) => (
         <>
@@ -60,7 +68,13 @@ function Header(props) {
             key={section.title}
             variant="body2"
             href={section.url}
-            sx={{ p: 1, flexShrink: 0 }}
+              sx={
+                {
+                  p: 1,
+                  flexShrink: 0,
+                  display: 'block',
+                  textAlign: 'left'
+                }}
             to={section.url}
           >
             {section.title}

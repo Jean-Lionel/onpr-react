@@ -8,7 +8,7 @@ import ReactQuill from "react-quill";
 
 const DetailBlog = () => {
     const { id } = useParams();
-    const { data, isLoading, error } = useFetchData("articles/" + id);
+    const { data, isLoading } = useFetchData("articles/" + id);
     const [artcle, setArtcle] = useState(null);
 
     useEffect(() => {
@@ -18,12 +18,11 @@ const DetailBlog = () => {
         }
 
     }, [data, artcle])
-    return (<>
+    return (<Box>
          <Container maxWidth="lg">
             <Header />
             {isLoading && <LinearProgress color="success" />}
 
-            
             <Box>
                 <Grid container spacing={2}>
                     {artcle && (
@@ -33,7 +32,7 @@ const DetailBlog = () => {
                         </h4>
 
                         <div>
-                            <img src={artcle.image_source_url} className="" alt={artcle.title } />
+                            <img src={artcle.image_source_url} className="container-fluid" alt={artcle.title } />
                         </div>
 
                         <ReactQuill
@@ -60,7 +59,7 @@ const DetailBlog = () => {
             </Box>  
         </Container>
         <Footer />
-    </>);
+    </Box>);
 }
  
 export default DetailBlog;

@@ -1,7 +1,7 @@
 import SearchBar from "material-ui-search-bar";
 import { useState } from "react";
 import axios from "axios";
-import { Alert, Box, CssBaseline, Grid, LinearProgress } from "@mui/material";
+import { Alert, Box, Button, CssBaseline, Grid, LinearProgress } from "@mui/material";
 import DataTable from 'react-data-table-component';
 
 
@@ -74,8 +74,20 @@ const ListeCotisationClient = () => {
 
   
     return ( <div>
-         <SearchBar onChange={setMatricule} size="small" onRequestSearch={searchInformation} placeholder="Saisissez ici votre Numéro matricule ONPR" />
-        
+      
+        <div className="row">
+            <div className="col-md-6">
+                <SearchBar onChange={setMatricule}
+                size="small"
+                onRequestSearch={searchInformation}
+                placeholder="Saisissez ici votre Numéro matricule ONPR" />
+            </div>
+            <div className="col-md-6">
+               
+                <Button variant="outlined" onclick={searchInformation}>Ok</Button>
+            </div>
+
+        </div>
         <Box>
             <h6>Liste des cotisations</h6>
         </Box>

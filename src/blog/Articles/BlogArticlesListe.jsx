@@ -13,7 +13,7 @@ const  BlogArticlesListe= () => {
         {error && <p>Error: {error.message}</p>}
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 3 }}>
         {articlesList && articlesList.map(article => (
-            <Grid item key={article.id}  md={4} sm={6}>
+            <Grid item key={article.id}  md={4} xs={12}>
                 <CardBlog   article={article}/>
             </Grid>
             
