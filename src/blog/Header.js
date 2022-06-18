@@ -29,23 +29,19 @@ function Header(props) {
           <Avatar
             alt="Logo de ONPR"
             src={logo}
-            sx={{ width: { md: "100px", sx:"25px" }, height: { md: "100px", sx:"25px" } }}
+            sx={{ width: { md: "100px", sx:"30px" }, height: { md: "100px", sx:"30px" } }}
           />
 
           </Grid>
           <Grid item md={8} xs={ 10}>
             <Typography variant="h6" sx={{ 
               fontFamily: "cascadia",
-          }} color="white" >
+              fontSize: { md: "18px", xs:"10px" }
+          }} color="black" >
            OFFICE NATIONAL DES PENSIONS ET RISQUES PROFESSIONNELS DES <br />
            FONCTIONNAIRES, DES MAGISTRATS ET DES AGENTS DE L’ORDRE JUDICIAIRE
           </Typography>
           </Grid>
-          <Grid item xs={2}>
-          
-         
-          </Grid>
-          
       </Grid>
       
       </Toolbar>
