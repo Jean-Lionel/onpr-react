@@ -33,8 +33,6 @@ const columns = [
     },
 ];
 
-
-
 const ListeCotisationClient = () => {
     const [data, setData] = useState([]);
     const [error, setError] = useState('');
@@ -43,7 +41,6 @@ const ListeCotisationClient = () => {
     const searchInformation = (e) => {
         fetchData()
     }
-
     const nombreTotal = () => {
         let somme = 0;
         data.map(item => {
@@ -84,7 +81,7 @@ const ListeCotisationClient = () => {
             </div>
             <div className="col-md-6">
                
-                <Button variant="outlined" onclick={searchInformation}>Ok</Button>
+                <Button variant="contained" onclick={searchInformation}>Ok</Button>
             </div>
 
         </div>

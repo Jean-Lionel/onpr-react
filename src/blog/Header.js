@@ -21,7 +21,7 @@ function Header(props) {
   
   return (
     <React.Fragment>
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'green', backgroundColor:'red', color:'green' }}>
+      <Toolbar sx={{ borderBottom: 1, borderColor: 'green', backgroundColor:'#e91e63', color:'green' }}>
 
       <Grid container spacing={2}>
           <Grid item md={2} xs={2}>
@@ -36,8 +36,8 @@ function Header(props) {
           <Grid item md={8} xs={ 10}>
             <Typography variant="h6" sx={{ 
               fontFamily: "cascadia",
-              fontSize: { md: "1.2rem", xs:"1rem" }
-          }} color="black" >
+              fontSize: { md: "1.2rem", xs:"0.8rem" }
+          }} color="white" >
            OFFICE NATIONAL DES PENSIONS ET RISQUES PROFESSIONNELS DES <br />
            FONCTIONNAIRES, DES MAGISTRATS ET DES AGENTS DE L’ORDRE JUDICIAIRE
           </Typography>

@@ -14,7 +14,11 @@ export default function CardBlog(props) {
 
   return (
     <Card sx={{
-      maxWidth: {md: 300, xs: '100%'}
+      maxWidth: { md: 300, xs: '100%' },
+      '&:hover': {
+        cursor: 'pointer',
+        border: '1px solid #25fdab'
+      },
     }} className="card_blog"
     
     onClick={() => history.push("/detail/"+article.id)}
