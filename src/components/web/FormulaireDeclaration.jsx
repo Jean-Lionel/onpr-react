@@ -1,12 +1,12 @@
 import { Alert, Box, Button, FormControl, Grid, InputLabel, LinearProgress, MenuItem, Select, TextField } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import SendIcon from '@mui/icons-material/Send';
 import usePostDate from "../../utility/usePostData";
 
 const FormulaireDeclaration = () => {
 
-    const {response, isLoading, error,  submitData} = usePostDate()
+    const {response, isLoading, error,finished,  submitData} = usePostDate()
 
     const [nom_instution, setNom_instution] = useState("");
     const [adresse, setAdresse] = useState("");
@@ -26,7 +26,38 @@ const FormulaireDeclaration = () => {
     const [file_name_2, setFile_name_2] = useState("");
     const [file_justification_2, setFile_justification_2] = useState("");
     const [file_name_3, setFile_name_3] = useState("");
-    const [file_justification_3, setFile_justification_3] = useState("");
+  const [file_justification_3, setFile_justification_3] = useState("");
+  
+
+    useEffect(() => {
+      if (finished) {
+        setNom_instution("");
+        setAdresse("");
+        setTelephone("");
+        setEmail("");
+        setNomDeclarant("");
+        setMotif_declaration("");
+        setDate_declaration("");
+        setVictime_name("");
+        setVictime_prenom("");
+        setType_declaration("");
+        setVictime_matricule("");
+        setVictime_telephone("");
+        setVictime_fonction("");
+        setFile_name_1("");
+        setFile_justification_1("");
+        setFile_name_2("");
+        setFile_justification_2("");
+        setFile_name_3("");
+        setFile_justification_3("");
+        setNomDeclarant("");
+        setMotif_declaration("");
+        setDate_declaration("");
+      
+
+      }
+    }, [finished]);
+    
 
     console.log("La valeur est de " + nom_declarant)
 
@@ -53,13 +84,7 @@ const FormulaireDeclaration = () => {
         data.append('file_name_3', file_name_3)
         data.append('file_justification_3', file_justification_3)
        
-        submitData('declaration/',data);
-        // axios.post('declaration/', data,{
-        //   headers: {
-        //     'Content-Type': 'multipart/form-data',
-        //   }
-        // });
-       
+        submitData('declaration/', data); 
     }
     return ( <Box>
         
@@ -145,7 +170,8 @@ const FormulaireDeclaration = () => {
         
       </div>
 
-      <div>
+          <div>
+            <label htmlFor="">Description</label>
       <FormControl fullWidth sx={{ m:2, width: '92%' }} variant="standard">
             <ReactQuill 
                 theme="snow" value={motif_declaration}
@@ -301,20 +327,24 @@ const FormulaireDeclaration = () => {
             </Alert>
           </>}
           {response && response.data.success && 
-            <Alert severity="success" >
-            <div>
-              <h5>Votre déclaration a été reçu</h5>
-              <p>
-                Vous aurez un message de confirmation quand votre déclaration sera validée
-              </p>
+            <Box sx={{ 
+              background: "green",
+              width: "90%",
+              margin: "auto",
+              color: "white",
+            }}>
+              <div>
+                <h5> <Alert severity="success" > </Alert> Votre déclaration a été reçu</h5>
+                <p>
+                  Vous aurez un message de confirmation quand votre déclaration sera validée
+                </p>
             </div>
-
-            </Alert>
+            </Box>
       
       }
-      <div >
+      <div className="mt-4">
           <Button type="submit" size="small" startIcon={(<SendIcon />)}
-          sx={{ width: '92%' }}
+          sx={{ width: '80%' }}
            variant="contained">
                Envoyer </Button>
       </div>

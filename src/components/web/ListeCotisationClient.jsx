@@ -73,17 +73,11 @@ const ListeCotisationClient = () => {
     return ( <div>
       
         <div className="row">
-            <div className="col-md-6">
                 <SearchBar onChange={setMatricule}
                 size="small"
                 onRequestSearch={searchInformation}
                 placeholder="Saisissez ici votre Numéro matricule ONPR" />
-            </div>
-            <div className="col-md-6">
-               
-                <Button variant="contained" onclick={searchInformation}>Ok</Button>
-            </div>
-
+    
         </div>
         <Box>
             <h6>Liste des cotisations</h6>
