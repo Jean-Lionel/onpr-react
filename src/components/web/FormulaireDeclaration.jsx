@@ -213,6 +213,7 @@ const FormulaireDeclaration = () => {
             <em>None</em>
             </MenuItem> <br />
             <MenuItem value="ACCIDENT DE TRAVAIL">ACCIDENT DE TRAVAIL</MenuItem>  <br />
+            <MenuItem value="ACCIDENT DE TRAJET">ACCIDENT DE TRAJET</MenuItem>  <br />
             <MenuItem value="MALADIE PROFESSIONNELLES">MALADIE PROFESSIONNELLES</MenuItem>
            
         </Select>

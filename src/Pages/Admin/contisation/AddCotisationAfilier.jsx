@@ -6,7 +6,7 @@ import usePostDate from "../../../utility/usePostData";
 import { useHistory } from "react-router-dom";
 import cotisation_model from "../../../asset/pdf/cotisation.xlsx"
 const AddCotisationAfilier = () => {
-    const [instutionId, setInstutionId] = useState("");
+
     const [errorMessage, setErrorMessage] = useState("");
     const [options, setOptions] = useState([])
     const {data : institutions } = useFetchDataWithPagination("/institutions/groupby/AFFILIERS");
@@ -43,9 +43,14 @@ const AddCotisationAfilier = () => {
         // console.log(data);
         const postData = new FormData()
         postData.append('data', JSON.stringify(data));
-        postData.append('institution_id', instutionId);  // name of the file
+        postData.append('institution_id', 0);  // name of the file
         
-        submitData("cotisations", postData); 
+        if (postData.length > 0) {
+            submitData("cotisations", postData); 
+        } else {
+            setErrorMessage("Veuillez charger un fichier excel");
+        }
+        
 
         // axios.post("cotisations", postData)
         // .then(res => {
@@ -95,7 +100,7 @@ const AddCotisationAfilier = () => {
             )}
 
             <Grid container spacing={2}>
-                <Grid item md={3}>
+                {/* <Grid item md={3}>
                     <Autocomplete
                     disablePortal
                     id="combo-box-demo"
@@ -106,7 +111,7 @@ const AddCotisationAfilier = () => {
 
                     onChange={(event, v) => {setInstutionId(v?.value)}}
                 />
-                </Grid>
+                </Grid> */}
                 <Grid item  md={3} sx={{m: 2}}>
                 <Input required type="file"  label="Chargement du fichier excel"  accept="csv,xlsx,xls"   onChange={handleFileUpload}/>
                 </Grid>

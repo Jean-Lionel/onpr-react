@@ -12,6 +12,7 @@ import GoogleMap from './components/GoogleMap';
 import YoutubeComponent from './components/YoutubeComponent';
 import SomeDefaultComponent from './components/SomeDefaultComponent';
 import BlogArticlesListe from './Articles/BlogArticlesListe';
+import ArticleInlineShow from './Articles/ArticleInlineShow';
 //Connaître ONPR || Information || Nouvelles || Annonces & Communiqués || Contacts
 const theme = createTheme();
 export default function Blog() {
@@ -28,13 +29,13 @@ export default function Blog() {
             </Grid>
             
             <Grid item xs={12} md={6}>
-             <SomeDefaultComponent></SomeDefaultComponent>
+             <ArticleInlineShow></ArticleInlineShow>
             </Grid>
             <Grid item xs={12} md={3}>
              <RightSideCard/>
             </Grid>
           </Grid>
-          <BlogArticlesListe/>
+          {/* <BlogArticlesListe/> */}
           <YoutubeComponent/>
           <GoogleMap/>
         </main>

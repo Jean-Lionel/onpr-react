@@ -4,11 +4,12 @@ import {useEffect, useMemo, useState} from "react"
 import useFetchDataWithPagination from "../../../utility/useFetchDataWithPagination";
 import usePostDate from "../../../utility/usePostData";
 const  AddCotisationDetache=  () => {
-    const [instutionId, setInstutionId] = useState("");
+    
     const [options, setOptions] = useState([])
     const {data : institutions } = useFetchDataWithPagination("/institutions/groupby/DETACHES");
     const {response, isLoading, error, finished,submitData } = usePostDate();
-    const {data,  dataTable, handleFileUpload}  = useReadExcel();
+    const { data, dataTable, handleFileUpload } = useReadExcel();
+    const [errorMessage, setErrorMessage] = useState("");
 
     const loadInstitutions =  useMemo(()=> institutions?.data ?? [], [institutions])
 
@@ -34,8 +35,14 @@ const  AddCotisationDetache=  () => {
         // console.log(data);
         const postData = new FormData()
         postData.append('data', JSON.stringify(data));
-        postData.append('institution_id', instutionId);  // name of the file
-        submitData("cotisations_detaches", postData);
+        postData.append('institution_id', 1);  // name of the file
+
+        if (postData.length > 0) {
+            submitData("cotisations_detaches", postData);
+        } else {
+            setErrorMessage("Veuillez charger un fichier excel");
+        }
+       
     }
     return ( 
         <Box>
@@ -43,6 +50,8 @@ const  AddCotisationDetache=  () => {
             {response && (
                 <Alert severity="success"> {response?.data.success}</Alert>
             )}
+
+            {errorMessage &&  <Alert severity="error"> {errorMessage}</Alert> }
 
             {
                 error && (
@@ -72,7 +81,7 @@ const  AddCotisationDetache=  () => {
 
         <form onSubmit={saveData}>
             <Grid container spacing={2}>
-                <Grid item>
+                {/* <Grid item>
                     <Autocomplete
                     disablePortal
                     id="combo-box-demo"
@@ -83,7 +92,7 @@ const  AddCotisationDetache=  () => {
 
                     onChange={(event, v) => {setInstutionId(v?.value)}}
                 />
-                </Grid>
+                </Grid> */}
                 <Grid item sx={{m: 2}}>
                 <Input required type="file"  label="Chargement du fichier excel"  accept="csv,xlsx,xls"   onChange={handleFileUpload}/>
                 </Grid>

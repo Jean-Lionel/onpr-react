@@ -20,7 +20,7 @@ import useGetConnectedUser from '../../utility/useGetConnectedUser';
 import useMenuRoutes from "./menu/useMenuRoutes"
 import RouterLinkComponent from './menu/RouterLinkComponent';
 
-const settings = ['Profile', 'Account', 'Dashboard'];
+const settings = ['Profile'];
 
 
 const ResponsiveAppBar = () => {
@@ -28,9 +28,8 @@ const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
  // const [activeTab, setActiveTab] = React.useState("home");
- const {userConnected} = useGetConnectedUser();
-
-
+  const { userConnected } = useGetConnectedUser();
+  
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
