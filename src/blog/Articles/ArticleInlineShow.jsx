@@ -14,7 +14,10 @@ const ArticleInlineShow = () => {
                 </div>
                 <div className="col-md-9">
                 <h6>{article.title}</h6>
-                    <p>{article.image_caption}</p>
+                    <p style={{ textAlign: 'justify' }}>{article.image_caption}</p>
+                    <div style={{ textAlign: "right"}}>
+                        <a href={`/detail/${article.id}`} className="btn btn-link">Lire plus</a>
+                    </div>
                 </div>
             </div>
 

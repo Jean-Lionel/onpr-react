@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from 'axios'
 import { useHistory } from "react-router-dom";
-import { Box,Alert, FormControl, Input, InputLabel ,Button, FilledInput} from "@mui/material";
+import { Box,Alert, FormControl, Input, InputLabel ,Button, FilledInput, TextField} from "@mui/material";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
@@ -9,6 +9,7 @@ const AddArticle = () => {
 
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("")
+    const [image_caption, setImageCaption] = useState("")
     const [selectedFile, setSelectedFile] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
     let history = useHistory();
@@ -22,7 +23,8 @@ const AddArticle = () => {
         data.append("title", title)
         data.append("body", body)
         data.append("image", selectedFile)
-        
+        data.append("image_caption", image_caption)
+
         axios.post("articles/", 
             data,
             {
@@ -58,7 +60,7 @@ const AddArticle = () => {
 
           <FormControl fullWidth sx={{ m: 1 }} variant="standard">
                 <h4>Ajouter un Article</h4>
-                <InputLabel htmlFor="title"  >Title</InputLabel>
+                <InputLabel htmlFor="title"  >Titre</InputLabel>
                 <Input
                 id="title"
 
@@ -67,9 +69,23 @@ const AddArticle = () => {
                 onChange={(e) => (setTitle(e.target.value))}
                 ></Input>
 
-            </FormControl>
+                </FormControl>
+                <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+                    
+                    <TextField
+                        id="standard-multiline-static"
+                        label="Résumé"
+                        multiline
+                        rows={4}
+                        defaultValue=""
+                        variant="standard"
+                        onChange={(e) => (setImageCaption(e.target.value))}
+                     />
 
-            <FormControl fullWidth sx={{ m:1 }} variant="standard">
+                </FormControl>
+                
+                <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+                <InputLabel htmlFor="body"  >Description</InputLabel>
             <ReactQuill 
                 theme="snow" value={body}
                 onChange={setBody}
