@@ -5,12 +5,22 @@ import {useParams} from "react-router-dom"
 import useFetchData from "../utility/useFecthData";
 import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
+import LeftSideCard from "../blog/components/LeftSideCard";
 
 const DetailBlog = () => {
     const { id } = useParams();
     const { data, isLoading } = useFetchData("articles/" + id);
-    const [artcle, setArtcle] = useState(null);
 
+    const { data: articles } = useFetchData("toutArticles");
+
+    const [artcle, setArtcle] = useState(null);
+    const [linkArtcles, setLinkArtcles] = useState(null);
+
+    useEffect(() => {
+            if(articles?.data){
+                setLinkArtcles(articles.data)
+        }
+    }, [articles])
     useEffect(() => {
 
         if (data?.data) {
@@ -23,6 +33,12 @@ const DetailBlog = () => {
             <Header />
             {isLoading && <LinearProgress color="success" />}
 
+            <Grid container spacing={2}>
+            <Grid item xs={12} md={3}>
+             <LeftSideCard/>
+            </Grid>
+            
+            <Grid item xs={12} md={6}>
             <Box>
                 <Grid container spacing={2}>
                     {artcle && (
@@ -57,6 +73,25 @@ const DetailBlog = () => {
 
                 
             </Box>  
+            </Grid>
+            <Grid item xs={12} md={3}>
+                    {/* <RightSideCard /> */}
+                    <>
+                        <h4>Autres informations</h4>
+                        <ul>
+                            {linkArtcles && linkArtcles.map(article => {
+                                return <li key={article.id} style={{ textAlign: 'left'}}>
+                                    <a href={`/detail/${article.id}`}>{article.title.toLowerCase()}</a>
+                                </li>
+                            }
+                            )}  
+                        </ul>
+                    </>
+
+            </Grid>
+            </Grid>
+            
+           
         </Container>
         <Footer />
     </Box>);
