@@ -29,10 +29,24 @@ const AddFormulaireDeclaration = () => {
     const addDocument = (e) => {
         // e.preventDefault();
         setShowUploadFormulaire(e.id)
+        setGroupeId(e.id)
 
     }
 
     const uploadFile = (e) => {
+        // alert(groupeId)
+        e.preventDefault();
+       // alert('je suis cool')
+        const form = new FormData();
+        form.append("file", selectedFile);
+        form.append("title", titleFormulaire);
+        form.append("downloawd_doc_id", groupeId);
+
+        submitData("file_declarations", form)
+        setSelectedFile("")
+        setTitleFormulaire("")
+        setShowUploadFormulaire(0)
+
         e.preventDefault();
     }
 

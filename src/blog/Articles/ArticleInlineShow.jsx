@@ -6,7 +6,6 @@ const ArticleInlineShow = () => {
     let articlesList = articles?.data?.data
 
     return (<div id="informations">
-        <h1>ArticleInlineShow</h1>
         {articlesList && articlesList.map(article => {
             return <div key={article.id} className="row mb-1">
                 <div className="col-md-3">

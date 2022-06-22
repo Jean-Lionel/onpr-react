@@ -43,9 +43,9 @@ const AddCotisationAfilier = () => {
         // console.log(data);
         const postData = new FormData()
         postData.append('data', JSON.stringify(data));
-        postData.append('institution_id', 0);  // name of the file
+        postData.append('institution_id', 1);  // name of the file
         
-        if (postData.length > 0) {
+        if (data.length > 0) {
             submitData("cotisations", postData); 
         } else {
             setErrorMessage("Veuillez charger un fichier excel");
@@ -112,7 +112,9 @@ const AddCotisationAfilier = () => {
                     onChange={(event, v) => {setInstutionId(v?.value)}}
                 />
                 </Grid> */}
-                <Grid item  md={3} sx={{m: 2}}>
+                            <div>{data?.length}</div>
+                            <Grid item md={3} sx={{ m: 2 }}>
+                                
                 <Input required type="file"  label="Chargement du fichier excel"  accept="csv,xlsx,xls"   onChange={handleFileUpload}/>
                 </Grid>
                 <Grid  md={2} item sx={{m: 2}}>

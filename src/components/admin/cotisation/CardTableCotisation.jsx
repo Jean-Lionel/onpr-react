@@ -22,9 +22,9 @@ const CardTableCotisation = ({ url }) => {
             <table className="table table-striped table-sm table-responsive">
                 <thead>
                     <tr>
-                        <th>Id cotisation</th>
-                        <th>Code de Societe</th>
-                        <th>Classement</th>
+                        <th>#</th>
+                        {/* <th>Code de Societe</th> */}
+                        {/* <th>Classement</th> */}
                         <th>Matricule</th>
                         <th>Nom et Prénom</th>
                         <th>Salaire de base</th>
@@ -37,8 +37,8 @@ const CardTableCotisation = ({ url }) => {
                 {cotisations && cotisations.map((el, index) => (
                     <tr key={index}>
                         <td>{el.id}</td>
-                        <td>{ el?.institution.identify}</td>
-                        <td>{ el?.institution.typeInstution}</td>
+                        {/* <td>{ el?.institution.identify}</td> */}
+                        {/* <td>{ el?.institution.typeInstution}</td> */}
                         <td>{ el.matricule}</td>
                         <td>{el.nom} {el.prenom }</td>
                         <td>{el.salaire_base} </td>
