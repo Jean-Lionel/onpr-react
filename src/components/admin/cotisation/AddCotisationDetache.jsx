@@ -37,7 +37,7 @@ const  AddCotisationDetache=  () => {
         postData.append('data', JSON.stringify(data));
         postData.append('institution_id', 1);  // name of the file
 
-        if (postData.length > 0) {
+        if (data.length > 0) {
             submitData("cotisations_detaches", postData);
         } else {
             setErrorMessage("Veuillez charger un fichier excel");
@@ -60,6 +60,9 @@ const  AddCotisationDetache=  () => {
                         <p>
                             une erreur est survenue lors de l'enregistrement des données. Verfiez vos données et Réessayez encore !!!
                         </p>
+                        <p>
+                            {JSON.stringify(error)}
+                        </p>
                     </Alert>
                 )
             }
@@ -77,7 +80,10 @@ const  AddCotisationDetache=  () => {
         noValidate
         autoComplete="off"
         >
-        <div>
+                <div>
+                    {data.length && <h5>
+                        {data.length }
+                    </h5>}
 
         <form onSubmit={saveData}>
             <Grid container spacing={2}>

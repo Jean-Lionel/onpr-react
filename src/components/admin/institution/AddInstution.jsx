@@ -16,7 +16,7 @@ const Addinstution = () => {
     const [identify, setIdentify] = useState("")
     const [telephone, setTelephone] = useState("")
     const [description, setDescription] = useState("")
-    const [typeInstution, setTypeInstution] = useState("")
+    const [typeInstution, setTypeInstution] = useState("DETACHES")
     // address
     // telephone
     // type_istutions
@@ -80,7 +80,7 @@ const Addinstution = () => {
                 />
             </FormControl>
 
-            <FormControl fullWidth sx={{ m: 1 }}  size="small">
+            {/* <FormControl fullWidth sx={{ m: 1 }}  size="small">
             <InputLabel id="demo-simple-select-label">Type d'institution</InputLabel>
             <Select
                  required
@@ -96,7 +96,7 @@ const Addinstution = () => {
                 <MenuItem value="DETACHES">DETACHES</MenuItem>
                 <MenuItem value="AFFILIERS">AFFILIERS</MenuItem>
             </Select>
-            </FormControl>
+            </FormControl> */}
 
             <FormControl fullWidth sx={{ m: 1 }}  size="small">
                 <InputLabel htmlFor="telephone"  size="small">Téléphone</InputLabel>

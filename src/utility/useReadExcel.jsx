@@ -25,7 +25,7 @@ function useReadExcel() {
               d = d.substring(d.length - 2, 1);
           }
           if (headers[j]) {
-            obj[headers[j]] = d;
+            obj[headers[j].trim()] = d.trim();
           }
         }
 

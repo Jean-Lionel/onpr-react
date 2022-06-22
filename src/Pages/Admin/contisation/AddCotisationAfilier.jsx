@@ -51,14 +51,6 @@ const AddCotisationAfilier = () => {
             setErrorMessage("Veuillez charger un fichier excel");
         }
         
-
-        // axios.post("cotisations", postData)
-        // .then(res => {
-        //     console.log(res);
-        // }).catch(err => {
-        //     console.log(err);
-        //     setErrorMessage(err.response.data.message);
-        // })
         
     }
     return ( 
@@ -100,18 +92,7 @@ const AddCotisationAfilier = () => {
             )}
 
             <Grid container spacing={2}>
-                {/* <Grid item md={3}>
-                    <Autocomplete
-                    disablePortal
-                    id="combo-box-demo"
-                    options={options}
-                    sx={{ width: 300 }}
-                    required
-                    renderInput={(params) => <TextField {...params} size="small" label="INSTUTION" />}
-
-                    onChange={(event, v) => {setInstutionId(v?.value)}}
-                />
-                </Grid> */}
+            
                             <div>{data?.length}</div>
                             <Grid item md={3} sx={{ m: 2 }}>
                                 
