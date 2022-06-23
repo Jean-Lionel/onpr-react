@@ -38,6 +38,8 @@ const BackGroundImage = () => {
             setImage("")
             setTitle("")
         }
+
+        refreshSearch();
     }
     return (<>
         

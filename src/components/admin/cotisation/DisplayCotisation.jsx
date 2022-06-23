@@ -40,6 +40,7 @@ const DisplayCotisation = () => {
                             <tr>
                                 <th>#</th>
                                 <th>Activité No</th>
+                                <th>Nombre Total</th>
                                 <th>Date</th>
                                 <th>
                                     Action
@@ -52,8 +53,13 @@ const DisplayCotisation = () => {
                                 <tr key={i} >
                                     <td>{ i+1}</td>
                                     <td>{ e.traitement}</td>
+                                    <td>{ e.total_ligne}</td>
                                     <td>{e.created_at}</td>
-                 
+                                    <td>
+                                        <button className="btn btn-sm btn-warning">
+                                            annuler
+                                        </button>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
@@ -71,7 +77,8 @@ const DisplayCotisation = () => {
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Activité No</th>
+                            <th>Activité No</th>
+                            <th>Nombre Total</th>
                                 <th>Date</th>
                                 <th>
                                     Action
@@ -84,8 +91,13 @@ const DisplayCotisation = () => {
                                 <tr key={i} >
                                     <td>{ i+1}</td>
                                     <td>{ e.traitement}</td>
+                                    <td>{ e.total_ligne}</td>
                                     <td>{e.created_at}</td>
-                 
+                                    <td>
+                                        <button className="btn btn-sm btn-warning">
+                                            annuler
+                                        </button>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
