@@ -47,7 +47,9 @@ const AddFormulaireDeclaration = () => {
         setTitleFormulaire("")
         setShowUploadFormulaire(0)
 
-        e.preventDefault();
+        refreshSearch()
+
+       
     }
 
 
