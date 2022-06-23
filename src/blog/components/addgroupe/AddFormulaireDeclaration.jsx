@@ -114,7 +114,13 @@ const AddFormulaireDeclaration = () => {
                                         <td>{index + 1}</td>
                                             <td>{item.title}</td>
                                             <td>
-                                                
+                                                <ul>
+                                                    {item.documents && item.documents.map((doc) => (
+                                                        <li>
+                                                            <a href={doc.name} rel="noreferrer" target="_blank">{doc.title}</a>
+                                                        </li>
+                                                    ))}
+                                                </ul>
                                             </td>
                                         <td >
                                         <button className="btn btn-secondary btn-sm" onClick={() => addDocument(item)}>
