@@ -9,7 +9,6 @@ const AddArticle = () => {
 
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("")
-    const [image_caption, setImageCaption] = useState("")
     const [selectedFile, setSelectedFile] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
     let history = useHistory();
@@ -23,7 +22,6 @@ const AddArticle = () => {
         data.append("title", title)
         data.append("body", body)
         data.append("image", selectedFile)
-        data.append("image_caption", image_caption)
 
         axios.post("articles/", 
             data,
@@ -70,19 +68,7 @@ const AddArticle = () => {
                 ></Input>
 
                 </FormControl>
-                <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-                    
-                    <TextField
-                        id="standard-multiline-static"
-                        label="Résumé"
-                        multiline
-                        rows={4}
-                        defaultValue=""
-                        variant="standard"
-                        onChange={(e) => (setImageCaption(e.target.value))}
-                     />
-
-                </FormControl>
+              
                 
                 <FormControl fullWidth sx={{ m: 1 }} variant="standard">
                 <InputLabel htmlFor="body"  >Description</InputLabel>
@@ -100,16 +86,15 @@ const AddArticle = () => {
                 type="file"
                 id="image"
                 label="Image"
-                required
                 onChange={(e) => (setSelectedFile(e.target.files[0]))}              
                 ></FilledInput>
-            </FormControl>
-
-            <Button type="submit"            variant="contained"
-           
-            >
+                </FormControl>
+                
+            <Button type="submit" variant="contained">
                 Enregistrer
-            </Button>
+                </Button>
+                
+                {errorMessage &&<Alert severity="error">{ errorMessage} </Alert>}
           </form>
                 
 

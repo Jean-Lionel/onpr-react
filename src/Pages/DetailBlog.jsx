@@ -43,13 +43,16 @@ const DetailBlog = () => {
                 <Grid container spacing={2}>
                     {artcle && (
                     <Grid item md={12}>
-                        <h4>
+                        <h1 className="title-article">
                             {artcle.title}
-                        </h4>
-
-                        <div>
-                            <img src={artcle.image_source_url} className="container-fluid" alt={artcle.title } />
-                        </div>
+                                    </h1>
+                                    
+                                    {artcle.image && (
+                                         <div>
+                                         <img src={artcle.image_source_url} className="container-fluid" alt={artcle.title } />
+                                     </div>
+                                    )}
+                       
 
                         <ReactQuill
                             value={artcle.body}

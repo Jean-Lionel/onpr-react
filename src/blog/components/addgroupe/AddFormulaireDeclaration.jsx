@@ -14,7 +14,7 @@ const AddFormulaireDeclaration = () => {
     const [showUploadFormulaire, setShowUploadFormulaire] = useState(0)
     const [titleFormulaire, setTitleFormulaire] = useState("")
     const [selectedFile, setSelectedFile] = useState("")
-    
+
     useEffect(() => {
 
         if (data?.data) {
@@ -102,6 +102,7 @@ const AddFormulaireDeclaration = () => {
                             <tr>
                                 <th>#</th>
                                 <th>Titre</th>
+                                <th>Contenu</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -111,7 +112,10 @@ const AddFormulaireDeclaration = () => {
                                     <>
                                     <tr key={item.id}>
                                         <td>{index + 1}</td>
-                                        <td>{item.title}</td>
+                                            <td>{item.title}</td>
+                                            <td>
+                                                
+                                            </td>
                                         <td >
                                         <button className="btn btn-secondary btn-sm" onClick={() => addDocument(item)}>
                                                 Ajouter un document
