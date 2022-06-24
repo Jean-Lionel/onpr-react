@@ -9,7 +9,7 @@ const AllowedUserInstution = () => {
    const {userConnected} = useGetConnectedUser();
 
     const {id} = useParams()
-    const {data, isLoading} = useFetchDataWithPagination("get_user_by_instutions/"+id);
+    const {data, isLoading, refreshSearch} = useFetchDataWithPagination("get_user_by_instutions/"+id);
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -19,8 +19,8 @@ const AllowedUserInstution = () => {
     }, [data])
 
     useEffect(() => {
-
-    }, [data])
+        refreshSearch()
+    }, [refreshSearch])
 
     const deleteUser = (id) => {
         console.log(id)

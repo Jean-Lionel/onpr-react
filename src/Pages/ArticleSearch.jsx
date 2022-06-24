@@ -11,6 +11,7 @@ import {useParams} from "react-router-dom"
 import useFetchDataWithPagination from "../utility/useFetchDataWithPagination";
 import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
+import MainFeaturedPost from "../blog/MainFeaturedPost";
 
 const theme = createTheme();
 const ArticleSearch = () => {
@@ -31,7 +32,8 @@ const ArticleSearch = () => {
         <CssBaseline />
         <Container maxWidth="lg">
           <Header />
-          <main>
+        <main>
+        <MainFeaturedPost />
           
             <Grid container spacing={2}>
               <Grid item xs={12} md={3}>
@@ -59,7 +61,7 @@ const ArticleSearch = () => {
                <RightSideCard/>
               </Grid>
             </Grid>
-            <BlogArticlesListe/>
+            {/* <BlogArticlesListe/> */}
             <YoutubeComponent/>
             <GoogleMap/>
           </main>
