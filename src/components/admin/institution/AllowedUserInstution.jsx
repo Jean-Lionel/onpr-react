@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom"
 import useFetchDataWithPagination from "../../../utility/useFetchDataWithPagination";
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 import useGetConnectedUser from "../../../utility/useGetConnectedUser";
+import usePostData from "../../../utility/usePostData";
 
 const AllowedUserInstution = () => {
    const {userConnected} = useGetConnectedUser();
@@ -11,6 +12,7 @@ const AllowedUserInstution = () => {
     const {id} = useParams()
     const {data, isLoading, refreshSearch} = useFetchDataWithPagination("get_user_by_instutions/"+id);
     const [users, setUsers] = useState([]);
+    const {submitData } = usePostData()
 
     useEffect(() => {
         if(data?.data) {
@@ -23,7 +25,13 @@ const AllowedUserInstution = () => {
     }, [refreshSearch])
 
     const deleteUser = (id) => {
-        console.log(id)
+        const x = window.confirm(`Are you sure you want to delete`)
+
+        if (x) {
+            submitData("users/" + id, null, "DELETE")
+            refreshSearch()
+        }
+       
     }
 
     return ( <Box>
@@ -39,7 +47,6 @@ const AllowedUserInstution = () => {
                             <TableCell>Nom et prénom</TableCell>
                             <TableCell>Téléphone</TableCell>
                             <TableCell>Email</TableCell>
-                            <TableCell>Mobile</TableCell>
                             {
                                 userConnected.isAdmin() &&
                                 <TableCell>Action</TableCell>
@@ -55,7 +62,7 @@ const AllowedUserInstution = () => {
                                 <TableCell>{row.name}</TableCell>
                                 <TableCell>{row.telephone}</TableCell>
                                 <TableCell>{row.email}</TableCell>
-                                <TableCell>{row.mobile}</TableCell>
+
                                 <TableCell>{row.role?.name}</TableCell>
                                 {
                                 userConnected.isAdmin() &&

@@ -3,13 +3,13 @@ import { useState , useEffect } from "react";
 //import usePostData from "../../../utility/usePostData";
 import axios from "axios"
 import useFetchData from "../../../utility/useFecthData";
-import {useParams} from "react-router-dom"
+import {useHistory, useParams} from "react-router-dom"
 
 const FormAddInstution = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [telephone, setTelephone] = useState("");
-    const [mobile, setMobile] = useState("");
+    const [mobile, setMobile] = useState("XX");
     const [description, setDescription] = useState("");
     const [password, setPassword] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -18,9 +18,7 @@ const FormAddInstution = () => {
     const [roleId, setRoleId] = useState("");
     let { id:institution_id } = useParams();
     const [errorMessages, setErrorMessages] = useState(null)
-
-    //const history = useHistory();
-
+    
     useEffect(() => {
       if(error && error.errors){
         setErrorMessages(Object.entries(error.errors))
@@ -58,7 +56,7 @@ const FormAddInstution = () => {
             // localStorage.setItem('user', JSON.stringify(response.data.data));
             setIsLoading(false);
             // window.location.href = '/admin';
-           // history.push("/users")
+            window.location=document.referrer;
             console.log(response.data)
 
             
@@ -79,7 +77,7 @@ const FormAddInstution = () => {
     >
         <div>
             <h5>Ajouter un utilisateur</h5>
-        <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+        <FormControl fullWidth sx={{ m: 1 }} variant="standard" size="small">
           <InputLabel htmlFor="name">Nom et Prénom *</InputLabel>
           <Input
             id="name"
@@ -88,7 +86,7 @@ const FormAddInstution = () => {
             onChange={(e) => (setName(e.target.value))}
           />
         </FormControl>
-        <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+        <FormControl fullWidth sx={{ m: 1 }} variant="standard" size="small">
           <InputLabel htmlFor="email">Email *</InputLabel>
           <Input
             id="email"
@@ -99,7 +97,7 @@ const FormAddInstution = () => {
           />
         </FormControl>
 
-        <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+        <FormControl fullWidth sx={{ m: 1 }} variant="standard" size="small">
           <InputLabel htmlFor="telephone">Téléphone</InputLabel>
           <Input
             id="telephone"
@@ -109,19 +107,7 @@ const FormAddInstution = () => {
             onChange={(e) => (setTelephone(e.target.value))}
           />
         </FormControl>
-
-        <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-          <InputLabel htmlFor="mobile">Mobile</InputLabel>
-          <Input
-            id="mobile"
-            type="text"
-            required
-            value={mobile}
-            onChange={(e) => (setMobile(e.target.value))}
-          />
-        </FormControl>
-
-        <FormControl fullWidth>
+        <FormControl fullWidth size="small">
             <InputLabel id="role_id">Role</InputLabel>
             <Select
               labelId="role_id"
@@ -130,15 +116,15 @@ const FormAddInstution = () => {
               label="Age"
               onChange={(e) => (setRoleId(e.target.value))}
             >
-              {roles && roles?.data?.map((role, index) =>(
-                <MenuItem key={index} value={role?.id}>{role?.name}</MenuItem>
+              {roles && roles?.data?.map((role, index) => (
+              (role.name === 'EMPLOYEUR') &&  <MenuItem key={index} value={role?.id}>{role?.name}</MenuItem> 
               ))
               }
              
             </Select>
         </FormControl>
 
-        <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+        <FormControl fullWidth sx={{ m: 1 }} variant="standard" size="small">
           <InputLabel htmlFor="password">Mot de passe *</InputLabel>
           <Input
             id="password"
@@ -149,7 +135,7 @@ const FormAddInstution = () => {
           />
         </FormControl>
 
-        <FormControl fullWidth sx={{ m:1 }} variant="standard">
+        <FormControl fullWidth sx={{ m:1 }} variant="standard" size="small">
         <TextField
           id="description"
           label="Multiline"
