@@ -21,7 +21,7 @@ const AnnonceListe = () => {
             <h4> Liste des annonces </h4>
             </div>
             <div className="col-md-4">
-                <Link to="/annonce-add">ajouter un annonce</Link>
+                <Link to="/annonce-add">ajouter une annonce</Link>
             </div>
         </div>
         <table className="table table-striped table-sm">
@@ -35,9 +35,16 @@ const AnnonceListe = () => {
             </thead>
 
             <tbody>
-                {annonces && annonces.map(annonce => (
+                {annonces && annonces.map((annonce, index )=> (
                     <tr key={annonce.id}>
-
+                        <td>{ index}</td>
+                        <td>{annonce.title}</td>
+                        <td className="d-flex flex-row">
+                            <button className="btn btn-info btn-block btn-sm mr-2">
+                                Dépublier
+                            </button>
+                            <button className="btn btn-danger btn-block btn-sm ml-2">Supprimer</button>
+                        </td>
                     </tr>     
                ))}
             </tbody>
