@@ -46,6 +46,7 @@ const AddFormulaireDeclaration = () => {
         setSelectedFile("")
         setTitleFormulaire("")
         setShowUploadFormulaire(0)
+        setGroupeId(null)
 
         refreshSearch()
 
@@ -63,6 +64,7 @@ const AddFormulaireDeclaration = () => {
         const x = { title: title };
         if (groupeId) {
             submitData("downloawddoc/" + groupeId, x, "PUT");
+            setGroupeId(null)
         } else {
             submitData("downloawddoc", x, "POST");
         }

@@ -19,6 +19,7 @@ import RicievedDeclaration from "../Pages/Admin/message/RicievedDeclaration";
 import Slides from "../Pages/Admin/Slides/Slides";
 import Users from "../Pages/Admin/Users";
 import UserAdd from "../Pages/Admin/users/UserAdd";
+import Annonce from "../Pages/Annonce";
 import ArticleSearch from "../Pages/ArticleSearch";
 import ConsultationCotisation from "../Pages/ConsultationCotisation";
 import ConsultationCotisationDetataches from "../Pages/ConsultationCotisationDetataches";
@@ -65,6 +66,7 @@ const RouteComponent = () => {
           <ProtectedRoute  exact path="/edit-user/:id" component={UserEdit} /> 
           <ProtectedRoute  exact path="/ajouter-contenu/:id" component={AjoutConenue} /> 
           <ProtectedRoute  exact path="/add-formulaire" component={AddFormulaireDeclaration} /> 
+          <ProtectedRoute  exact path="/annonce" component={Annonce} /> 
         </Switch>
      );
 }
