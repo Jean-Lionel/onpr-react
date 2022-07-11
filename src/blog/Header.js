@@ -11,7 +11,7 @@ const sections = [
   { title: 'Accueil', url: '/' },
   // { title: 'Connaître ONPR', url: '/' },
   { title: 'Informations', url: '/#informations', isId: true},
-  { title: 'Nouvelles', url: '/#informations',  isId: true },
+  { title: ' Annonces & Communiqués', url: '/annonce-communique' },
   // { title: 'Annonces & Communiqués', url: '#', isId: true},
   { title: 'Contacts', url: '#web-footer', isId: true },
   { title: 'Services en ligne', url: '/online-service' },

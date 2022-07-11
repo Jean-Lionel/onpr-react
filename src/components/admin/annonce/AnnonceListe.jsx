@@ -37,7 +37,7 @@ const AnnonceListe = () => {
             <tbody>
                 {annonces && annonces.map((annonce, index )=> (
                     <tr key={annonce.id}>
-                        <td>{ index}</td>
+                        <td>{ index + 1}</td>
                         <td>{annonce.title}</td>
                         <td className="d-flex flex-row">
                             <button className="btn btn-info btn-block btn-sm mr-2">

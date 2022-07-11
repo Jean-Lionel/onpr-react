@@ -21,6 +21,8 @@ import Slides from "../Pages/Admin/Slides/Slides";
 import Users from "../Pages/Admin/Users";
 import UserAdd from "../Pages/Admin/users/UserAdd";
 import Annonce from "../Pages/Annonce";
+import AnnonceCommunique from "../Pages/AnnonceCommunique";
+import AnnonceCommuniqueDetail from "../Pages/AnnonceCommuniqueDetail";
 import ArticleSearch from "../Pages/ArticleSearch";
 import ConsultationCotisation from "../Pages/ConsultationCotisation";
 import ConsultationCotisationDetataches from "../Pages/ConsultationCotisationDetataches";
@@ -43,6 +45,8 @@ const RouteComponent = () => {
           <Route exact path="/article-search/:id" component={ArticleSearch} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/detail" component={BasePage} />
+          <Route exact path="/annonce-communique" component={AnnonceCommunique} />
+          <Route exact path="/annonce-communique/:id" component={AnnonceCommuniqueDetail} />
           <Route exact path="/online-service" component={OnlineService} />
           <Route exact path="/client-consultation-cotisation-afilier" component={ConsultationCotisation} />
           <Route exact path="/client-consultation-cotisation-detaches" component={ConsultationCotisationDetataches} />

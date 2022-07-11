@@ -20,7 +20,7 @@ const MeDeclarationComponent = () => {
     return (
         <Box>
             {isLoading && <LinearProgress color="success" />}
-            <h6>Mes déclarations</h6>
+            <h6>Mes declarations</h6>
           
             {declarations && declarations.length > 0 && declarations.map((declaration, index) =>  (
                 <Box key={index}>

@@ -46,7 +46,7 @@ const  AddCotisationDetache=  () => {
     }
     return ( 
         <Box>
-            <h5>Chargement des données des detachées</h5>
+            <h5>Chargement des données des detaches</h5>
             {response && (
                 <Alert severity="success"> {response?.data.success}</Alert>
             )}

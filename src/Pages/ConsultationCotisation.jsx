@@ -7,7 +7,7 @@ const ConsultationCotisation = () => {
     return ( 
         <BasePage>
             <Box>
-                <h1>Consultation de cotisation pour les affiliers</h1>
+                <h1>Consultation de cotisation pour les affilies</h1>
                 <p>
                     Onpr offre une opportunite de visualiser vos cotisation en ligne d'une façon simple
                     et rapide.

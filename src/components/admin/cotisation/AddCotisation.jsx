@@ -44,14 +44,14 @@ export default function BasicTabs() {
         <Tabs value={value} aria-label="basic tabs example">
           {userConnected.isAdmin() && (
             <>
-              <Tab label="publications des données des affiliers" onClick={() => setValue(0)} />
-              <Tab label="publications des données des detaches" onClick={() =>  setValue(1)} />
-              <Tab label="Données partagées" onClick={() =>  setValue(2)} />
+              <Tab label="publications des donnees des affilies" onClick={() => setValue(0)} />
+              <Tab label="publications des donnees des detaches" onClick={() =>  setValue(1)} />
+              <Tab label="Donnees partagees" onClick={() =>  setValue(2)} />
             </>    
           )}
         
-          <Tab label="Déclaration des données pour les membres"  onClick={() =>  setValue(3)}  />
-          <Tab label="Mes déclarations" onClick={() =>  setValue(4)} />
+          <Tab label="Declaration des donnees pour les membres"  onClick={() =>  setValue(3)}  />
+          <Tab label="Mes declarations" onClick={() =>  setValue(4)} />
         </Tabs>
        
       </Box>

@@ -28,7 +28,7 @@ const CardTableCotisation = ({ url }) => {
                         <th>Matricule</th>
                         <th>Nom et Prénom</th>
                         <th>Salaire de base</th>
-                        <th>Anné</th>
+                        <th>Année</th>
                         <th>Mois</th>
                         <th>Point</th>
                     </tr>
