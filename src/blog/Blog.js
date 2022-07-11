@@ -10,8 +10,6 @@ import LeftSideCard from './components/LeftSideCard';
 import RightSideCard from './components/RightSideCard';
 import GoogleMap from './components/GoogleMap';
 import YoutubeComponent from './components/YoutubeComponent';
-import SomeDefaultComponent from './components/SomeDefaultComponent';
-import BlogArticlesListe from './Articles/BlogArticlesListe';
 import ArticleInlineShow from './Articles/ArticleInlineShow';
 //Connaître ONPR || Information || Nouvelles || Annonces & Communiqués || Contacts
 const theme = createTheme();
@@ -19,7 +17,7 @@ export default function Blog() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth="lg" sx={{ backgroundColor: 'rgba(0,255,255,0)'}}>
+      <Container maxWidth="lg" sx={{ backgroundColor: 'rgba(0,200,255,0)'}}>
         <Header />
         <main>
           <MainFeaturedPost />
