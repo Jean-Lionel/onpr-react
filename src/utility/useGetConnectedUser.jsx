@@ -13,7 +13,7 @@ const useGetConnectedUser = () => {
     }, []);
 
     const userConnected = {
-    
+        
         isAdmin: () => (user?.role.name === "ADMINISTRATEUR"),
         isRisqueProfessionnel: () => (user?.role.name === "RISQUE PROFESSIONELLE"),
         isEmployeur: () => (user?.role.name === "EMPLOYEUR"),

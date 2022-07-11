@@ -4,12 +4,10 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import useGetConnectedUser from "../../utility/useGetConnectedUser";
 import BackGroundImage from './web/BackGroundImage';
 import AdmnistrationWeb from '../../blog/components/AdmnistrationWeb';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -42,22 +40,15 @@ TabPanel.propTypes = {
 
 export default function WebAdminToolBar() {
   const [value, setValue] = React.useState(0);
-  const {userConnected} = useGetConnectedUser();
+
   return (
     <Box sx={{ width: '100%' }}>
-    
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} aria-label="basic tabs example">
-          {userConnected.isAdmin() && (
                 <Tab label="admnistration" onClick={() => setValue(0)}/>
-          )}
-          {userConnected.isAdmin() && (
                 <Tab label="Photo" onClick={() =>  setValue(1)} />
-          )}
         </Tabs>
-       
       </Box>
-      {userConnected.isAdmin() && (
         <Box>
           <TabPanel value={value} index={0}>
             <AdmnistrationWeb/>
@@ -65,10 +56,7 @@ export default function WebAdminToolBar() {
           <TabPanel value={value} index={1}>
             <BackGroundImage />
           </TabPanel>
-        </Box>
-      )}
-      
-      
+        </Box> 
     </Box>
   );
 }

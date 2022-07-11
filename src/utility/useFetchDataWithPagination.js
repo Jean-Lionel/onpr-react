@@ -115,11 +115,6 @@ const useFetchDataWithPagination = (url) => {
            
         );
     }
-
-    
-
-    
-
     return {data, isLoading, error,paginate, searchIntoDatabase, refreshSearch};
     
 }

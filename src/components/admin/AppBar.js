@@ -23,6 +23,18 @@ import RouterLinkComponent from './menu/RouterLinkComponent';
 const settings = ['Profile'];
 
 
+function LinkRoute({ route, handleCloseNavMenu}) {
+  return <>
+  <Link to={route.path} key={route.name}  underline="none">
+                        <MenuItem key={route.name} onClick={handleCloseNavMenu}>
+                          {route.icon}
+                          <Typography textAlign="center">{route.name}</Typography>
+                        </MenuItem>
+                      </Link>
+  </>
+}
+
+
 const ResponsiveAppBar = () => {
   const {routes} = useMenuRoutes();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -129,22 +141,21 @@ const ResponsiveAppBar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {routes.map((route) => (
-                (userConnected.isAdmin()) ? (
-                <Link to={route.path} key={route.name}  underline="none">
-                  <MenuItem key={route.name} onClick={handleCloseNavMenu}>
-                    {route.icon}
-                    <Typography textAlign="center">{route.name}</Typography>
-                  </MenuItem>
-                </Link>) : (
-                 ( !userConnected.isAdmin() && !route.isAdmin) &&
-                  <Link to={route.path} key={route.name}  underline="none">
-                    <MenuItem key={route.name} onClick={handleCloseNavMenu}>
-                      {route.icon}
-                      <Typography textAlign="center">{route.name}</Typography>
-                    </MenuItem>
-                  </Link>
-                )
+              {routes.map((route, index) => (
+                <Box key={index}>
+                  {
+                    userConnected.isAdmin() &&
+                    <LinkRoute route={route} handleCloseNavMenu={handleCloseNavMenu} /> 
+                  }
+                  {
+                    ( userConnected.isEmployeur() && route.isEmployeur) &&
+                    <LinkRoute route={route} handleCloseNavMenu={handleCloseNavMenu} />
+                  }
+                  {
+                    ( userConnected.isWebAdministrator() && route.isWebAdministrator) &&
+                    <LinkRoute route={route} handleCloseNavMenu={handleCloseNavMenu} />
+                  }
+                </Box>
 
               ))}
             </Menu>
@@ -171,23 +182,25 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {routes.map((route, index) => (
 
-             <div>
-                {  (userConnected.isAdmin()) ? (
-                    <RouterLinkComponent route={route} handleCloseNavMenu={handleCloseNavMenu} />
+              <div key={index}>
+                {
+                  userConnected.isAdmin() &&  <RouterLinkComponent route={route} handleCloseNavMenu={handleCloseNavMenu} />
+                }
 
-                ) : (
-                  (!userConnected.isAdmin() && !route.isAdmin) &&
+                {
+                  userConnected.isWebAdministrator() && route.isWebAdministrator &&
                   <RouterLinkComponent route={route} handleCloseNavMenu={handleCloseNavMenu} />
-                ) }
+                }
+                {
+                  userConnected.isEmployeur() && route.isEmployeur &&
+                  <RouterLinkComponent route={route} handleCloseNavMenu={handleCloseNavMenu} />
+                }
              </div>
-
-             
             ))}
           </Box>
           {
             (userConnected.isAdmin()) && <PrimarySearchAppBar/>
           }
-          
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
