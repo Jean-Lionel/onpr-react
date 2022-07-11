@@ -2,12 +2,15 @@ import { Box, Divider, LinearProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import CardMessage from "../components/admin/Declaration/CardMessage";
 import useFetchDataWithPagination from "../utility/useFetchDataWithPagination";
+import useGetConnectedUser from "../utility/useGetConnectedUser";
 import Admin from "./Admin";
 
 const RicievedMessage = () => {
     const {data, error, isLoading , paginate } = useFetchDataWithPagination("declarations")
      const [unreadMessages, setUnreadMessages] = useState([]);
-     const [readMessages, setReadMessages] = useState([])
+    const [readMessages, setReadMessages] = useState([])
+    
+    const { user } = useGetConnectedUser();
 
      useEffect(() => {
         if(data?.data){
@@ -21,7 +24,10 @@ const RicievedMessage = () => {
            
             {isLoading && <LinearProgress color="success" />}  
             {error && <p>Error: {error.message}</p>}
-            <h5>
+
+            {(user.isAdmin() || user.isRisqueProfessionnel()) && <>
+                
+                <h5>
                 Déclaration en ligne
             </h5>
             <Box    ml={5} mr={5}>
@@ -40,6 +46,9 @@ const RicievedMessage = () => {
               ))}
             </Box>
             {paginate()}
+            
+            </>}
+           
         </Admin> 
     );
 }

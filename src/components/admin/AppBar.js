@@ -8,7 +8,6 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
@@ -199,8 +198,10 @@ const ResponsiveAppBar = () => {
             ))}
           </Box>
           {
-            (userConnected.isAdmin()) && <PrimarySearchAppBar/>
+            (userConnected.isAdmin() || userConnected.isRisqueProfessionnel() || userConnected.isChefRecouvrement() )  
           }
+           <PrimarySearchAppBar/>
+          
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

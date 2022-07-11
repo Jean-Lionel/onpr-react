@@ -5,11 +5,14 @@ import { useState, useEffect, useMemo } from 'react';
 import useFetchData from '../../../utility/useFecthData';
 import {Link} from "react-router-dom";
 import LocationCityIcon from '@mui/icons-material/LocationCity';
+import useGetConnectedUser from '../../../utility/useGetConnectedUser';
 
 const PrimarySearchAppBar = () => {
   const [unreadMessage, setUnreadMessage] = useState(0);
   const {data} =  useFetchData('unReadDeclaration');
-  const message = useMemo(() => data?.data , [data]);
+  const message = useMemo(() => data?.data, [data]);
+  
+  const { userConnected } = useGetConnectedUser();
 
   useEffect(() => {
     setUnreadMessage(message)
@@ -31,8 +34,8 @@ const PrimarySearchAppBar = () => {
 
   }}>
     
+    {  (userConnected.isAdmin() ||userConnected.isRisqueProfessionnel()) && 
     <Link to="/ricieved-message">
-
     <Badge  
         sx={{
           cursor: 'pointer',
@@ -44,30 +47,35 @@ const PrimarySearchAppBar = () => {
           }
         }}
      badgeContent={unreadMessage?.web_declaration} color="success">
-       
         <MailIcon color="action" />
     </Badge>
 
-    </Link>
-    <Link to="/ricieved-declaration">
+      </Link>}
+    
+    { (userConnected.isAdmin() || userConnected.isChefRecouvrement()) && 
+      <Link to="/ricieved-declaration">
 
-    <Badge  
-        sx={{
-          cursor: 'pointer',
-          marginRight: '15px',
-          display: 'block',
-          padding: '2px',
-          '&:hover': {
-            backgroundColor: 'rgba(255,40,0,0.8)'
-          }
-        }}
-     badgeContent={unreadMessage?.instution_declaration } color="success">
-
-        <LocationCityIcon color="action" />
-    </Badge>
-
-    </Link>
+      <Badge  
+          sx={{
+            cursor: 'pointer',
+            marginRight: '15px',
+            display: 'block',
+            padding: '2px',
+            '&:hover': {
+              backgroundColor: 'rgba(255,40,0,0.8)'
+            }
+          }}
+       badgeContent={unreadMessage?.instution_declaration } color="success">
+  
+          <LocationCityIcon color="action" />
+      </Badge>
+  
+      </Link>
+     
+    
+    }
    
+    
   </Box> );
 }
  

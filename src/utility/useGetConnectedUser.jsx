@@ -18,6 +18,7 @@ const useGetConnectedUser = () => {
         isRisqueProfessionnel: () => (user?.role.name === "RISQUE PROFESSIONELLE"),
         isEmployeur: () => (user?.role.name === "EMPLOYEUR"),
         isWebAdministrator: () => (user?.role.name === "ADMINISTRATEUR WEB"),
+        isChefRecouvrement: () => (user?.role.name === "CHEF RECOUVREMENT"),
         user:  user,
     }
 
