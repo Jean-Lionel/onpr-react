@@ -28,6 +28,7 @@ import ConsultationCotisation from "../Pages/ConsultationCotisation";
 import ConsultationCotisationDetataches from "../Pages/ConsultationCotisationDetataches";
 import DeclarationFormulaire from "../Pages/DeclarationFormulaire";
 import DetailBlog from "../Pages/DetailBlog";
+import Information from "../Pages/Information";
 import Login from "../Pages/Login";
 import OnlineService from "../Pages/OnlineService";
 import RecievedMessageDetail from "../Pages/RecievedMessageDetail";
@@ -41,6 +42,7 @@ const RouteComponent = () => {
     return ( 
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/informations" component={Information} />
           <Route exact path="/detail/:id" component={DetailBlog} />
           <Route exact path="/article-search/:id" component={ArticleSearch} />
           <Route exact path="/login" component={Login} />

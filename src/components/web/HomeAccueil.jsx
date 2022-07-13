@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 const HomeAccueil = () => {
     return (<Box>
         <h1> Connaître l’ONPR</h1>
-        <main>
+        <main style={{ textAlign: 'justify' }}>
             <p>L’idée de créer un organisme chargé de gérer les Pensions et les Risques Professionnels des Fonctionnaires, des Magistrats et des Agents de l’Ordre Judiciaire date des années 1960. En 1965, lors de la parution de la Loi du 09 mars 1965 portant les Principes Généraux de la Fonction Publique, les autorités du pays avaient déjà préconisé l’étude d’un système contributif basé sur l’affiliation des magistrats et des fonctionnaires à l’INSS.
             </p>
 

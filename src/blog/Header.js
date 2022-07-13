@@ -10,7 +10,7 @@ import { Grid,Avatar } from '@mui/material';
 const sections = [
   { title: 'Accueil', url: '/' },
   // { title: 'Connaître ONPR', url: '/' },
-  { title: 'Informations', url: '/#informations', isId: true},
+  { title: 'Informations', url: '/informations'},
   { title: ' Annonces & Communiqués', url: '/annonce-communique' },
   // { title: 'Annonces & Communiqués', url: '#', isId: true},
   { title: 'Contacts', url: '#web-footer', isId: true },

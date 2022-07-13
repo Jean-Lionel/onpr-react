@@ -3,17 +3,18 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Header from './Header';
-import MainFeaturedPost from './MainFeaturedPost';
-import Footer from './Footer';
-import LeftSideCard from './components/LeftSideCard';
-import RightSideCard from './components/RightSideCard';
-import GoogleMap from './components/GoogleMap';
-import YoutubeComponent from './components/YoutubeComponent';
-import ArticleInlineShow from './Articles/ArticleInlineShow';
+import Header from '../blog/Header';
+import MainFeaturedPost from '../blog/MainFeaturedPost';
+import LeftSideCard from '../blog/components/LeftSideCard';
+import RightSideCard from '../blog/components/RightSideCard';
+import HomeAccueil from '../components/web/HomeAccueil';
+import YoutubeComponent from '../blog/components/YoutubeComponent';
+import GoogleMap from '../blog/components/GoogleMap';
+import Footer from '../blog/Footer';
+
 //Connaître ONPR || Information || Nouvelles || Annonces & Communiqués || Contacts
 const theme = createTheme();
-export default function Blog() {
+export default function Information() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -26,7 +27,7 @@ export default function Blog() {
              <LeftSideCard/>
             </Grid>
             <Grid item xs={12} md={6}>
-             <ArticleInlineShow></ArticleInlineShow>
+             <HomeAccueil/>
             </Grid>
             <Grid item xs={12} md={3}>
              <RightSideCard/>
