@@ -276,7 +276,6 @@ const FormulaireDeclaration = () => {
               <Grid item md={5}>                 
                 <input type="text"
                   onChange={(e) => setFile_name_2(e.target.value)}
-                  required
                   className="form-control form-control-sm"
                   placeholder="Titre du document justificatif II"
                 />
@@ -301,7 +300,6 @@ const FormulaireDeclaration = () => {
                  
                 <input type="text"
                   onChange={(e) => setFile_name_3(e.target.value)}
-                  required
                   className="form-control form-control-sm"
                   placeholder="Titre du document justificatif III"
                 />
