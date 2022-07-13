@@ -30,7 +30,7 @@ const FormulaireDeclaration = () => {
   
 
     useEffect(() => {
-      if (finished) {
+      if (response?.data?.success) {
         setNom_instution("");
         setAdresse("");
         setTelephone("");
@@ -56,7 +56,7 @@ const FormulaireDeclaration = () => {
       
 
       }
-    }, [finished]);
+    }, [response]);
     
 
     console.log("La valeur est de " + nom_declarant)
