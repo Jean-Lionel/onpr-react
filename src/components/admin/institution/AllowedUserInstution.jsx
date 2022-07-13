@@ -20,9 +20,9 @@ const AllowedUserInstution = () => {
         }
     }, [data])
 
-    useEffect(() => {
-        refreshSearch()
-    }, [refreshSearch])
+    // useEffect(() => {
+    //     refreshSearch()
+    // }, [refreshSearch])
 
     const deleteUser = (id) => {
         const x = window.confirm(`Are you sure you want to delete`)

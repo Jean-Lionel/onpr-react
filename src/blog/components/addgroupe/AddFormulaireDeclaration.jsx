@@ -16,13 +16,10 @@ const AddFormulaireDeclaration = () => {
     const [selectedFile, setSelectedFile] = useState("")
 
     useEffect(() => {
-
         if (data?.data) {
             setgroupeFormulaire(data?.data)
         }
-        
-        return () => {
-            
+        return () => {   
         };
     }, [data]);
 
@@ -30,9 +27,7 @@ const AddFormulaireDeclaration = () => {
         // e.preventDefault();
         setShowUploadFormulaire(e.id)
         setGroupeId(e.id)
-
     }
-
     const uploadFile = (e) => {
         // alert(groupeId)
         e.preventDefault();
@@ -41,19 +36,13 @@ const AddFormulaireDeclaration = () => {
         form.append("file", selectedFile);
         form.append("title", titleFormulaire);
         form.append("downloawd_doc_id", groupeId);
-
         submitData("file_declarations", form)
         setSelectedFile("")
         setTitleFormulaire("")
         setShowUploadFormulaire(0)
         setGroupeId(null)
-
         refreshSearch()
-
-       
     }
-
-
     const updateGroupe = (item) => {
         setGroupeId(item.id)
         setTitle(item.title)
@@ -126,7 +115,7 @@ const AddFormulaireDeclaration = () => {
                                                     ))}
                                                 </ul>
                                             </td>
-                                        <td >
+                                        <td>
                                         <button className="btn btn-secondary btn-sm" onClick={() => addDocument(item)}>
                                                 Ajouter un document
                                             </button>

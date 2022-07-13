@@ -17,8 +17,6 @@ const ArticleList = () => {
             refreshSearch()
         }
     }
-    
-
     return ( 
         <Box
 

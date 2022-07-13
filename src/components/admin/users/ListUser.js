@@ -1,14 +1,32 @@
-import useFetchData from "../../../utility/useFecthData";
 import {Box, Button, Fab,Icon} from '@mui/material';
-import { DeleteTwoTone, EditNotifications } from "@mui/icons-material";
 import { Link, useHistory } from "react-router-dom";
 import EditIcon from '@mui/icons-material/Edit';
 import DesktopAccessDisabledIcon from '@mui/icons-material/DesktopAccessDisabled';
+import useFetchDataWithPagination from "../../../utility/useFetchDataWithPagination";
+import { useEffect } from 'react';
+import usePostData from '../../../utility/usePostData';
 
 const ListUser = () => {
-    let {data: users, isLoading, error} = useFetchData("users");
+    let { data: users, isLoading, error, paginate , refreshSearch } = useFetchDataWithPagination("users");
+    const {  submitData } = usePostData();
     let listUser = users?.data?.data
     const history = useHistory();
+
+    useEffect(() => {
+    
+        return () => {
+        };
+    }, [paginate, isLoading,error ]);
+
+    const deleteUser = (id) => {
+       
+        const check = Math.random().toString(36).slice(2, 7);
+        const response = window.prompt("Etes vous sûr ? Tapez : " + check)
+        if (response === check) {
+            submitData("/users/"+id,null,"DELETE")
+            refreshSearch()
+        }
+    }
         
     return ( <div>
         <div>
@@ -57,17 +75,11 @@ const ListUser = () => {
                         <td>{user?.role?.name}</td>
                        
                         <td>
-                            <Button 
-                                size="small"
-                                onClick={() => { history.push("edit-user/"+user.id) }}
-                            >
-                            <Fab size="small" color="secondary" aria-label="edit">
-                                <EditIcon />
+                        <Fab size="small" color="secondary" aria-label="edit"
+                                    onClick={() => { history.push("edit-user/"+user.id) }} >
+                                    <EditIcon />
                             </Fab>
-                                
-                            </Button>
-                            
-                            <Fab size="small" color="primary">
+                            <Fab size="small" color="primary" onClick={() => deleteUser(user?.id) } >
                                 <DesktopAccessDisabledIcon />
                             </Fab>
                         </td>
@@ -77,6 +89,8 @@ const ListUser = () => {
 
             </tbody>
         </table>
+       
+        {paginate()}
         
     </div> );
 }

@@ -3,10 +3,9 @@ import Admin from "./Admin";
 import DetailMessage from "./Admin/message/DetailMessage";
 
 const RecievedMessageDetail = () => {
-    const {user} = useGetConnectedUser();
+    const {userConnected} = useGetConnectedUser();
     return (<Admin>
-        {(user.isAdmin() || user.isChefRecouvrement()) &&  <DetailMessage/>}
-       
+        {(userConnected?.isAdmin() || userConnected?.isChefRecouvrement()) &&  <DetailMessage/>}
     </Admin> );
 }
  

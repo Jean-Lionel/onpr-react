@@ -10,7 +10,7 @@ const RicievedMessage = () => {
      const [unreadMessages, setUnreadMessages] = useState([]);
     const [readMessages, setReadMessages] = useState([])
     
-    const { user } = useGetConnectedUser();
+    const { userConnected } = useGetConnectedUser();
 
      useEffect(() => {
         if(data?.data){
@@ -23,9 +23,9 @@ const RicievedMessage = () => {
         <Admin>
            
             {isLoading && <LinearProgress color="success" />}  
-            {error && <p>Error: {error.message}</p>}
+            {error && <p>Error: {error?.message}</p>}
 
-            {(user.isAdmin() || user.isRisqueProfessionnel()) && <>
+            {(userConnected?.isAdmin() || userConnected?.isRisqueProfessionnel()) && <>
                 
                 <h5>
                 Déclaration en ligne
