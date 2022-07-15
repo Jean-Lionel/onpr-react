@@ -4,7 +4,9 @@ import useFetchDataWithPagination from "../../../utility/useFetchDataWithPaginat
 import SearchBar from "../component/SearchBar";
 import {Link} from "react-router-dom"
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const filterData = (query, data) => {
     if (!query) {
@@ -33,6 +35,12 @@ const InstitionList = () => {
             searchIntoDatabase("institutions/search/" + searchQuery );
         }
         
+    }
+    const deleteInstitution = (institution) => {
+        const response = window.confirm("Confirmez la suppression de : " + institution.name);
+        if (response) {
+            alert("Deleting process")
+        }
     }
 
    useEffect(() => {
@@ -89,7 +97,13 @@ const InstitionList = () => {
                             <TableCell>
                                <Button onClick={() => addUserToInstution(institution.id)} size="small">
                                  <PersonAddAltIcon/>
-                               </Button>
+                                </Button>
+                                <Button size="small">
+                                    <EditIcon  onClick={() => history.push("institution_edit/"+institution.id)}/>
+                                </Button>
+                                <Button size="small">
+                                    <DeleteIcon onClick={() => deleteInstitution(institution)}/>
+                                </Button>
                             </TableCell>
                         </TableRow>
                     )
