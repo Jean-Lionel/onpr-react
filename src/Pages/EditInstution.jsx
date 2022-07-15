@@ -1,7 +1,10 @@
+import EditInstutionForm from "../components/admin/institution/EditInstutionForm";
+import Admin from "./Admin";
+
 const EditInstution = () => {
-    return (<>
-        <h1>Je suis un Milliardaire</h1>
-    </>);
+    return (<Admin>
+        <EditInstutionForm/>
+    </Admin>);
 }
  
 export default EditInstution;
