@@ -7,6 +7,9 @@ import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import { useHistory } from 'react-router-dom'
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import usePostData from "../../../utility/usePostData";
+
+
 
 const filterData = (query, data) => {
     if (!query) {
@@ -18,9 +21,10 @@ const filterData = (query, data) => {
 
 const InstitionList = () => {
     const [searchQuery, setSearchQuery] = useState("");
-    const {data : institutions ,isLoading, error, paginate,searchIntoDatabase} = useFetchDataWithPagination("institutions");
+    const {data : institutions ,isLoading, error, paginate,searchIntoDatabase, refreshSearch} = useFetchDataWithPagination("institutions");
     const info = filterData(searchQuery,institutions?.data?.data);
     const history = useHistory();
+    const { submitData } = usePostData()
 
     const addUserToInstution = (instutionId) => {
         // console.log(instutionId)
@@ -39,7 +43,8 @@ const InstitionList = () => {
     const deleteInstitution = (institution) => {
         const response = window.confirm("Confirmez la suppression de : " + institution.name);
         if (response) {
-            alert("Deleting process")
+            submitData("institutions/" + institution.id, null, "DELETE");
+            refreshSearch()
         }
     }
 
@@ -83,10 +88,10 @@ const InstitionList = () => {
                 </TableHead>
                 <TableBody>
                 {
-                info && (info).map(institution => {
+                info && (info).map((institution, index) => {
                     return (
                         <TableRow key={institution.id}>
-                            <TableCell>{institution.id}</TableCell>
+                            <TableCell>{++index}</TableCell>
                             <TableCell>{institution.name}</TableCell>
                             <TableCell>{institution.typeInstution}</TableCell>
                             <TableCell>{institution.address}</TableCell>

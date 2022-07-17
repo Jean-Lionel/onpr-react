@@ -1,6 +1,7 @@
 import { Alert, Box, Button, Container, FormControl, InputLabel, LinearProgress, OutlinedInput, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import useFetchDataWithPagination from "../../../utility/useFetchDataWithPagination";
 import usePostData from "../../../utility/usePostData";
 
 const EditInstutionForm = () => {
@@ -13,11 +14,27 @@ const EditInstutionForm = () => {
     const [telephone, setTelephone] = useState("")
     const [description, setDescription] = useState("")
     const [typeInstution, setTypeInstution] = useState("DETACHES")
+    const { id } = useParams();
+    const {data } = useFetchDataWithPagination("institutions/"+id)
     // address
     // telephone
     // type_istutions
     // email
     // description
+
+    useEffect(() => {
+
+        if (data?.data) {
+            const instution = data.data
+            setName(instution.name)
+            setAddress(instution.address)
+            setIdentify(instution.identify)
+            setTelephone(instution.telephone)
+            setDescription(instution.description)
+            setEmail(instution.email)
+        }
+
+    },[data])
 
     useEffect(() => {
         if(finished){
@@ -31,9 +48,9 @@ const EditInstutionForm = () => {
     const saveInputData = async (e) => {
         e.preventDefault();
         const institution = {
-            name, description, email,telephone,address,typeInstution,identify
+            name, description, email,telephone,address,typeInstution,identify, id
         }
-        submitData('institutions',institution)       
+        submitData('institutions/'+id,institution, "PUT")       
         
     }
     return ( 
