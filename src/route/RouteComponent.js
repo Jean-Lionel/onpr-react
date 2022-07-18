@@ -31,6 +31,7 @@ import DetailBlog from "../Pages/DetailBlog";
 import EditInstution from "../Pages/EditInstution";
 import Information from "../Pages/Information";
 import Login from "../Pages/Login";
+import MessageSent from "../Pages/MessageSent";
 import OnlineService from "../Pages/OnlineService";
 import RecievedMessageDetail from "../Pages/RecievedMessageDetail";
 import RicievedMessage from "../Pages/RicievedMessage";
@@ -64,6 +65,7 @@ const RouteComponent = () => {
           <ProtectedRoute  exact path="/test-compontent" component={TestComponent} /> 
           <ProtectedRoute  exact path="/institution" component={Institution} /> 
           <ProtectedRoute  exact path="/cotisations" component={Cotisation} /> 
+          <ProtectedRoute  exact path="/message-sent" component={MessageSent} />  
           <ProtectedRoute  exact path="/institutions/add" component={InstitutionAdd} /> 
           <ProtectedRoute  exact path="/web" component={WebAdmin} /> 
           <ProtectedRoute  exact path="/add-groupe" component={AddGroupe} /> 

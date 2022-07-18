@@ -12,7 +12,7 @@ import { useHistory } from "react-router-dom";
 const OnLineDecleration = () => {
    
     const {data, isLoading} = useFetchData("get_user_instution");
-    const {isLoading: saveLoading,finished, error, submitData} = usePostData();
+    const {isLoading: saveLoading, error, submitData} = usePostData();
     const [instution, setInstution] = useState("");
     const [code_instution ,setCode_instution] = useState("");
     const [titre, setTitre] = useState("");
@@ -47,16 +47,10 @@ const OnLineDecleration = () => {
     
       },[data,instution])
 
-      useEffect(() => {
-          if(finished){
-            history.push("/cotisations")
-          }
-
-      }, [finished, history])
     
     const sendData = (e) => {
         e.preventDefault();
-
+        if (titre && nom_instution  && file_name_1  && date_declaration) {
         const formData = new FormData();
         formData.append("titre", titre);
         formData.append("code_instution", code_instution);
@@ -70,11 +64,13 @@ const OnLineDecleration = () => {
         formData.append("file_name_2", file_name_2);
         formData.append("file_uploaded_2", file_uploaded_2);
         formData.append("institution_id", institution_id);
-
         submitData("online_declaration_detaches", formData);
         
-        history.push("/cotisations")
-       
+            history.push("/message-sent")
+          
+        } else {
+            alert("completez tout les champs")
+        }      
     }
 
     return ( <Box sx={{ 
@@ -83,14 +79,9 @@ const OnLineDecleration = () => {
         marginRight: { md:15, xs: 2 }
     }}>
         {isLoading && <LinearProgress />}
-        {finished && 
-            <Alert severity="succees">
-                Opération réussi
-            </Alert>
-        
-        }
-         
 
+        
+      
          {instution && (
              <Box>
         <Grid container spacing={8}>
