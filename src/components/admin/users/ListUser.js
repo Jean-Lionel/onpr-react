@@ -64,7 +64,9 @@ const ListUser = () => {
        
         <div className="row">
             <div className="col-md-6"></div>
-            <div className="col-md-4"><SearchBar setSearchQuery={setSearchQuery}  handleSubmit={updateSearch} /></div>
+            <div className="col-md-4">
+                <SearchBar setSearchQuery={setSearchQuery} handleSubmit={updateSearch} />
+            </div>
             <div className="col-md-2">
                 <Box sx={{
             textAlign: "right",
