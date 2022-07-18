@@ -56,7 +56,7 @@ const FormAddInstution = () => {
             // localStorage.setItem('user', JSON.stringify(response.data.data));
             setIsLoading(false);
             // window.location.href = '/admin';
-            window.location=document.referrer;
+            window.location.reload();
             console.log(response.data)
 
             
