@@ -230,7 +230,7 @@ const OnLineDecleration = () => {
             <Grid item md={4}>
                <FormControl fullWidth sx={{ m: 1  }} variant="standard">
                
-               <Typography variant="p">
+               <Typography variant="p" className="text-danger">
                   Vérfiez tout les documents avant de les envoyés
                </Typography>
                 <Button sx={{marginTop: 5}}

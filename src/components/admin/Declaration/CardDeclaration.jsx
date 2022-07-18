@@ -1,10 +1,12 @@
 import { Box, Grid,Button } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import PreviewIcon from '@mui/icons-material/Preview';
+import usePostData from "../../../utility/usePostData";
 
 const CardDeclaration = (props) => {
-    const {declaration} = props;
-    const history = useHistory();
+    const {declaration,refreshSearch} = props;
+  const history = useHistory();
+  const { submitData} = usePostData()
     const statusStyle = (status) => {
       switch (status) {
         case 1:
@@ -15,6 +17,15 @@ const CardDeclaration = (props) => {
           return "";
       }
     };
+
+  const deleteDeclaration = (declaration) => {
+    const result = window.confirm("êtes-vous sûr ? ")
+
+    if (result) {
+      submitData("online_declaration_detaches/" + declaration, {}, "DELETE");
+      refreshSearch();
+    }
+  }
     return ( 
         <Box>
             {declaration && (
@@ -41,8 +52,12 @@ const CardDeclaration = (props) => {
                      <div>
                      Envoyé par : <i><u> { declaration.user.name }</u></i>
                      </div>
-                     
                    <div>
+                <Button size="small" sx={{
+                         mr: 2
+                       }} variant="contained" color="secondary" onClick={() => deleteDeclaration(declaration.id)} >
+                            Supprimer
+                        </Button>
                        <Button size="small" variant="contained" color="primary" onClick={() => {
                             history.push(`show-detail-declaration/${declaration.id}`)
                         }} >

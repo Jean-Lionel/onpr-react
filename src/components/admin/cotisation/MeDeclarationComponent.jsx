@@ -4,7 +4,7 @@ import useFetchDataWithPagination from "../../../utility/useFetchDataWithPaginat
 import CardDeclaration from "../Declaration/CardDeclaration";
 
 const MeDeclarationComponent = () => {
-    const {data, isLoading,paginate} = useFetchDataWithPagination("online_declaration_detaches");
+    const {data, isLoading,paginate, refreshSearch} = useFetchDataWithPagination("online_declaration_detaches");
     const [declarations, setDeclaration] = useState(null);
 
     useEffect(() => {
@@ -25,14 +25,11 @@ const MeDeclarationComponent = () => {
             {declarations && declarations.length > 0 && declarations.map((declaration, index) =>  (
                 <Box key={index}>
                   
-                    <CardDeclaration declaration={declaration} />
+                    <CardDeclaration declaration={declaration} refreshSearch={refreshSearch} />
                     <hr />
                 </Box>
- 
             ))}
-
             {declarations && declarations.length > 8 && paginate()}
-           
         </Box>
       );
 }

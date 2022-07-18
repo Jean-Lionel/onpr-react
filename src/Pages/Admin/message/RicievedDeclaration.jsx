@@ -10,7 +10,6 @@ const RicievedDeclaration = () => {
     const [declarations, setdeclaration] = useState(null);
     const [searchQuery, setSearchQuery] = useState("");
     let declarationsAll = filterData(searchQuery, data?.data?.data);
-
     useEffect(() => {
         if (declarationsAll) {
             setdeclaration(declarationsAll)
