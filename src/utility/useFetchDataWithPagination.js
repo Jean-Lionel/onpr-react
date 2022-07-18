@@ -111,11 +111,18 @@ const useFetchDataWithPagination = (url) => {
                 ) 
             }
            </Box>
-            
-           
         );
     }
-    return {data, isLoading, error,paginate, searchIntoDatabase, refreshSearch};
+    
+    const filterData = (query, data) => {
+    if (!query) {
+      return data;
+    } else {
+      return data.filter((d) => JSON.stringify(d).toLowerCase().includes(query));
+    }
+    };
+    
+    return {data, isLoading, error,paginate, searchIntoDatabase, refreshSearch, filterData};
     
 }
  

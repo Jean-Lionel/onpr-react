@@ -1,16 +1,20 @@
-import {Box, Button, Fab,Icon} from '@mui/material';
+import {Box, Fab,Icon} from '@mui/material';
 import { Link, useHistory } from "react-router-dom";
 import EditIcon from '@mui/icons-material/Edit';
 import DesktopAccessDisabledIcon from '@mui/icons-material/DesktopAccessDisabled';
 import useFetchDataWithPagination from "../../../utility/useFetchDataWithPagination";
 import { useEffect } from 'react';
 import usePostData from '../../../utility/usePostData';
+import SearchBar from '../component/SearchBar';
+import { useState } from 'react';
 
 const ListUser = () => {
-    let { data: users, isLoading, error, paginate , refreshSearch } = useFetchDataWithPagination("users");
+    let { data: users, isLoading, error, paginate , refreshSearch , searchIntoDatabase, filterData} = useFetchDataWithPagination("users");
     const {  submitData } = usePostData();
-    let listUser = users?.data?.data
+   // let listUser = users?.data?.data
     const history = useHistory();
+    const [searchQuery, setSearchQuery] = useState("");
+    const listUser = filterData(searchQuery,users?.data?.data);
 
     useEffect(() => {
     
@@ -27,8 +31,23 @@ const ListUser = () => {
             refreshSearch()
         }
     }
+
+    const updateSearch = (e) => {
+        e.preventDefault();
+        if(searchQuery === "") {
+            //Recuperer tout les données
+            searchIntoDatabase("users/search/ALL_DATA");
+        }else{
+            searchIntoDatabase("users/search/" + searchQuery );
+        }
         
-    return ( <div>
+    }
+        
+    return (<Box sx={{
+        m: 1,
+        width: "90%",
+        margin: "auto"
+    }}>
         <div>
         <h4>Liste des utilisateurs</h4>
             {isLoading && (
@@ -42,14 +61,21 @@ const ListUser = () => {
                 <span className="error-message"> {error}</span>
             )}
         </div>
-        <Box sx={{
+       
+        <div className="row">
+            <div className="col-md-6"></div>
+            <div className="col-md-4"><SearchBar setSearchQuery={setSearchQuery}  handleSubmit={updateSearch} /></div>
+            <div className="col-md-2">
+                <Box sx={{
             textAlign: "right",
             marginRight: 2
-        }}>
-        <Link to="admin-add-user">
-         <Icon>add_circle</Icon> Ajouter un utilisateur
-        </Link>
-       </Box>
+                 }}>
+             <Link to="admin-add-user">
+                <Icon>add_circle</Icon> Ajouter un utilisateur
+                </Link>
+        </Box>
+            </div>
+        </div>
       
         <table className="table table-hover table-sm table-responsive">
             <thead className="table-dark">
@@ -92,7 +118,7 @@ const ListUser = () => {
        
         {paginate()}
         
-    </div> );
+    </Box> );
 }
  
 export default ListUser;

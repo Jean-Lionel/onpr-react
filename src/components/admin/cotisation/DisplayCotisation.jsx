@@ -1,13 +1,15 @@
 import { Box,  } from "@mui/material";
 import { useEffect, useState } from "react";
 import useFetchDataWithPagination from "../../../utility/useFetchDataWithPagination";
+import usePostData from "../../../utility/usePostData";
 
 
 
 const DisplayCotisation = () => {
     const [url, setUrl] = useState("cotisation_afiliers")
 
-    const { data } = useFetchDataWithPagination('list_chargements');
+    const { data , refreshSearch} = useFetchDataWithPagination('list_chargements');
+    const {submitData} = usePostData(data)
 
     const [donnes, setDonnes] = useState(null);
 
@@ -17,6 +19,15 @@ const DisplayCotisation = () => {
         }
 
     }, [data])
+
+    const deleteDisplayedElement = (traitement, table) => {
+        const response = window.confirm("êtez-vous sûr ? ");
+
+        if (response) {
+            submitData("cotisation_annuler/" + traitement + "/" + table, {}, "POST")
+            refreshSearch();
+        }
+    }
 
     const styleP = {
         cursor: 'pointer',
@@ -39,7 +50,7 @@ const DisplayCotisation = () => {
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Activité No</th>
+                                <th>Code d'activité</th>
                                 <th>Nombre Total</th>
                                 <th>Date</th>
                                 <th>
@@ -56,7 +67,7 @@ const DisplayCotisation = () => {
                                     <td>{ e.total_ligne}</td>
                                     <td>{e.created_at}</td>
                                     <td>
-                                        <button className="btn btn-sm btn-warning">
+                                        <button className="btn btn-sm btn-warning" onClick={() => deleteDisplayedElement(e.traitement, "cotisation_afiliers")}>
                                             annuler
                                         </button>
                                     </td>
@@ -94,7 +105,7 @@ const DisplayCotisation = () => {
                                     <td>{ e.total_ligne}</td>
                                     <td>{e.created_at}</td>
                                     <td>
-                                        <button className="btn btn-sm btn-warning">
+                                        <button className="btn btn-sm btn-warning" onClick={() => deleteDisplayedElement(e.traitement, "cotisation_detaches")}>
                                             annuler
                                         </button>
                                     </td>
