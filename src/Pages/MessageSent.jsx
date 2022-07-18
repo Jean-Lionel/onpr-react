@@ -6,7 +6,7 @@ const MessageSent = () => {
         <Box>
         <h1>
             Félicitations et bravo ! <br />
-            Vos informations ont été envoyés dans ONPR !
+            Vos informations ont été envoyés chez ONPR !
         </h1>
         </Box>
     </Admin>);

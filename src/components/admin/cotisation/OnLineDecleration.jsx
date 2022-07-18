@@ -187,7 +187,7 @@ const OnLineDecleration = () => {
                     <input
                         type="file"
                         hidden
-                        accept=".pdf"
+                        accept=".pdf, xlsx,xls"
                         required
 
                         onChange={e => setFile_uploaded_1(e.target.files[0])}
