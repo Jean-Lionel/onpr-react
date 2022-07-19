@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import SearchBar from "../../../components/admin/component/SearchBar";
 import CardDeclaration from "../../../components/admin/Declaration/CardDeclaration";
 import useFetchDataWithPagination from "../../../utility/useFetchDataWithPagination";
+import useGetConnectedUser from "../../../utility/useGetConnectedUser";
 import Admin from "../../Admin";
 
 const RicievedDeclaration = () => {
@@ -10,6 +11,7 @@ const RicievedDeclaration = () => {
     const [declarations, setdeclaration] = useState(null);
     const [searchQuery, setSearchQuery] = useState("");
     let declarationsAll = filterData(searchQuery, data?.data?.data);
+    //const { userConnected } = useGetConnectedUser();
     useEffect(() => {
         if (declarationsAll) {
             setdeclaration(declarationsAll)

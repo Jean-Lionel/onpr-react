@@ -50,7 +50,7 @@ const CardDeclaration = (props) => {
                      Transmis : <small> <i>{new Date(declaration.created_at).toLocaleString()}</i> </small>
                      </div>
                      <div>
-                     Envoyé par : <i><u> { declaration.user.name }</u></i>
+                     Envoyé par : <i><u> { declaration?.user?.name }</u></i>
                      </div>
                    <div>
                 <Button size="small" sx={{
