@@ -15,7 +15,7 @@ const DetailMessage = () => {
         marginRight: "40px",
         marginLeft: "40px",
     }}>
-
+       
         {isLoading && <LinearProgress  color="success" />}
         {error && <p>Error: {JSON.stringify(error)}</p>}
         {/* nom_instution

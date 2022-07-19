@@ -5,7 +5,8 @@ import DetailMessage from "./Admin/message/DetailMessage";
 const RecievedMessageDetail = () => {
     const {userConnected} = useGetConnectedUser();
     return (<Admin>
-        {(userConnected?.isAdmin() || userConnected?.isChefRecouvrement()) &&  <DetailMessage/>}
+
+        {(userConnected?.isAdmin() || userConnected?.isRisqueProfessionnel()) && <DetailMessage />}
     </Admin> );
 }
  

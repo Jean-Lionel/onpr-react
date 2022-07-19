@@ -37,13 +37,12 @@ const RicievedMessage = () => {
             {isLoading && <LinearProgress color="success" />}  
             {error && <p>Error: {error?.message}</p>}
 
-            {(userConnected?.isAdmin() || userConnected?.isRisqueProfessionnel()) && <>
+            {( userConnected?.isAdmin() || userConnected?.isRisqueProfessionnel()) && <>
                 <h5>
                 Déclaration en ligne
                 </h5>
                 <div className="row">
                     <div className="col-md-3">
-
                     </div>
                     <div className="col-md-3">
                         <SearchBar setSearchQuery={setSearchQuery}  handleSubmit={updateSearch} />
