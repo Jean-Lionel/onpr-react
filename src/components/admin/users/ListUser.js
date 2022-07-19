@@ -14,7 +14,19 @@ const ListUser = () => {
    // let listUser = users?.data?.data
     const history = useHistory();
     const [searchQuery, setSearchQuery] = useState("");
-    const listUser = filterData(searchQuery,users?.data?.data);
+    const [filterListe, setFilterListe] = useState(null);
+
+    const listUser = filterData(searchQuery,filterListe );
+    
+    useEffect(() => {
+        if (users?.data?.data) {
+            const remove_employe_user = users?.data?.data.filter(e => !e?.role?.name.toLowerCase().includes("employeur"))
+            setFilterListe(remove_employe_user)
+        }
+        return () => {
+            
+        };
+    }, [users]);
 
     useEffect(() => {
     
@@ -93,7 +105,8 @@ const ListUser = () => {
             </thead>
             <tbody>
             {
-                listUser && listUser.map((user, index) =>(
+                    listUser && listUser.map((user, index) => (
+                    
                     <tr key={index}>
                         <td>{index+1}</td>
                         <td>{user?.name}</td>

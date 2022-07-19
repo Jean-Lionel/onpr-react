@@ -113,7 +113,7 @@ const DetailMessage = () => {
                         )}
                         { message.file_name_3 && (
                             <p>
-                                <a href={message.file_justification_3} target="_blank">
+                                <a href={message.file_justification_3} rel="noreferrer" target="_blank">
                                 <AttachFileIcon/>
                             { message.file_name_3   }
                             </a>

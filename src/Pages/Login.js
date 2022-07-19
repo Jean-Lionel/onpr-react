@@ -68,6 +68,10 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Box sx={{
+        width: {md: "75%", xs: "90%"},
+        margin: "auto"
+      }}>
       <Header/>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -77,6 +81,7 @@ export default function SignIn() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -146,7 +151,7 @@ export default function SignIn() {
       </Container>
       {/* <Footer/>
       <Copyright sx={{ mt: 0, mb: 0, backgroundColor: "gray" }} /> */}
-      
+      </Box>
     </ThemeProvider>
   );
 }

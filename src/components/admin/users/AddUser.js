@@ -16,7 +16,6 @@ const AddUser = (props) => {
     const [error, setError] = useState("");
     let {data: roles} = useFetchData("roles");
     const [roleId, setRoleId] = useState("");
-    
     const history = useHistory();
 
     const submitData = async (e) => {
@@ -122,8 +121,11 @@ const AddUser = (props) => {
               label="Age"
               onChange={(e) => (setRoleId(e.target.value))}
             >
-              {roles && roles?.data?.map((role, index) =>(
-                <MenuItem key={index} value={role?.id}>{role?.name}</MenuItem>
+              {roles && roles?.data?.map((role, index) => (
+                <>
+                  {(!role?.name?.toLowerCase().includes("employeur")) && <MenuItem key={index} value={role?.id}>{role?.name}</MenuItem>}
+              </>
+                
               ))
               }
              
