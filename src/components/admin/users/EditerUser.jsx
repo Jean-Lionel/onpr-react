@@ -62,7 +62,7 @@ const EditerUser = () => {
         {finished && history.push("/users")}
         {data?.data && (
         <div>
-            <h1>Modifier l utilisateur</h1>
+            <h1>Modifier l'utilisateur</h1>
         <FormControl fullWidth sx={{ m: 1 }}  size="small" variant="standard">
           <InputLabel htmlFor="name" size="small">Nom et Prénom *</InputLabel>
           <Input

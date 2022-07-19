@@ -2,10 +2,12 @@ import { Box, LinearProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useFetchDataWithPagination from "../../../utility/useFetchDataWithPagination";
+import usePostData from "../../../utility/usePostData";
 
 const AnnonceListe = () => {
-    const { data, isLoading, error, refreshSearch, paginate } = useFetchDataWithPagination("annonces");
+    const { data, isLoading, paginate, refreshSearch } = useFetchDataWithPagination("annonces");
     const [annonces, setAnnonces] = useState(null);
+    const { submitData } = usePostData();
 
     useEffect(() => {
         if (data?.data) {
@@ -14,7 +16,18 @@ const AnnonceListe = () => {
 
     }, [data])
 
-    return (<Box>
+    const deleteAnnoce = (e) => {
+        const response = window.confirm("êtes-vous sûr ? ")
+        if (response) {
+            submitData("annonces/"+e, null, "DELETE");
+            refreshSearch();
+        }
+    }
+
+    return (<Box width={{ 
+        width: "90%",
+        margin: "auto",
+    }}>
         {isLoading && <LinearProgress color="success" />}
         <div className="row">
             <div className="col-md-8">
@@ -37,13 +50,11 @@ const AnnonceListe = () => {
             <tbody>
                 {annonces && annonces.map((annonce, index )=> (
                     <tr key={annonce.id}>
-                        <td>{ index + 1}</td>
+                        <td>{index + 1}</td>
                         <td>{annonce.title}</td>
                         <td className="d-flex flex-row">
-                            <button className="btn btn-info btn-block btn-sm mr-2">
-                                Dépublier
-                            </button>
-                            <button className="btn btn-danger btn-block btn-sm ml-2">Supprimer</button>
+                           
+                            <button className="btn btn-danger btn-block btn-sm ml-2" onClick={()=>deleteAnnoce(annonce.id) }>Supprimer</button>
                         </td>
                     </tr>     
                ))}

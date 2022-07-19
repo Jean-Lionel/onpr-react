@@ -14,25 +14,13 @@ const ListUser = () => {
    // let listUser = users?.data?.data
     const history = useHistory();
     const [searchQuery, setSearchQuery] = useState("");
-    const [filterListe, setFilterListe] = useState(null);
-
-    const listUser = filterData(searchQuery,filterListe );
-    
-    useEffect(() => {
-        if (users?.data?.data) {
-            const remove_employe_user = users?.data?.data.filter(e => !e?.role?.name.toLowerCase().includes("employeur"))
-            setFilterListe(remove_employe_user)
-        }
-        return () => {
-            
-        };
-    }, [users]);
+    let [listUser, setLlistUser] = useState(null);
 
     useEffect(() => {
-    
+        setLlistUser(filterData(searchQuery,users?.data?.data))
         return () => {
         };
-    }, [paginate, isLoading,error ]);
+    }, [filterData, searchQuery,users,paginate ]);
 
     const deleteUser = (id) => {
        
@@ -106,25 +94,33 @@ const ListUser = () => {
             <tbody>
             {
                     listUser && listUser.map((user, index) => (
+
+                        <>
+                            {(user.role && !(user?.role.name.toLowerCase().includes('employeur'))) && (
+                                
+                                <tr key={index}>
+                                <td>{index+1}</td>
+                                <td>{user?.name}</td>
+                                <td>{user?.email}</td>
+                                <td>{user?.telephone}</td>
+                                <td>{user?.mobile}</td>
+                                <td>{user?.role?.name}</td>
+                            
+                                <td>
+                                <Fab size="small" color="secondary" aria-label="edit"
+                                            onClick={() => { history.push("edit-user/"+user.id) }} >
+                                            <EditIcon />
+                                    </Fab>
+                                    <Fab size="small" color="primary" onClick={() => deleteUser(user?.id) } >
+                                        <DesktopAccessDisabledIcon />
+                                    </Fab>
+                                </td>
+                            </tr>
+
+                            )}
+                        </>
                     
-                    <tr key={index}>
-                        <td>{index+1}</td>
-                        <td>{user?.name}</td>
-                        <td>{user?.email}</td>
-                        <td>{user?.telephone}</td>
-                        <td>{user?.mobile}</td>
-                        <td>{user?.role?.name}</td>
-                       
-                        <td>
-                        <Fab size="small" color="secondary" aria-label="edit"
-                                    onClick={() => { history.push("edit-user/"+user.id) }} >
-                                    <EditIcon />
-                            </Fab>
-                            <Fab size="small" color="primary" onClick={() => deleteUser(user?.id) } >
-                                <DesktopAccessDisabledIcon />
-                            </Fab>
-                        </td>
-                    </tr>
+                    
                 ))
             }
 

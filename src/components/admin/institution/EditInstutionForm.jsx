@@ -57,7 +57,7 @@ const EditInstutionForm = () => {
         
         <Container fixed>
         <Box>
-        <h1>Ajouter une Institution</h1>
+        <h1>Modifier une Institution</h1>
 
         {
             isLoading &&  (
