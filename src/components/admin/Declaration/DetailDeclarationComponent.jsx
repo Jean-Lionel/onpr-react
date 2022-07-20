@@ -42,9 +42,7 @@ const DetailDeclarationComponent = () => {
                     Date de déclaration : <b>{declaration?.date_declaration}</b> 
                     </div>
                     <div>
-                        Transmis : <small> <i>{declaration?.created_at}</i> </small>
-                       
-                        
+                        Transmis : <small> <i>{declaration?.created_at?.split("T")[0]}</i> </small> <br />
                         Envoyé par : <small><b>{declaration  &&  <i><u> {userName?.name}</u>  </i>}</b></small>
                     </div>
                 </Grid>
