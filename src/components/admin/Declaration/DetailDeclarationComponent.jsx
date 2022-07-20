@@ -14,7 +14,7 @@ const DetailDeclarationComponent = () => {
     useEffect(() => {
         if(data){
             setDeclaration(data?.data.declaration)
-            setUserName(data?.data.user)
+            setUserName(data?.data?.user)
         }
         return () => {
             setDeclaration(null)
@@ -39,10 +39,13 @@ const DetailDeclarationComponent = () => {
                </Grid>
                 <Grid item md={4} sx={{ textAlign: 'right'}}>
                     <div>
-                    Date de déclaration : <b>{new Date(declaration.date_declaration).toLocaleDateString()}</b> 
+                    Date de déclaration : <b>{declaration?.date_declaration}</b> 
                     </div>
                     <div>
-                    Envoyé par : <small><b>{userName}</b></small>
+                        Transmis : <small> <i>{declaration?.created_at}</i> </small>
+                       
+                        
+                        Envoyé par : <small><b>{declaration  &&  <i><u> {userName?.name}</u>  </i>}</b></small>
                     </div>
                 </Grid>
                 <Grid item md={8}>

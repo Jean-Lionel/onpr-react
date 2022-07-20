@@ -41,13 +41,13 @@ const CardDeclaration = (props) => {
                       <h6><i>Titre :</i>  {declaration.titre}</h6>
                     </div>
                       <div>
-                    Date de déclaration : <b>{new Date(declaration.date_declaration).toLocaleDateString()}</b>
+                    Date de déclaration : <b>{declaration?.date_declaration }</b>
                     </div>
                  </Grid>
                  
                  <Grid item md={4} sx={{ textAlign: 'right'}}>
                       <div>
-                     Transmis : <small> <i>{new Date(declaration.created_at).toLocaleString()}</i> </small>
+                     Transmis : <small> <i>{declaration.created_at}</i> </small>
                      </div>
                      <div>
                 Envoyé par : 
