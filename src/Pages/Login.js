@@ -45,14 +45,25 @@ export default function SignIn() {
           setError('Please enter email and password');
           return;
       }
-        setIsLoading(true);
-
+      setIsLoading(true);
+      const headers = {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
+        'Access-Control-Allow-Credentials': true
+       };
+      
+    
         console.log(email, password);
         try {
-            const response = await axios.post('/login/', {
+            const response = await axios.post('login', {
                 email,
                 password
-            });
+            }, headers);
+          
+
            console.log(response.data.access_token, response.data.data);
             localStorage.setItem('token', response.data.access_token);
             localStorage.setItem('user', JSON.stringify(response.data.data));

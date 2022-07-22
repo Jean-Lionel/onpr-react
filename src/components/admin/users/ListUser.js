@@ -95,11 +95,11 @@ const ListUser = () => {
             {
                     listUser && listUser.map((user, index) => (
 
-                        <>
+                        <tr key={index}>
                             {(user.role && !(user?.role.name.toLowerCase().includes('employeur'))) && (
                                 
-                                <tr key={index}>
-                                <td>{index+1}</td>
+                                <>
+                                <td>{user?.id}</td>
                                 <td>{user?.name}</td>
                                 <td>{user?.email}</td>
                                 <td>{user?.telephone}</td>
@@ -115,10 +115,10 @@ const ListUser = () => {
                                         <DesktopAccessDisabledIcon />
                                     </Fab>
                                 </td>
-                            </tr>
+                            </>
 
                             )}
-                        </>
+                        </tr>
                     
                     
                 ))
