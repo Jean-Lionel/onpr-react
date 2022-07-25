@@ -1,19 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-/* import $ from 'jquery';
-import Popper from 'popper.js'; */
-
+import { Provider } from 'react-redux';
 import axios from 'axios';
+import nisys_store from './logic/nisys_store';
 //axios.defaults.baseURL = 'http://localhost:8000/api';
- //axios.defaults.baseURL = 'http://test.aiph.bi/api';
+//axios.defaults.baseURL = 'http://test.aiph.bi/api';
 //axios.defaults.baseURL = 'http://192.168.0.22:8000/api';
 axios.defaults.baseURL = 'http://app.onpr.bi/onpr_api/public/api';
 //http://192.168.1.33:8000/api/articles
 //axios.defaults.baseURL = 'https://onprapi.herokuapp.com/api';
 axios.defaults.headers.common['Authorization'] = 'AUTH TOKEN';
 //axios.defaults.headers.post['Content-Type'] = 'application/json';
-axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 axios.interceptors.request.use(request => {
   //console.log(request);
@@ -36,7 +35,9 @@ axios.interceptors.response.use(response => {
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={nisys_store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
