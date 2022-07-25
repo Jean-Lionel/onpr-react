@@ -33,6 +33,7 @@ function FeaturedPost(props) {
             sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
             image={post.image}
             alt={post.imageLabel}
+            loading="lazy"
           />
         </Card>
       </CardActionArea>

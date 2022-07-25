@@ -84,7 +84,7 @@ const FormulaireDeclaration = () => {
         data.append('file_name_3', file_name_3)
         data.append('file_justification_3', file_justification_3)
        
-        submitData('declaration/', data); 
+        submitData('declaration/', data, "POST"); 
     }
     return ( <Box>
         

@@ -29,7 +29,9 @@ function Header(props) {
           <Avatar
             alt="Logo de ONPR"
             src={logo}
-            sx={{ width: { md: "100px", sx:"30px" }, height: { md: "100px", sx:"30px" } }}
+              sx={{ width: { md: "100px", sx: "30px" }, height: { md: "100px", sx: "30px" } }}
+              
+              loading="lazy"
           />
 
           </Grid>

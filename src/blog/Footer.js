@@ -11,7 +11,7 @@ import MarkunreadMailboxIcon from '@mui/icons-material/MarkunreadMailbox';
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
-       <img src={navHeader}  alt="Bar de Footer"  style={{ height: "auto", width: "100%" }}/>
+       <img src={navHeader}  alt="Bar de Footer" loading="lazy"  style={{ height: "auto", width: "100%" }}/>
       {'Copyright © '}
       <Link color="inherit" href="https://onpr.bi/">
        ONPR 

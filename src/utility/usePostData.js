@@ -23,7 +23,7 @@ const usePostData = () => {
                 const config = {
                     signal : abortConnection.signal,
                         headers :{
-                            Authorization : 'Bearer ' +token
+                            Authorization : 'Bearer ' + token
                     }
                     }
             const response = method.toLowerCase() === 'post' ?
