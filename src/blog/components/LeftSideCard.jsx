@@ -19,20 +19,18 @@ function LeftSideCard(props) {
   return (
     <Grid item xs={12} md={12}>
       <CardActionArea component="a" href="#">
-        <Card sx={{ display: 'flex' }}>
+        <Card sx={{ display: 'flex'}}>
           <CardContent >
 
-            <ListeItemLeft data={leftData.map((e) => {
-              return
-              <>
+            {leftData.map((e) => {
+              return(
+              <div>
                 <h3>{e.title[currentLanguage.code]}</h3>
                 {e.corps.map(el => {
                   return <p>{el.label[currentLanguage.code]}</p>
                 })}
-              </>
+              </div>)
               })} 
-            />
-
 
           </CardContent>
 
@@ -170,5 +168,3 @@ const leftData = [
 
 
 export default LeftSideCard;
-
-
