@@ -4,17 +4,38 @@ import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import ListeItemLeft from './leftSideComponent/ListeItemLeft';
+import { useSelector } from 'react-redux';
+// import LanguageChanger from '../../components/language_changer/language_changer';
+
+
 
 function LeftSideCard(props) {
+
+  const { currentLanguage } = useSelector((storeOf) => {
+    return { currentLanguage: storeOf.nisys.currentLanguage };
+  })
+
 
   return (
     <Grid item xs={12} md={12}>
       <CardActionArea component="a" href="#">
         <Card sx={{ display: 'flex' }}>
           <CardContent >
-            <ListeItemLeft data={leftData}/>
+
+            <ListeItemLeft data={leftData.map((e) => {
+              return
+              <>
+                <h3>{e.title[currentLanguage.code]}</h3>
+                {e.corps.map(el => {
+                  return <p>{el.label[currentLanguage.code]}</p>
+                })}
+              </>
+              })} 
+            />
+
+
           </CardContent>
-          
+
         </Card>
       </CardActionArea>
     </Grid>
@@ -22,67 +43,125 @@ function LeftSideCard(props) {
 }
 
 const leftData = [
-   {
-      title: 'Direction Générale',
-      corps: [
-        {
-          label: 'Secrétariat',
+  {
+    title: {
+      fr: 'Direction Générale',
+      en: 'Executive management'
+    },
+
+    corps: [
+      {
+        label: {
+          fr: 'Secretariat',
+          en: 'Secretary'
         },
-        {
-          label: 'Conseillers',
+      },
+      {
+        label: {
+          fr: 'Conseillers',
+          en: 'Advisers'
         },
-        {
-          label: 'Agences',
+      },
+      {
+        label: {
+          fr: 'Agences',
+          en: 'Agences'
         },
-        {
-          label: 'Cellule Communication  et Relations Publiques',
+      },
+      {
+        label: {
+          fr: 'Cellule Communication  et Relations Publiques',
+          en: 'Communication and Public Relations Unit'
         },
-        {
-          label: 'Cellule Informatique',
+      },
+      {
+        label: {
+          fr: 'Cellule informatique',
+          en: 'Computer cell'
         },
-        {
-          label: 'Médecin Conseil',
-        },
-        {
-          label: 'Actuaire',
-        },
-        {
-          label: 'Audit Interne',
-        },
-        {
-          label: 'Bibliothèque et Archives',
-        },
-      ]
+      },
+      {
+        label: {
+          fr: 'Médecin Conseil',
+          en: 'Medical advisor'
+        }
+      },
+      {
+        label: {
+          fr: 'Actuaire',
+          en: 'Actuary'
+        }
+      },
+      {
+        label: {
+          fr: 'Audit interne',
+          en: 'Internal audit'
+        }
+      },
+      {
+        label: {
+          fr: 'Bibliothèque et Archives',
+          en: 'Library and Archives'
+        }
+      },
+    ]
   },
   {
-    title: 'Direction Administrative et Finacière',
-    corps :[
+    title: {
+      fr: 'Direction Administrative et Finacière',
+      en: 'Administrative and financial management'
+    },
+    corps: [
       {
-        label: 'Secrétariat',
+        label: {
+          fr: 'Secretariat',
+          en: 'Secretary'
+        },
       },
       {
-        label: 'Service du Personnel et Logistique',
+        label: {
+          fr: 'Service du Personnel et Logistique',
+          en: 'Personnel and Logistics Department'
+        },
       },
       {
-        label: 'Service de Recouvrement',
+        label: {
+          fr: 'Service de Recouvrement',
+          en: 'Collection and invoicing service'
+        },
       },
       {
-        label: 'Service Comptable',
+        label: {
+          fr: 'Service Comptable',
+          en: 'Accounting department'
+        },
       }
     ]
 
   },
   {
-    title: 'Direction des Prestation',
-    corps :[
+    title: {
+      fr: 'Direction des Prestations',
+      en: 'Services Department'
+    },
+    corps: [
       {
-        label: 'Secrétariat',
+        label: {
+          fr: 'Secretariat',
+          en: 'Secretary'
+        },
       },
       {
-        label: 'Service des Pensions',
+        label: {
+          fr: 'Service des Pensions ',
+          en: 'Pensions Service'
+        },
       },
       {
-        label: 'Service des Risques Professionnels',
+        label: {
+          fr: 'Service des Risques Professionnels ',
+          en: 'Occupational Risks Department'
+        },
       }
     ]
   }
