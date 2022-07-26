@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import Internationalisation from '../data/providers/internationalisation';
+import Internationalisation from '../providers/internationalisation';
 
 export const nisysSlice = createSlice({
     name: 'nisys',
