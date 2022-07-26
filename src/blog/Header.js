@@ -25,8 +25,8 @@ const sections = [
   },
   {
     title: {
-      en: "Annonces et Communiques",
-      fr: "Anounces & News"
+      fr: "Annonces et Communiques",
+      en: "Anounces & News"
     }, url: '/annonce-communique'
   },
   // { title: 'Annonces & Communiqués', url: '#', isId: true},
