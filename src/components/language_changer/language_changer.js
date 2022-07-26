@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import './language_changer.css';
 import ManagerRepo from '../../repositories/managerRepo';
 import Internationalisation from '../../providers/internationalisation';
+import { copyWith } from '../../logic/nisys_slice';
 
 
 class LanguageChanger extends React.Component {
