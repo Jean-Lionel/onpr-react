@@ -37,7 +37,6 @@ const AddUser = (props) => {
                 description,
                 mobile,
 
-
             },{
                 headers: {
                     Authorization: "Bearer " + token
@@ -122,10 +121,8 @@ const AddUser = (props) => {
               onChange={(e) => (setRoleId(e.target.value))}
             >
               {roles && roles?.data?.map((role, index) => (
-                <>
-                  {(!role?.name?.toLowerCase().includes("employeur")) && <MenuItem key={index} value={role?.id}>{role?.name}</MenuItem>}
-              </>
-                
+             
+              (!role?.name?.toLowerCase().includes("employeur")) && <MenuItem key={index} value={role?.id}>{role?.name}</MenuItem>
               ))
               }
              
