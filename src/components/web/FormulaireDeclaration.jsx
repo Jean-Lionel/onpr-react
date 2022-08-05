@@ -6,7 +6,7 @@ import usePostDate from "../../utility/usePostData";
 
 const FormulaireDeclaration = () => {
 
-    const {response, isLoading, error,finished,  submitData} = usePostDate()
+    const {response, isLoading, error,  submitData} = usePostDate()
 
     const [nom_instution, setNom_instution] = useState("");
     const [adresse, setAdresse] = useState("");
@@ -53,14 +53,11 @@ const FormulaireDeclaration = () => {
         setNomDeclarant("");
         setMotif_declaration("");
         setDate_declaration("");
-      
 
       }
     }, [response]);
     
-
     console.log("La valeur est de " + nom_declarant)
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const data = new FormData()
@@ -84,7 +81,7 @@ const FormulaireDeclaration = () => {
         data.append('file_name_3', file_name_3)
         data.append('file_justification_3', file_justification_3)
        
-        submitData('declaration/', data, "POST"); 
+        submitData('declarations', data, "POST"); 
     }
     return ( <Box>
         
