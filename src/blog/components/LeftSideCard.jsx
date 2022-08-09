@@ -24,12 +24,12 @@ function LeftSideCard(props) {
 
             {leftData.map((e) => {
               return(
-              <div>
-                <h3>{e.title[currentLanguage.code]}</h3>
+              <>
+                <h5>{e.title[currentLanguage.code]}</h5>
                 {e.corps.map(el => {
-                  return <p>{el.label[currentLanguage.code]}</p>
+                  return <ListeItemLeft data ={el.label[currentLanguage.code]} />
                 })}
-              </div>)
+              </>)
               })} 
 
           </CardContent>
